@@ -12,7 +12,7 @@
 <%
 	//String savePath =  application.getRealPath("/image/profile_img");
 	//String savePath = "C:/MHHan/JSP_Example/workspace/TheaterProject/WebContent/src/image/profile_img";
-	String savePath =  "C:/MHHan/JSP_workspace/TheaterProject/WebContent/src/image/profile_img";
+	String savePath =  "C:/MHHan/JSP_workspace/git/TheaterProject/WebContent/src/image/profile_img";
 	int maxSize = 10 * 1024 * 1024;
 	MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 
