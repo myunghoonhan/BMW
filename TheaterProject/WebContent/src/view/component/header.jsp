@@ -101,7 +101,7 @@ $(function() {
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
 
-      <form name="login" method="POST" action="../controller/LoginProc.jsp">
+      <form name="login" method="POST" action="../../LoginProc.do">
       	<input type="hidden" name="url" value="<%=url%>">
         <div class="form-group">
           <div class="modal-content">
