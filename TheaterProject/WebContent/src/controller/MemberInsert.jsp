@@ -5,7 +5,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%@ page import="dto.MemberDto" %>
-<%@ page import="dao.DBBean" %>
+<%@ page import="dao.TheaterDao" %>
 
 <%
 	String mem_id = request.getParameter("mem_id");
@@ -32,7 +32,7 @@
 	modify.setMem_address(mem_address);
 
 	
-	DBBean manager = DBBean.getInstance();
+	TheaterDao manager = TheaterDao.getInstance();
 	
 	if(manager.insertMember(modify)){
 		out.println("<script>alert('회원가입이 완료되었습니다. 정상 로그인이 가능합니다.'); history.back(); </script>");
