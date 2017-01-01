@@ -13,11 +13,11 @@ import javax.sql.DataSource;
 import dto.MemberDto;
 import dto.ZipcodeDto;
 
-public class DBBean {
+public class TheaterDao {
 	
-	private static DBBean instance = new DBBean();
+	private static TheaterDao instance = new TheaterDao();
 	
-	public static DBBean getInstance(){
+	public static TheaterDao getInstance(){
 		return instance;
 	}
 			
@@ -30,14 +30,8 @@ public class DBBean {
 	public void connect() {
 		try {
 
-			// jdbc/oracle(context.xml에 있는)이라는 이름을 찾기위해 객체생성
 			Context initContext = new InitialContext();
-
-			// lookup() 메소드를 이용해서 뒤의 이름( java:comp/env: 톰캣의 자바영역 + context.xml
-			// 이름) 찾음
 			ds = (DataSource) initContext.lookup("java:comp/env/jdbc/oracle");
-
-			// 커넥션풀애서 하나의 커넥션 객체를 획득하여 conn 객체 넣어 접속이 가능하도록 한다.
 			conn = ds.getConnection();
 
 		} catch (Exception e) {
@@ -69,12 +63,12 @@ public class DBBean {
 			if(rs.next()){
 				dbpasswd = rs.getString("passwd");
 				if(dbpasswd.equals(mem_passwd)){
-					x = 1; //ID 인증 PW 인증
+					x = 1; 
 				}else{
-					x = 0; //ID 인증
+					x = 0;
 				}
 			}else{
-				x=-1; //ID 없음
+				x=-1;
 			}
 			
 		}catch(Exception e){
@@ -94,9 +88,9 @@ public class DBBean {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				x = 1; //id �ߺ��� ����
+				x = 1;
 			}else{
-				x = -1; // ��밡���� id
+				x = -1;
 			}
 			
 		}catch(Exception e){

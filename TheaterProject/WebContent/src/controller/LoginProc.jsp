@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="dao.DBBean"%>
+    <%@ page import="dao.TheaterDao"%>
     <% request.setCharacterEncoding("UTF-8"); %>
     <%
     	String mem_id = request.getParameter("mem_id");
@@ -9,7 +9,7 @@
     %>
     
     <%
-    	DBBean manager = DBBean.getInstance();
+    	TheaterDao manager = TheaterDao.getInstance();
     	int check = manager.userCheck(mem_id, mem_passwd);
     	
     	if(check == 1){ //ID가 맞으면

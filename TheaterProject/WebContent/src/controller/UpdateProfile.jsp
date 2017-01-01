@@ -4,7 +4,7 @@
 <%	request.setCharacterEncoding("UTF-8"); %>
 
 <%@ page import="dto.MemberDto"%>
-<%@ page import="dao.DBBean"%>
+<%@ page import="dao.TheaterDao"%>
 
 <%@ page
 	import="com.oreilly.servlet.MultipartRequest, com.oreilly.servlet.multipart.DefaultFileRenamePolicy, java.util.*, java.io.* "%>
@@ -45,7 +45,7 @@
 			modify.setMem_images(request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()+"/TheaterProject/src/image/profile_img/"+filename);
 		}
 		
-		DBBean manager = DBBean.getInstance();
+		TheaterDao manager = TheaterDao.getInstance();
 
 		if (manager.updateProfile(modify)) {
 			response.sendRedirect("../view/mypage.jsp");
