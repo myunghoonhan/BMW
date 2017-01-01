@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="dao.TheaterDao"%>
+<%@page import="dao.DBBean"%>
 <%@page import="dto.ZipcodeDto"%>
 <%@page import="java.util.*"%>
 <%
@@ -9,7 +9,7 @@
 	String area3 = request.getParameter("area3"); //area3은 개포1동을 가리킴
 	Vector<ZipcodeDto> zipcodeList = new Vector<ZipcodeDto>();
 
-	TheaterDao manager = TheaterDao.getInstance();
+	DBBean manager = DBBean.getInstance();
 
 	zipcodeList = manager.zipCheck(area3);
 	int totalList = zipcodeList.size();

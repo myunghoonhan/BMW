@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="dto.MemberDto"%>
-<%@ page import="dao.TheaterDao"%>
+<%@ page import="dao.DBBean"%>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 
@@ -12,7 +12,7 @@
 		response.sendRedirect("index.jsp");
 	} else {
 
-		TheaterDao manager = TheaterDao.getInstance();
+		DBBean manager = DBBean.getInstance();
 		MemberDto myinfo = manager.selectMember(mem_id);
 
 		String mem_name = myinfo.getMem_name();

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="dao.TheaterDao"%>
+    pageEncoding="UTF-8" import="dao.DBBean"%>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
    String mem_id = request.getParameter("mem_id"); //폼에서 넘어온 것? id값!
-   TheaterDao manager = TheaterDao.getInstance(); //DBBean을 만들어 놓음! 
+   DBBean manager = DBBean.getInstance(); //DBBean을 만들어 놓음! 
    int check = manager.confirmId(mem_id); //DBBean에서 받아오려면, 메소드 구현 필요.
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
