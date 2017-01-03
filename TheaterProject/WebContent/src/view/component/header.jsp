@@ -138,7 +138,8 @@ $(function() {
   <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
 
-      <form name="regForm" method="POST" action="../controller/MemberInsert.jsp">
+      <!-- <form name="regForm" method="POST" action="../controller/MemberInsert.jsp"> -->
+      <form name="regForm" method="POST" action="../../MemberInsert.do">
         <div class="form-group">
           <div class="modal-content">
             <div class="modal-header">
