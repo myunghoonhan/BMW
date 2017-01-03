@@ -8,7 +8,6 @@
 
 <%@ page
 	import="com.oreilly.servlet.MultipartRequest, com.oreilly.servlet.multipart.DefaultFileRenamePolicy, java.util.*, java.io.* "%>
-
 <%
 	//String savePath =  application.getRealPath("/image/profile_img");
 	//String savePath = "C:/MHHan/JSP_Example/workspace/TheaterProject/WebContent/src/image/profile_img";
