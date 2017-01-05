@@ -19,6 +19,17 @@ $(function() {
 	});
 	
 });
+
+/* function checkid(){
+    //입력칸의 데이터를 불러움
+    var id = document.getElementById("id").value;
+    //읽어드린 데이터가 비어있는지 여부를 파악
+    if(data==""){
+       //alert("아이디를 입력하세요");
+    }else{
+       location.href='IdCheck.do?id='+id;
+    }
+ } */
 </script>
 
 <%
@@ -149,10 +160,11 @@ $(function() {
             <div class="modal-body">
               <div class="row">
                 <div class="col-xs-9" style="margin-bottom: 10px; padding-right: 3px;">
-                  <input type="text" name="mem_id" class="form-control" placeholder="아이디">
+                  <input type="text" name="mem_id" id="id" class="form-control" placeholder="아이디">
                 </div>
                 <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
                   <button type="button" class="btn btn-primary" onclick="idCheck(this.form.mem_id.value)">중복확인</button>
+                 <!--  <button type="button" class="btn btn-primary" onclick="checkid()">중복확인</button> -->
                 </div>
 
                 <div class="col-sm-12" style="margin-bottom: 10px">
