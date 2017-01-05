@@ -31,13 +31,12 @@ public class IdCheck extends HttpServlet {
 		TheaterDao manager = TheaterDao.getInstance();
 		// 아이디 체크 메소드
 		int count = manager.getCheckId(id);
-/*
-		// 아치디체크후 리턴값을 0또는 1로 보냄
-		request.setAttribute("count", count);
 
-		// jsp(view)로 화면을 넘겨줌
-		RequestDispatcher dis = request.getRequestDispatcher("JoinForm.jsp");
-		dis.forward(request, response);*/
+		request.setAttribute("count", count);
+		request.setAttribute("id", id);
+		
+		RequestDispatcher dis = request.getRequestDispatcher("src/view/component/IdCheck.jsp");
+		dis.forward(request, response);
 
 	}
 }

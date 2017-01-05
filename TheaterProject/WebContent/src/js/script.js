@@ -3,9 +3,8 @@ function idCheck(id){
 	if(id == ""){
 		alert("아이디를 입력하세요");
 	}else{
-		location.href = "../../IdCheck.do?id="+id;
-		/*url="../controller/IdCheck.jsp?mem_id="+id;
-		window.open(url, "post", "width=300, height=150");*/
+		url="../../IdCheck.do?id="+id;
+		window.open(url, "post", "width=300, height=150");
 	}
 }
 
