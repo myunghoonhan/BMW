@@ -157,58 +157,95 @@ $(function() {
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">회원가입</h4>
             </div>
+
             <div class="modal-body">
+
+              <div class="row">
+                <div class="col-xs-9">
+                  <h5 style="margin: 5px 0px;">아이디</h5>
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-xs-9" style="margin-bottom: 10px; padding-right: 3px;">
-                  <input type="text" name="mem_id" id="id" class="form-control" placeholder="아이디">
+                  <input type="text" name="mem_id" class="form-control" placeholder="">
                 </div>
                 <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
                   <button type="button" class="btn btn-primary" onclick="idCheck(this.form.mem_id.value)">중복확인</button>
-                 <!--  <button type="button" class="btn btn-primary" onclick="checkid()">중복확인</button> -->
                 </div>
+              </div>
 
-                <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="password" name="mem_passwd" class="form-control" placeholder="비밀번호">
+              <div class="row">
+                <div class="col-xs-9">
+                  <h5 style="margin: 5px 0px;">비밀번호</h5>
                 </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12" style="margin-bottom: 10px">
+                  <input type="password" name="mem_passwd" class="form-control" placeholder="">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-9">
+                  <h5 style="margin: 5px 0px;">비밀번호 확인</h5>
+                </div>
+              </div>
+
+              <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 25px">
-                  <input type="password" name="mem_repasswd" class="form-control" placeholder="비밀번호 확인">
+                  <input type="password" name="mem_repasswd" class="form-control" placeholder="">
                 </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-9">
+                  <h5 style="margin: 5px 0px;">이름</h5>
+                </div>
+              </div>
+
+              <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="text" name="mem_name" class="form-control" placeholder="이름">
+                  <input type="text" name="mem_name" class="form-control" placeholder="">
                 </div>
+              </div>
 
-                <div class="col-xs-5" style="margin-bottom: 10px; padding-right: 3px;">
-                  <input type="text" name="mem_num1" class="form-control" placeholder="주민등록번호 앞자리" onKeyUp="if(this.value.length==6)regForm.mem_num2.focus();">
+              <div class="row">
+                <div class="col-xs-9">
+                  <h5 style="margin: 5px 0px;">핸드폰번호</h5>
                 </div>
-                <div class="col-xs-5" style="margin-bottom: 10px; padding-left: 0px; padding-right: 3px;">
-                  <input type="text" name="mem_num2" class="form-control" placeholder="주민등록번호 뒷자리">
-                </div>
-                <div class="col-xs-2" style="margin-bottom: 10px; padding-left: 0px;">
-                  <button type="button" class="btn btn-primary" onClick="juminCheck(this.form.mem_num1.value, this.form.mem_num2.value)">확인</button>
-                </div>
+              </div>
 
-                <div class="col-xs-10" style="margin-bottom: 10px; margin-top: 15px; padding-right: 3px;">
-                  <input type="text" name="mem_zipcode" class="form-control" placeholder="우편번호">
-                </div>
-                <div class="col-xs-2" style="margin-bottom: 10px; margin-top: 15px;  padding-left: 0px;">
-                  <button type="button" class="btn btn-primary" onclick="zipCheck()">찾기</button>
-                </div>
-                <div class="col-sm-12" style="margin-bottom: 10px;">
-                  <input type="text" name="mem_address" class="form-control" placeholder="주소">
-                </div>
-
+              <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="text" name="mem_email" class="form-control" placeholder="이메일 ex)example@example.com">
+                  <input type="text" name="mem_phone" class="form-control" placeholder="000-000-0000">
                 </div>
-                <div class="col-sm-12" style="margin-bottom: 25px">
-                  <input type="text" name="mem_phone" class="form-control" placeholder="전화번호 ex)000-000-0000">
-                </div>
+              </div>
 
+              <div class="row">
+                <div class="col-xs-9">
+                  <h5 style="margin: 5px 0px;">이메일</h5>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-9" style="margin-bottom: 35px; padding-right: 3px;">
+                  <input type="text" name="mem_email" class="form-control" placeholder="example@example.com">
+                </div>
+                <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
+                  <button type="button" class="btn btn-primary" onclick="">중복확인</button>
+                </div>
+              </div>
+
+              <div class="row">
                 <div class="col-sm-12">
                   <button type="button" class="btn btn-success" onclick="inputCheck()" style="height: 50px; width: 100%">회원가입</button>
                 </div>
               </div>
+
             </div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
