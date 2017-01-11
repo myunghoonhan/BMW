@@ -72,7 +72,15 @@ body{
 		margin-top: 200px;
 		width: 420px;
 	}
-	#registerModal .modal-dialog{
+	#registerChoiceModal .modal-dialog{
+		margin-top: 200px;
+		width: 420px;
+	}
+	#normalregisterModal .modal-dialog{
+		margin-top: 60px;
+		width: 420px;
+	}
+	#simpleregisterModal .modal-dialog{
 		margin-top: 60px;
 		width: 420px;
 	}
