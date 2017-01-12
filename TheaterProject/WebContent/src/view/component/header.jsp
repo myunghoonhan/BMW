@@ -19,17 +19,6 @@ $(function() {
 	});
 	
 });
-
-/* function checkid(){
-    //입력칸의 데이터를 불러움
-    var id = document.getElementById("id").value;
-    //읽어드린 데이터가 비어있는지 여부를 파악
-    if(data==""){
-       //alert("아이디를 입력하세요");
-    }else{
-       location.href='IdCheck.do?id='+id;
-    }
- } */
 </script>
 
 <%
