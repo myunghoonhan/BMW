@@ -62,8 +62,14 @@ $(function() {
         
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="about.jsp" class="head_link_default">ShowYou란</a></li>
-            <li><a href="vision.jsp" class="head_link_default">고객센터</a></li>
+            <li>
+              <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="The-Ticket을 입력하세요." size="40">
+                </div>
+                <button type="submit" class="btn btn-default">찾기</button>
+              </form>
+            </li>
           </ul>
 			
           <ul class="nav navbar-nav navbar-right">
@@ -79,12 +85,10 @@ $(function() {
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                   <li role="presentation"><a role="menuitem" tabindex="-1" href="mypage.jsp">마이페이지</a></li>
-                  <li role="presentation" class="divider"></li>
-                <%--   <li role="presentation"><a role="menuitem" tabindex="-1" href="../controller/LogOut.jsp?url=<%=url%>">로그아웃</a></li> --%>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="../../LoginOut.do?url=<%=url%>">로그아웃</a></li>
                 </ul>
               </li>
          	</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="../../LoginOut.do?url=<%=url%>">로그아웃</a></li>
           <%
           	}else{
           %>
@@ -94,12 +98,7 @@ $(function() {
           	}
           %>
             <li>
-              <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="공연 제목" size="20">
-                </div>
-                <button type="submit" class="btn btn-default">찾기</button>
-              </form>
+              <li><a href="#" class="head_link_default">Q&A</a></li>
             </li>
           </ul>
           
