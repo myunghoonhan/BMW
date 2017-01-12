@@ -8,7 +8,7 @@
 </head>
 <body>
 	<footer id="index_footer">
-    <p>Copyright @ 한명훈</p>
+    <p>Copyright @</p>
 </footer>
 </body>
 </html>
