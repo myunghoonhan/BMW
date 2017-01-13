@@ -77,8 +77,8 @@
     <div class="container">
     
       <ul id="index_nav_tabs" class="nav nav-tabs nav-justified" style="margin: 45px 0px 55px 0px;">
-      	  <li role="presentation" class="active"><a href="index.jsp">전체</a></li>
-		  <li role="presentation" ><a href="concert.jsp">콘서트</a></li>
+      	  <li role="presentation" ><a href="index.jsp">종합</a></li>
+		  <li role="presentation" class="active"><a href="concert.jsp">콘서트</a></li>
 		  <li role="presentation"><a href="#">연극</a></li>
 		  <li role="presentation"><a href="#">The-Ticket</a></li>
 		  <li role="presentation" class="dropdown">
@@ -114,7 +114,7 @@
 	 </ul> -->
 
       <div id="index_thumbnail">
-        <h3>The-Ticket TOP4 <span class="label label-danger">Hot</span></h3>
+        <h3>콘서트 TOP4 <span class="label label-danger">Hot</span></h3>
 
         <div class="row">
         
@@ -164,105 +164,155 @@
           
         </div>
       </div>
+      </div>
       
+      <div class="container">
       <div id="index_thumbnail">
-        <h3>최신 The-Ticket</h3>
+        <h3>최신 콘서트</h3>
 
         <div class="row">
-          <div class="col-xs-12 col-sm-3">
-          	<div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
-                <div class="caption">
-                  <h4>[대학로] 1월40일</h4>
-            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
-            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-xs-12 col-sm-3">
-            <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
-              <div class="caption">
-                <h4>[홍대] 나는 너다</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xs-12 col-sm-3">
-           <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
-              <div class="caption">
-                 <h4>[홍대] 리타 EDUCATION RITA</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">80<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,000원</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-xs-12 col-sm-3">
-           <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
-              <div class="caption">
-                <h4>[신촌] 리타 옥탑방고양이</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-              </div>
-            </div>
-          </div>
-          </div> <!--div id="row" -->
-          
-          <div class="row">
-          <div class="col-xs-12 col-sm-3">
-          	<div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
-                <div class="caption">
-                  <h4>[대학로] 1월40일</h4>
-            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
-            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-xs-12 col-sm-3">
-            <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
-              <div class="caption">
-                <h4>[홍대] 나는 너다</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xs-12 col-sm-3">
-           <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
-              <div class="caption">
-                 <h4>[홍대] 리타 EDUCATION RITA</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">80<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,000원</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-xs-12 col-sm-3">
-           <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
-              <div class="caption">
-                <h4>[신촌] 리타 옥탑방고양이</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-              </div>
-            </div>
-          </div>
-          </div>
-          
-          <div class="row">
         
-          <div class="col-xs-12 col-sm-3">
+          <div class="col-xs-12 col-sm-3 col-md-2">
+          	<div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 1월40일</h4>
+            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
+            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-3 col-md-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 나는 너다</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-3 col-md-2">
+           <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
+              <div class="caption">
+                 <h4>[홍대] 리타 EDUCATION RITA</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">80<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,000원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-3 col-md-2">
+           <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[신촌] 리타 옥탑방고양이</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-3 col-md-2">
+          	<div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 1월40일</h4>
+            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
+            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-3 col-md-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 나는 너다</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+          
+          
+         <!--  </div> div id="row" -->
+          
+          <!-- <div class="row"> -->
+          <div class="col-xs-12 col-sm-2">
+          	<div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 7</h4>
+            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
+            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 8</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+           <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
+              <div class="caption">
+                 <h4>[홍대] 리타 EDUCATION RITA</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">80<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,000원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-2">
+           <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[신촌] 리타 옥탑방고양이</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-2">
+          	<div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 1월40일</h4>
+            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
+            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 나는 너다</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- </div> -->
+          
+          <!-- <div class="row"> -->
+        
+          <div class="col-xs-12 col-sm-2">
               <div class="thumbnail" style="padding: 0px">
               <a href="detail.jsp?pid=0001"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
                 <div class="caption">
@@ -273,7 +323,7 @@
               </div>
           </div>
 
-          <div class="col-xs-12 col-sm-3">
+          <div class="col-xs-12 col-sm-2">
             <div class="thumbnail" style="padding: 0px">
               <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
               <div class="caption">
@@ -284,7 +334,7 @@
             </div>
           </div>
 
-          <div class="col-xs-12 col-sm-3">
+          <div class="col-xs-12 col-sm-2">
            <div class="thumbnail" style="padding: 0px">
               <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
               <div class="caption">
@@ -295,7 +345,7 @@
             </div>
           </div>
           
-          <div class="col-xs-12 col-sm-3">
+          <div class="col-xs-12 col-sm-2">
            <div class="thumbnail" style="padding: 0px">
               <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
               <div class="caption">
@@ -306,9 +356,192 @@
             </div>
           </div>
           
+          <div class="col-xs-12 col-sm-2">
+          	<div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 1월40일</h4>
+            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
+            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 나는 너다</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+          
+      <!--   </div>  div id="row"
+        
+         <div class="row"> -->
+        
+          <div class="col-xs-12 col-sm-2">
+              <div class="thumbnail" style="padding: 0px">
+              <a href="detail.jsp?pid=0001"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 1월40일</h4>
+            	  <img src="../image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;">
+            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 나는 너다</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+           <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
+              <div class="caption">
+                 <h4>[홍대] 리타 EDUCATION RITA</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">80<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,000원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-2">
+           <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[신촌] 리타 옥탑방고양이</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-2">
+          	<div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 1월40일</h4>
+            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
+            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 나는 너다</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+          
+     <!--    </div>  div id="row"
+        
+         <div class="row"> -->
+        
+          <div class="col-xs-12 col-sm-2">
+              <div class="thumbnail" style="padding: 0px">
+              <a href="detail.jsp?pid=0001"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 1월40일</h4>
+            	  <img src="../image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;">
+            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 나는 너다</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+           <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
+              <div class="caption">
+                 <h4>[홍대] 리타 EDUCATION RITA</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">80<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,000원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-2">
+           <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[신촌] 리타 옥탑방고양이</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-2">
+          	<div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+                <div class="caption">
+                  <h4>[대학로] 1월40일</h4>
+            	  <span style="font-size: 30px; font-weight: bold; color: #5cb85c;">73<span style="font-size: 18px;">%</span></span>
+            	  <span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,800원</span>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-2">
+            <div class="thumbnail" style="padding: 0px">
+              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+              <div class="caption">
+                <h4>[홍대] 나는 너다</h4>
+            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
+            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
+              </div>
+            </div>
+          </div>
+          
         </div>  <!-- div id="row" -->
           
       </div> <!-- 최신공연 index_thumbnail -->
+      
+      <nav>
+		  <ul class="pagination">
+		    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    		<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li><a href="#">6</a></li>
+		    <li><a href="#">7</a></li>
+		    <li><a href="#">8</a></li>
+		    <li><a href="#">9</a></li>
+		    <li><a href="#">10</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+	</nav>
 
     </div>
   </main>

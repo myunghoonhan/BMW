@@ -18,6 +18,7 @@
 
 	MemberDto modify = new MemberDto();
 	Enumeration params = multi.getParameterNames(); //파라미터 id,phone,email받아오기
+	
 	while (params.hasMoreElements()) {
 
 		String name = (String) params.nextElement();
