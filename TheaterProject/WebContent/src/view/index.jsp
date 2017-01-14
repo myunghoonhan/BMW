@@ -94,24 +94,6 @@
 		    </ul>
   		 </li>
 	  </ul>
-	  
-	 <!--  <ul id="index_nav_tabs" class="nav nav-pills nav-justified" style="margin: 45px 0px 55px 0px;">
-		 <li role="presentation" class="active"><a href="#">콘서트</a></li>
-		  <li role="presentation"><a href="#">연극</a></li>
-		  <li role="presentation"><a href="#">The-Ticket</a></li>
- 		 <li role="presentation" class="dropdown">
-  		  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-    		  지역별 <span class="caret"></span>
-  		  </a>
-   		 <ul class="dropdown-menu" role="menu">
-   		   <li><a href="#">대학로</a></li>
-		   <li><a href="#">홍대</a></li>
-		   <li><a href="#">강남</a></li>
-		   <li class="divider"></li>
-		   <li><a href="#">기타</a></li>
-    	</ul>
-  		</li>
-	 </ul> -->
 
       <div id="index_thumbnail">
         <h3>The-Ticket TOP4 <span class="label label-danger">Hot</span></h3>

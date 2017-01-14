@@ -38,34 +38,36 @@
         <div class="col-md-3 col-md-push-9">
           <div class="panel panel-default">
             <div class="panel-body">
-              <h4><strong>[대학로] 1월40일</strong></h4>
               <form class="form-horizontal">
-
-                <div class="form-group">
+              
+              	<h4><strong>예매일자</strong></h4>
+				<div class="form-group" style="margin-bottom: 30px;">
                   <div class="col-xs-12">
-                    <select style="width: 100%;">
-                      <option value="option_default">상품을 선택하세요</option>
-                      <option value="option1">대학로 아트홀</option>
-                      <option value="option2">신촌 뮤직홀</option>
+                    <select class="form-control">
+                      <option value="option_default">예매일자를 선택하세요.</option>
+                      <option value="option1">2016/01/27 (잔여:15)</option>
+                      <option value="option2">2016/01/28 (잔여:25)</option>
+                      <option value="option3">2016/01/29 (잔여:15)</option>
+                      <option value="option4">2016/01/30 (잔여:15)</option>
                     </select>
                   </div>
                 </div>
+				
+				<h4><strong>The-Ticket 시간</strong></h4>
+				<div style="margin-bottom: 30px;">
+					오후 8시 00분
+				</div>
+				
+				<h4><strong>인원수</strong></h4>
+				<div class="form-group" style="margin-bottom: 30px;">
+					<div class="col-xs-12">
+						<input type="number" class="form-control" placeholder="0" min="0" required style="font-size: 20px;">
+					</div>
+				</div>
 
                 <div class="form-group">
                   <div class="col-xs-12">
-                    <select style="width: 100%;">
-                      <option value="option_default">날짜 선택하세요</option>
-                      <option value="option1">12월 23일</option>
-                      <option value="option1">12월 24일</option>
-                      <option value="option2">12월 25일</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-xs-12">
-                    <button type="submit" class="btn btn-default" style="width: 100%; margin-bottom:5px;">장바구니</button>
-                    <button type="submit" class="btn btn-danger" style="width: 100%; height: 50px; font-size: 20px; font-weight: bold">바로구매</button>
+                    <button type="submit" class="btn btn-danger" style="width: 100%; height: 50px; font-size: 20px; font-weight: bold">예매하기</button>
                   </div>
                 </div>
 
@@ -76,7 +78,7 @@
 
         <div class="col-md-9 col-md-pull-3">
 
-          <div class="row"  style="margin-bottom: 30px; border-style: solid; border-width: 1px; border-radius: 4px; border-color: #ddd; padding: 15px;">
+          <div class="row"  style="margin-bottom: 10px; border-style: solid; border-width: 1px; border-radius: 4px; border-color: #ddd; padding: 15px;">
             <div class="col-xs-12 col-md-7">
               <img src="../image/poster/theater_thumbnail_1.jpg" class="img-responsive img-rounded" alt="Responsive image" style="width: 100%;">
             </div>
@@ -84,42 +86,33 @@
             <div class="col-xs-12 col-md-5">
               <ul>
                 <li style="list-style: none; margin-bottom: 30px;">
-                  <h2><strong>해바라기의 비명: 1월 40일</strong></h2>
+                  <h3><strong>The-Ticket</strong></h3>해바라기의 비명 1월 40일
                 </li>
                 <li style="list-style: none; margin-bottom: 30px;">
                   <h3><strong>장소</strong></h3>대학로 미리상영관(2관)
                 </li>
                 <li style="list-style: none; margin-bottom: 30px;">
-                  <h3><strong>기간</strong></h3>2016.05.11~2016.05.20
+                  <h3><strong>기간</strong></h3>2016.05.11~05.20
                 </li>
                 <li style="list-style: none; margin-bottom: 30px;">
-                  <h3><strong>출연</strong></h3>한명훈,박수영,이소라,심수민
+                  <h3><strong>출연</strong></h3>명훈,박수영,이소라,심수민
                 </li>
+				<li style="list-style: none; margin-bottom: 30px; font-size: 35px; font-weight: 900; color: #d9534f;">
+               		12,000원
+             	</li>
+             	<li style="list-style: none; margin-bottom: 30px;">
+             		<button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>&nbsp;LIKE</button>
+             		<button type="button" class="btn btn-danger btn-lg active"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;LIKE</button>
+             	</li>
               </ul>
 
-              <div style="font-size: 35px; font-weight: 900; color: #d9534f; margin-left: 40px;">
-                12,000원
-              </div>
-
             </div>
           </div>
 
           <div class="row">
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12" style="margin-bottom: 20px;">
+              <h3><strong>The-Ticket 정보</strong></h3>
               <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-              <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
-            </div>
-            <div class="col-xs-12 col-sm-4">
               <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
               <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
               <p>우리 회사는 이것이고 저것이고 우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이우리 회사는 이것이고 저것이</p>
@@ -128,15 +121,17 @@
           </div>
 
           <div class="row">
-            <div class="col-xs-12" style="margin-top: 20px">
-              <img src="../image/about_bmw_company.jpg" class="img-responsive" alt="Responsive image">
+            <div class="col-xs-12">
+              <img src="../image/poster/theater_thumbnail_1_info.jpg" class="img-responsive" alt="Responsive image" width="100%">
             </div>
           </div>
-
-        </div>
-
-      </div>
-    </div>
+		  
+		  
+		  
+		  
+        </div> <!-- end div(class="col-md-9 col-md-pull-3") 왼쪽창  -->
+      </div> <!-- end div(class="row") 전체행  -->
+    </div> <!-- end container  -->
   </main>
 
   <jsp:include page="./component/footer.jsp"></jsp:include>
