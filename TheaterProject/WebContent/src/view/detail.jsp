@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
 
-
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=2p5S9VIE5k7XX34fQ60S"></script>
   <link rel="stylesheet" href="../css/style.css">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -24,6 +24,8 @@
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+  
+  
 </head>
 <body>
 
@@ -101,6 +103,7 @@
                		12,000원
              	</li>
              	<li style="list-style: none; margin-bottom: 30px;">
+             	<!-- 좋아요 버튼 두개 -->
              		<button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>&nbsp;LIKE</button>
              		<button type="button" class="btn btn-danger btn-lg active"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;LIKE</button>
              	</li>
@@ -121,13 +124,159 @@
           </div>
 
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12" style="margin-bottom: 0px;">
               <img src="../image/poster/theater_thumbnail_1_info.jpg" class="img-responsive" alt="Responsive image" width="100%">
             </div>
           </div>
-		  
-		  
-		  
+          
+          <div class="row">
+            <div class="col-xs-12" style="margin-bottom: 20px;">
+              <div id="map" style="width: 100%; height: 400px;"></div>
+				<script>
+				
+					var HOME_PATH = window.HOME_PATH || '.';
+			
+					var map = new naver.maps.Map(document.getElementById('map'), {
+						zoom : 12,
+						center : new naver.maps.LatLng(37.560474, 126.971354)
+					});
+					
+					
+					var latlngs = [
+						 new naver.maps.LatLng(37.560474, 126.971354)
+						/* <c:forEach var="bean" items="${v}">
+							 new naver.maps.LatLng(${bean.hwido}, ${bean.hkyungdo}),
+						</c:forEach> */
+					];
+			
+					var markerList = [];
+			
+					for (var i = 0, ii = latlngs.length; i < ii; i++) {
+						var icon = {
+							url : HOME_PATH + '/img/example/sp_pins_spot_v3.png',
+							size : new naver.maps.Size(24, 37),
+							anchor : new naver.maps.Point(12, 37),
+							origin : new naver.maps.Point(i * 29, 0)
+						}, marker = new naver.maps.Marker({
+							position : latlngs[i],
+							map : map,
+							icon : icon,
+							shadow : {
+								url : HOME_PATH + '/img/example/shadow-pin_default.png',
+								size : new naver.maps.Size(40, 35),
+								origin : new naver.maps.Point(0, 0),
+								anchor : new naver.maps.Point(11, 35)
+							}
+						});
+			
+						marker.set('seq', i);
+			
+						markerList.push(marker);
+			
+						marker.addListener('mouseover', onMouseOver);
+						marker.addListener('mouseout', onMouseOut);
+			
+						icon = null;
+						marker = null;
+					}
+			
+					function onMouseOver(e) {
+						var marker = e.overlay, seq = marker.get('seq');
+			
+						marker.setIcon({
+							url : HOME_PATH + '/img/example/sp_pins_spot_v3_over.png',
+							size : new naver.maps.Size(24, 37),
+							anchor : new naver.maps.Point(12, 37),
+							origin : new naver.maps.Point(seq * 29, 50)
+						});
+					}
+			
+					function onMouseOut(e) {
+						var marker = e.overlay, seq = marker.get('seq');
+			
+						marker.setIcon({
+							url : HOME_PATH + '/img/example/sp_pins_spot_v3.png',
+							size : new naver.maps.Size(24, 37),
+							anchor : new naver.maps.Point(12, 37),
+							origin : new naver.maps.Point(seq * 29, 0)
+						});
+					}
+				</script>
+            </div> <!-- end col-xs-12 지도  -->
+          </div> <!-- end row 지도  -->
+          
+          <div class="row">
+          	<div class="col-xs-12">
+          		<h3><strong>후기</strong></h3>
+          	</div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-10" style="padding-right: 0px">
+              <textarea class="form-control" rows="3" style="resize: none"></textarea>
+            </div>
+            <div class="col-xs-2">
+              <button type="button" class="btn btn-lg btn-danger " style="width: 100%; height: 70px;">작성하기</button>
+            </div>
+          </div>
+          
+          <div class="row">
+          	
+              <hr>
+				<div class="col-xs-2">
+					<img src="../image/profile_img/profile_default.png" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 100px; height: 100px; max-width: none;">
+				</div>
+				<div class="col-xs-10">
+					<table>
+						<tr>
+							<td><font size="3px"><b>한명훈님</b>(theh1001)</font>&nbsp;&nbsp;<small>작성일: 2017.01.12 13:50</small></td>
+						</tr>
+						<tr>
+							<td><small>후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺</small></td>
+						</tr>
+					</table>
+				</div>
+			  <div class="clearfix"></div>
+			  
+			  <hr>
+				<div class="col-xs-2">
+					<img src="../image/profile_img/profile_default.png" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 100px; height: 100px; max-width: none;">
+				</div>
+				<div class="col-xs-10">
+					<table>
+						<tr>
+							<td><font size="3px"><b>한명훈님</b>(theh1001)</font>&nbsp;&nbsp;<small>작성일: 2017.01.12 13:50</small></td>
+						</tr>
+						<tr>
+							<td><small>후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺</small></td>
+						</tr>
+					</table>
+				</div>
+			  <div class="clearfix"></div>
+			  
+			  
+			  <hr>
+          </div>
+          
+          <nav style="text-align: center;">
+			  <ul class="pagination">
+			    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+	    		
+	    		<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			    <li><a href="#">6</a></li>
+			    <li><a href="#">7</a></li>
+			    <li><a href="#">8</a></li>
+			    <li><a href="#">9</a></li>
+			    <li><a href="#">10</a></li>
+			    
+			    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+			  </ul>
+	  	  </nav>
+        
 		  
         </div> <!-- end div(class="col-md-9 col-md-pull-3") 왼쪽창  -->
       </div> <!-- end div(class="row") 전체행  -->

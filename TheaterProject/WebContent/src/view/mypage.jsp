@@ -49,6 +49,8 @@
 		$("#imgInp").on('change', function() {  //input file이 실행되면 readURL 실행
 			readURL(this);
 		});
+		
+		/* $('#settingBtn').click(); */
 	});
 	
 	function readURL(input) {
@@ -68,6 +70,8 @@
 			}
 		}
 	}
+	
+	
 </script>
 </head>
 
@@ -81,15 +85,11 @@
 	<div class="container">
 		<div class="jumbotron">
 			<div style="float: right; margin: 0 10px 0 0;">
-				<a href=#><img src="../image/setting.png" data-toggle="modal"
-					data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
+				<a href=# ><img id="settingBtn" src="../image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-4" style="margin-bottom: 10px">
-					<!-- 프로필 사진: getMem_image값이 뿌려짐-->
-					<img src=<%=mem_image%> class="img-responsive img-circle"
-						alt="Responsive image"
-						style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
+					<img src=<%=mem_image%> class="img-responsive img-circle" alt="Responsive image" style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
 				</div>
 
 				<div class="col-xs-12 col-sm-8">
@@ -99,12 +99,12 @@
 							<td style="font-size: 30px"><b><%=mem_name%></b></td>
 						</tr>
 						<tr>
-							<td class="list_title">이메일</td>
-							<td style="font-size: 20px"><%=mem_email%></td>
+							<td class="list_title">핸드폰번호</td>
+							<td style="font-size: 20px"><%=mem_phone%></td>
 						</tr>
 						<tr>
-							<td class="list_title">전화번호</td>
-							<td style="font-size: 20px"><%=mem_phone%></td>
+							<td class="list_title">이메일</td>
+							<td style="font-size: 20px"><%=mem_email%></td>
 						</tr>
 					</table>
 				</div>
