@@ -70,8 +70,6 @@
 			}
 		}
 	}
-	
-	
 </script>
 </head>
 
@@ -82,35 +80,172 @@
 	</jsp:include>
 
 	<main id="main_mypage">
-	<div class="container">
-		<div class="jumbotron">
-			<div style="float: right; margin: 0 10px 0 0;">
-				<a href=# ><img id="settingBtn" src="../image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
-			</div>
+		<div class="container">
+		
+			<div class="jumbotron" style="margin-bottom: 50px">
+				<div style="float: right; margin: 0 10px 0 0;">
+					<a href=# ><img id="settingBtn" src="../image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4" style="margin-bottom: 10px">
+						<img src=<%=mem_image%> class="img-responsive img-circle" alt="Responsive image" style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
+					</div>
+	
+					<div class="col-xs-12 col-sm-8">
+						<table style="margin: 0 auto;">
+							<tr>
+								<td class="list_title">이름</td>
+								<td style="font-size: 30px"><b><%=mem_name%></b></td>
+							</tr>
+							<tr>
+								<td class="list_title">핸드폰번호</td>
+								<td style="font-size: 20px"><%=mem_phone%></td>
+							</tr>
+							<tr>
+								<td class="list_title">이메일</td>
+								<td style="font-size: 20px"><%=mem_email%></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div> <!-- end 나의 상세정보 점포트론  -->
+			
+			<div id="New_thumblist" style="margin-bottom: 50px">
+	        	<h3>관심 The-Ticket</h3>
+		        <div class="row">
+		        
+		          <div class="col-xs-6 col-md-2">
+		           <div class="thumbnail" style="padding: 0px">
+		              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+		              <div class="caption">
+		                <h4>[신촌] 타 옥탑방고양</h4>
+		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-xs-6 col-md-2">
+		           <div class="thumbnail" style="padding: 0px">
+		              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+		              <div class="caption">
+		                <h4>[신촌] 리타 산다라니나3ㅣ나옥고</h4>
+		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+		              </div>
+		            </div>
+		          </div>
+		          
+		          <div class="col-xs-6 col-md-2">
+		           <div class="thumbnail" style="padding: 0px">
+		              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
+		              <div class="caption">
+		                <h4>[신촌] 리타 옥탑방양이</h4>
+		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-xs-6 col-md-2">
+		           <div class="thumbnail" style="padding: 0px">
+		              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
+		              <div class="caption">
+		                <h4>[신촌] 리타 방고이</h4>
+		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-xs-6 col-md-2">
+		           <div class="thumbnail" style="padding: 0px">
+		              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
+		              <div class="caption">
+		                <h4>[신촌] 리타 탑이</h4>
+		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-xs-6 col-md-2">
+		           <div class="thumbnail" style="padding: 0px">
+		              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
+		              <div class="caption">
+		                <h4>[신촌] 리타 탑양이</h4>
+		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
+		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
+		              </div>
+		            </div>
+		          </div>
+		          
+		          <div class="clearfix"></div>
+		        
+		        </div>  <!-- end 관심 더티켓 row  -->
+	      	</div> <!-- end index_thumbnail -->		
+			
 			<div class="row">
-				<div class="col-xs-12 col-sm-4" style="margin-bottom: 10px">
-					<img src=<%=mem_image%> class="img-responsive img-circle" alt="Responsive image" style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
-				</div>
-
-				<div class="col-xs-12 col-sm-8">
-					<table style="margin: 0 auto;">
-						<tr>
-							<td class="list_title">이름</td>
-							<td style="font-size: 30px"><b><%=mem_name%></b></td>
-						</tr>
-						<tr>
-							<td class="list_title">핸드폰번호</td>
-							<td style="font-size: 20px"><%=mem_phone%></td>
-						</tr>
-						<tr>
-							<td class="list_title">이메일</td>
-							<td style="font-size: 20px"><%=mem_email%></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+	          	<h3>예매 내역</h3>
+		       	<table class="table table-hover">
+		          <thead>
+		            <tr>
+		              <th width="80" style="text-align: center; vertical-align:middle;">예매번호</th>
+		              <th width="100" style="text-align: center; vertical-align:middle;">예매정보</th>
+		              <th></th>
+		              <th width="50" style="text-align: center; vertical-align:middle;">수량</th>
+		              <th width="80" style="text-align: center; vertical-align:middle;">총금액 </th>
+		              <th width="110"></th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		            
+		            <tr>
+		              <td style="text-align: center; vertical-align:middle;">1</td>
+		              <td><a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" class="img-responsive" alt="Responsive image"></a></td>
+		              <td style="vertical-align:middle;">[신촌] 나를봐라노라즈라자댜 보다가 ㅏㅎ냐냐다다공연이름<br>2016.01.12/13:50</td>
+		              <td style="text-align: center; vertical-align:middle;">2</td>
+		              <td style="text-align: center; vertical-align:middle;">12000원</td>
+		              <td style="text-align: center; vertical-align:middle;">
+		              	<button type="button" class="btn btn-danger" style="margin-bottom: 5px;">예매취소</button>
+		              	<button type="button" class="btn btn-success">관람후기</button>
+		              </td>
+		            </tr>
+		            
+		             <tr>
+		              <td style="text-align: center; vertical-align:middle;">2</td>
+		              <td><a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" class="img-responsive" alt="Responsive image"></a></td>
+		              <td style="vertical-align:middle;">[신촌] 나를봐라노라즈라자댜 보다가 ㅏㅎ냐냐다다공연이름<br>2016.01.12/13:50</td>
+		              <td style="text-align: center; vertical-align:middle;">2</td>
+		              <td style="text-align: center; vertical-align:middle;">12000원</td>
+		              <td style="text-align: center; vertical-align:middle;">
+		              	<button type="button" class="btn btn-danger" style="margin-bottom: 5px;">예매취소</button>
+		              	<button type="button" class="btn btn-success">관람후기</button>
+		              </td>
+		            </tr>
+		           
+		           
+		          </tbody>
+		       	</table>
+	          	
+	          </div> <!-- end 예매내역 row  -->
+	          
+	          <nav style="text-align: center;">
+				  <ul class="pagination">
+				    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+		    		
+		    		<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+				    <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">5</a></li>
+				    <li><a href="#">6</a></li>
+				    <li><a href="#">7</a></li>
+				    <li><a href="#">8</a></li>
+				    <li><a href="#">9</a></li>
+				    <li><a href="#">10</a></li>
+				    
+				    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+				  </ul>
+		  	  </nav>
+			
+		</div><!-- end container  -->
 	</main>
 
 	<!--Modal mypage  -->
@@ -128,29 +263,61 @@
 							<h4 class="modal-title" id="myModalLabel">프로필 수정</h4>
 						</div>
 						<div class="modal-body">
+						
 							<div class="row">
 								<!-- file -->
 								<label for="imgInp" style="cursor: pointer;"> <!--label클릭시 for속성에 의해 id=imgInp인 input file이 실행된다-->
-									<img for="imgInp" src="../image/camera.png"	class="img-responsive" alt="Responsive image" style="z-index: 1; position: absolute; left: 50%; top: 50%; margin: -105px 0 0 -35px; width: 70px; height: 70px">
+									<img for="imgInp" src="../image/camera.png"	class="img-responsive" alt="Responsive image" style="z-index: 1; position: absolute; left: 50%; top: 50%; margin: -185px 0 0 -35px; width: 70px; height: 70px">
 									<input type="file" name="mem_image" id="imgInp"	style="position: absolute; left: 50%; top: 50%; margin: -65px 0 0 -35px; width: 0px;">
 								</label>
-
+							</div>
+							
+							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px;">
 									<!-- 회원수정 프로필 사진 -->
 									<img id="blah" src=<%=mem_image%> class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 300px; height: 300px;">
 								</div>
-
+							</div>
+							
+							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
-									<small>이메일</small>
-									<input id="modal-email" type="text" name="mem_email" class="form-control" placeholder="이메일" value=<%=mem_email%> style="height: 50px">
-								</div>
-								<div class="col-xs-12">
-									<small>전화번호</small>
-									<input type="text" name="mem_phone" class="form-control" placeholder="전화번호" value=<%=mem_phone%> style="height: 50px">
+									<small>새 비밀번호</small>
+									<input type="text" name="" class="form-control" placeholder="새 비밀번호 입력" value="">
 								</div>
 							</div>
+							
+							<div class="row">
+								<div class="col-xs-12" style="margin-bottom: 10px">
+									<small>새 비밀번호 확인</small>
+									<input type="text" name="" class="form-control" placeholder="새 비밀번호 입력" value="">
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-12" style="margin-bottom: 10px">
+									<small>이름</small>
+									<input type="text" name="" class="form-control" placeholder="이름 입력" value="">
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-12" style="margin-bottom: 10px">
+									<small>핸드폰번호</small>
+									<input type="text" name="mem_phone" class="form-control" placeholder="핸드폰번호 입력" value=<%=mem_phone%>>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-12" style="margin-bottom: 10px">
+									<small>이메일</small>
+									<input type="text" name="mem_email" class="form-control" placeholder="이메일 입력" value=<%=mem_email%>>
+								</div>
+							</div>
+							
 						</div>
+						
 						<input type="hidden" name="mem_id" value=<%=mem_id%>>
+						
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							<button type="submit" class="btn btn-primary">수정</button>
@@ -159,7 +326,9 @@
 				</div>
 			</form>
 		</div>
-	</div>
+	</div> <!-- end Modal mypage  -->
+	
+	
 
 	<jsp:include page="./component/footer.jsp"></jsp:include>
 

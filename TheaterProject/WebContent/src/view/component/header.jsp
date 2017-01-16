@@ -87,7 +87,7 @@ $(function() {
           	}
           %>
             <li>
-              <li><a href="#" class="head_link_default">Q&A</a></li>
+              <li><a href="qna.jsp" class="head_link_default">Q&A</a></li>
             </li>
           </ul>
           
