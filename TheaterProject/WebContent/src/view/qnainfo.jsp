@@ -29,39 +29,41 @@
 	<main>
 		<div class="container">
 			<div class="row">
-				<h1>Q&A-게시글</h1>
-				<table class="table table-bordered">
-					<thead>
-					</thead>
-					<tbody>
-						<tr height="40">
-							<td width="120">글번호</td>
-							<td width="180">1</td>
-							<td width="120">작성일</td>
-							<td width="180">2017.12.05 16:40</td>
-							<td width="120">조회수</td>
-							<td width="180">5</td>
-						</tr>
-						<tr height="40">
-							<td width="120">글제목</td>
-							<td width="180" colspan="3">결제는 어떻게 하나요?</td>
-							<td width="120">작성자</td>
-							<td width="180">theh1001님</td>
-						</tr>
-						<tr height="40">
-							<td width="120" style="vertical-align: middle;">게시글</td>
-							<td colspan="5"><div class="well well-lg" style="margin-bottom: 0px">제가왜 모르걸재핀 ㅈ르히히 다다다 아아아 이팉 ㅡ?? 자다그르러너지??<br>이것도 저것도</div></td>
-						</tr>
-						<%-- <tr height="40">
-							<td colspan="6" align="center">
-								<input type="button" value="답글쓰기" onclick="location.href='BoardReInsert.jsp?ref_group=${bean.ref_group}&ref_step=${bean.ref_step }&ref_level=${bean.ref_level }'">
-								<input type="button" value="수정" onclick="location.href='boardupdateform.do?num=${bean.num}'">
-								<input type="button" value="삭제" onclick="location.href='boarddeleteform.do?num=${bean.num}'">
-								<input type="button" value="전체글보기" onclick="location.href='boardList.do'">
-							</td>
-						</tr> --%>
-					</tbody>
-				</table>
+				<div class="col-xs-12" >
+					<h1>Q&A-게시글</h1>
+					<table class="table table-bordered">
+						<thead>
+						</thead>
+						<tbody>
+							<tr height="40">
+								<td width="120">글번호</td>
+								<td width="180">1</td>
+								<td width="120">작성일</td>
+								<td width="180">2017.12.05 16:40</td>
+								<td width="120">조회수</td>
+								<td width="180">5</td>
+							</tr>
+							<tr height="40">
+								<td width="120">글제목</td>
+								<td width="180" colspan="3">결제는 어떻게 하나요?</td>
+								<td width="120">작성자</td>
+								<td width="180">theh1001님</td>
+							</tr>
+							<tr height="40">
+								<td width="120" style="vertical-align: middle;">게시글</td>
+								<td colspan="5"><div class="well well-lg" style="margin-bottom: 0px">제가왜 모르걸재핀 ㅈ르히히 다다다 아아아 이팉 ㅡ?? 자다그르러너지??<br>이것도 저것도</div></td>
+							</tr>
+							<%-- <tr height="40">
+								<td colspan="6" align="center">
+									<input type="button" value="답글쓰기" onclick="location.href='BoardReInsert.jsp?ref_group=${bean.ref_group}&ref_step=${bean.ref_step }&ref_level=${bean.ref_level }'">
+									<input type="button" value="수정" onclick="location.href='boardupdateform.do?num=${bean.num}'">
+									<input type="button" value="삭제" onclick="location.href='boarddeleteform.do?num=${bean.num}'">
+									<input type="button" value="전체글보기" onclick="location.href='boardList.do'">
+								</td>
+							</tr> --%>
+						</tbody>
+					</table>
+				</div>
 			</div><!-- end row  -->
 			
 			<div class="row">

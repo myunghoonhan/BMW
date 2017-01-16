@@ -29,42 +29,50 @@
   
   <main>
 	  <div class="container">
+	  
+		<div class="row">
+			<div class="col-xs-12" style="margin-bottom: 20px">
+              <img src="../image/car_banner_cut.png" class="img-responsive img-rounded" alt="Responsive image">
+            </div>
+		</div>
 		
 		<div class="row">
-	        <h1>Q&A</h1>  
-	       	<table class="table table-hover">
-	          <thead>
-	            <tr>
-	              <th width="100" style="text-align: center; vertical-align:middle;">글번호</th>
-	              <th style="text-align: center; vertical-align:middle;">글제목</th>
-	              <!-- <th></th> -->
-	              <th width="100" style="text-align: center; vertical-align:middle;">작성자</th>
-	              <th width="100" style="text-align: center; vertical-align:middle;">작성일 </th>
-	              <th width="100" style="text-align: center; vertical-align:middle;">조회수 </th>
-	            </tr>
-	          </thead>
-	          <tbody>
-	            
-	            <tr>
-	              <td style="text-align: center; vertical-align:middle;">2</td>
-	              <td><a>문의글3DKDKDK 다라다랴댜아아아 ㅈ다자훟????</a></td>
-	              <td style="text-align: center; vertical-align:middle;">theh1001</td>
-	              <td style="text-align: center; vertical-align:middle;">2016.11.15</td>
-	              <td style="text-align: center; vertical-align:middle;">0</td>
-	            </tr>
-	            
-	            <tr>
-	              <td style="text-align: center; vertical-align:middle;">1</td>
-	              <td><a>문의글2</a></td>
-	              <td style="text-align: center; vertical-align:middle;">theh1001</td>
-	              <td style="text-align: center; vertical-align:middle;">2016.11.15</td>
-	              <td style="text-align: center; vertical-align:middle;">0</td>
-	            </tr>
-	           
-	          </tbody>
-	       	</table>
-	         	
-	         </div> <!-- end 예매내역 row  -->
+			<div class="col-xs-12" style="margin-bottom: 30px">
+		        <h1>Q&A</h1>  
+			       	<table class="table table-hover">
+			          <thead>
+			            <tr>
+			              <th width="100" style="text-align: center; vertical-align:middle;">글번호</th>
+			              <th style="text-align: center; vertical-align:middle;">글제목</th>
+			              <!-- <th></th> -->
+			              <th width="100" style="text-align: center; vertical-align:middle;">작성자</th>
+			              <th width="100" style="text-align: center; vertical-align:middle;">작성일 </th>
+			              <th width="100" style="text-align: center; vertical-align:middle;">조회수 </th>
+			            </tr>
+			          </thead>
+			          <tbody>
+			            
+			            <tr>
+			              <td style="text-align: center; vertical-align:middle;">2</td>
+			              <td><a href="qnainfo.jsp">문의글3DKDKDK 다라다랴댜아아아 ㅈ다자훟????</a></td>
+			              <td style="text-align: center; vertical-align:middle;">theh1001</td>
+			              <td style="text-align: center; vertical-align:middle;">2016.11.15</td>
+			              <td style="text-align: center; vertical-align:middle;">0</td>
+			            </tr>
+			            
+			            <tr>
+			              <td style="text-align: center; vertical-align:middle;">1</td>
+			              <td><a>문의글2</a></td>
+			              <td style="text-align: center; vertical-align:middle;">theh1001</td>
+			              <td style="text-align: center; vertical-align:middle;">2016.11.15</td>
+			              <td style="text-align: center; vertical-align:middle;">0</td>
+			            </tr>
+			           
+			          </tbody>
+			       	</table>
+			       	
+		       	</div> <!-- end Q&A리스트 col-xs-12  -->
+	         </div> <!-- end Q&A리스트 row  -->
 	         
 	         <nav style="text-align: center;">
 			  <ul class="pagination">

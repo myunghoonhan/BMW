@@ -29,53 +29,17 @@
   	<jsp:param value="navbar-fixed-top" name="navbar_style"/>
   </jsp:include>
 
-  <main id="index_main">
-    <figure>
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="background-color: #e5e5e5">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-
-          <div class="item active">
-            <img src="../image/theater_banner_cut.png" class="carousel_img" alt="...">
-            <div class="carousel-caption">
-            </div>
-          </div>
-
-          <div class="item">
-            <img src="../image/theater_banner_cut.png" class="carousel_img" alt="...">
-            <div class="carousel-caption">
-            </div>
-          </div>
-
-          <div class="item">
-            <img src="../image/theater_banner_cut.png" class="carousel_img" alt="...">
-            <div class="carousel-caption">
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </figure>
+  <main>
+	<figure>
+		<div class="container-fluid center-block" style="background-color: red">
+			<div class="row">
+				<img src="../image/car_banner.jpg" class="img-responsive center-block" alt="Responsive image">
+			</div>
+		</div>
+	</figure>
 
     <div class="container">
-    
+      
       <ul id="index_nav_tabs" class="nav nav-tabs nav-justified" style="margin: 45px 0px 55px 0px;">
       	  <li role="presentation" ><a href="index.jsp">전체</a></li>
 		  <li role="presentation" class="active"><a href="concert.jsp">콘서트</a></li>
