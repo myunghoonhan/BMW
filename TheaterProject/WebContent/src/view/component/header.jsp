@@ -156,10 +156,10 @@ $(function() {
 
               <div class="row">
                 <div class="col-xs-9" style="margin-bottom: 10px; padding-right: 3px;">
-                  <input type="text" name="mem_id" class="form-control" placeholder="">
+                  <input type="text" name="id" class="form-control" placeholder="">
                 </div>
                 <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
-                  <button type="button" class="btn btn-primary" onclick="idCheck(this.form.mem_id.value)">중복확인</button>
+                  <button type="button" class="btn btn-primary" onclick="idCheck(this.form.id.value)">중복확인</button>
                 </div>
               </div>
 
@@ -171,7 +171,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="password" name="mem_passwd" class="form-control" placeholder="">
+                  <input type="password" name="pw" class="form-control" placeholder="">
                 </div>
               </div>
 
@@ -183,7 +183,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 25px">
-                  <input type="password" name="mem_repasswd" class="form-control" placeholder="">
+                  <input type="password" name="pwcheck" class="form-control" placeholder="">
                 </div>
               </div>
 
@@ -195,7 +195,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="text" name="mem_name" class="form-control" placeholder="">
+                  <input type="text" name="name" class="form-control" placeholder="">
                 </div>
               </div>
 
@@ -207,7 +207,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="text" name="mem_phone" class="form-control" placeholder="000-000-0000">
+                  <input type="text" name="phone" class="form-control" placeholder="000-000-0000">
                 </div>
               </div>
 
@@ -219,10 +219,10 @@ $(function() {
 
               <div class="row">
                 <div class="col-xs-9" style="margin-bottom: 35px; padding-right: 3px;">
-                  <input type="text" name="mem_email" class="form-control" placeholder="example@example.com">
+                  <input type="text" name="email" class="form-control" placeholder="example@example.com">
                 </div>
                 <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
-                  <button type="button" class="btn btn-primary" onclick="">중복확인</button>
+                  <button type="button" class="btn btn-primary" onclick="">인증</button>
                 </div>
               </div>
 

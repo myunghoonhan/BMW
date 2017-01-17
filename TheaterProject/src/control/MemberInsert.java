@@ -8,10 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.TheaterDao;
-import dto.MemberDto;
+import dto.TmemberBean;
 
 /**
  * Servlet implementation class MemberInsert
@@ -30,33 +29,27 @@ public class MemberInsert extends HttpServlet {
 
 		response.setCharacterEncoding("UTF-8"); //한글깨짐 방징
 
-		String mem_id = request.getParameter("mem_id");
-		String mem_passwd = request.getParameter("mem_passwd");
-		String mem_name = request.getParameter("mem_name");
-		String mem_num1 = request.getParameter("mem_num1");
-		String mem_num2 = request.getParameter("mem_num2");
-		String mem_email = request.getParameter("mem_email");
-		String mem_phone = request.getParameter("mem_phone");
-		String mem_zipcode = request.getParameter("mem_zipcode");
-		String mem_address = request.getParameter("mem_address");
+
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+
+		TmemberBean bean = new TmemberBean();
+		bean.setId(id);
+		bean.setPw(pw);
+		bean.setName(name);
+		bean.setPhone(phone);
+		bean.setEmail(email);
 		
-		MemberDto modify = new MemberDto();
-		modify.setMem_id(mem_id);
-		modify.setMem_passwd(mem_passwd);
-		modify.setMem_name(mem_name);
-		modify.setMem_num1(mem_num1);
-		modify.setMem_num2(mem_num2);
-		modify.setMem_email(mem_email);
-		modify.setMem_phone(mem_phone);
-		modify.setMem_zipcode(mem_zipcode);
-		modify.setMem_address(mem_address);
 		
-		TheaterDao manager = TheaterDao.getInstance();
+		TheaterDao tdao = TheaterDao.getInstance();
 		
 		PrintWriter out = response.getWriter(); //JS쓰기 위해 선언
 		String str = "";
 		
-		if(manager.insertMember(modify)){
+		if(tdao.insertMember(bean)){
 			
 			str = "<script language='javascript'>";
 			str += "alert('회원가입이 완료되었습니다. 정상 로그인이 가능합니다.');";

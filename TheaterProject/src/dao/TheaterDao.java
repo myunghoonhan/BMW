@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dto.MemberDto;
+import dto.TmemberBean;
 import dto.ZipcodeDto;
 
 public class TheaterDao {
@@ -50,7 +51,7 @@ public class TheaterDao {
 		}
 	}
 
-	public int userCheck(String mem_id, String mem_passwd) {
+	public int userCheck(String mem_id, String mem_passwd) { //아이디 비번 체크
 		connect();
 		String dbpasswd = null;
 		int x = -1;
@@ -80,7 +81,7 @@ public class TheaterDao {
 		return x;
 	}
 
-	public int confirmId(String mem_id) {
+	public int confirmId(String mem_id) { //아아디 중복확인
 		connect();
 		int x = 0;
 		try {
@@ -96,9 +97,77 @@ public class TheaterDao {
 
 		} catch (Exception e) {
 			System.out.println(e);
+		}finally {
+			disconnect();
 		}
 		return x;
 	}
+	
+	public boolean insertMember(TmemberBean bean) {
+		connect();
+
+		try {
+			String sql = "insert into tmember(id,pw,name,phone,email) values(?,?,?,?,?)";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, bean.getId());
+	         pstmt.setString(2, bean.getPw());
+	         pstmt.setString(3, bean.getName());
+	         pstmt.setString(4, bean.getPhone());
+	         pstmt.setString(5, bean.getEmail());
+
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			
+			System.out.println(e);
+			return false;
+			
+		} finally {
+			disconnect();
+		}
+		return true;
+	}
+	
+	/*public void insertmember(teatermembean bean) {
+	      getCon();
+
+	      try {
+
+	         String sql = "insert into tmember(id,pw,name,phone,email) values(?,?,?,?,?)";
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setString(1, bean.getId());
+	         pstmt.setString(2, bean.getPw());
+	         pstmt.setString(3, bean.getName());
+	         pstmt.setString(4, bean.getPhone());
+	         pstmt.setString(5, bean.getEmail());
+	         
+
+	         pstmt.executeUpdate();
+	         con.close();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+
+	   }*/
+
+	  /* public int checkid(String id) {
+	   getCon();
+	   int count=0;
+	   try{
+	      String sql = "select count(*) from tmember where id=?";
+	      pstmt = con.prepareStatement(sql);
+	      pstmt.setString(1, id);
+	      rs = pstmt.executeQuery();
+	      while (rs.next()) {
+	         count = rs.getInt(1);
+	      }
+	      con.close();
+	   }catch(Exception e){
+	      e.printStackTrace();
+	   }
+	   return count;
+	   }
+	
+	*/
 
 	public Vector zipCheck(String area3) throws Exception {
 		connect();
@@ -126,32 +195,6 @@ public class TheaterDao {
 			disconnect();
 		}
 		return list;
-	}
-
-	public boolean insertMember(MemberDto member) {
-		connect();
-
-		try {
-			String sql = "insert into member(id, passwd, name, num1, num2, email, phone, zipcode, address) values(?,?,?,?,?,?,?,?,?)";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member.getMem_id());
-			pstmt.setString(2, member.getMem_passwd());
-			pstmt.setString(3, member.getMem_name());
-			pstmt.setString(4, member.getMem_num1());
-			pstmt.setString(5, member.getMem_num2());
-			pstmt.setString(6, member.getMem_email());
-			pstmt.setString(7, member.getMem_phone());
-			pstmt.setString(8, member.getMem_zipcode());
-			pstmt.setString(9, member.getMem_address());
-
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println(e);
-			return false;
-		} finally {
-			disconnect();
-		}
-		return true;
 	}
 
 	public MemberDto selectMember(String mem_id) {
@@ -209,13 +252,13 @@ public class TheaterDao {
 
 	public int getCheckId(String id) {
 		connect();
-		int count = 0; // 회원이 있는지에 대한 숫자를 저장하는 변수 있으면 1 없으면 0
+		int count = 0; // �쉶�썝�씠 �엳�뒗吏��뿉 ���븳 �닽�옄瑜� ���옣�븯�뒗 蹂��닔 �엳�쑝硫� 1 �뾾�쑝硫� 0
 		try {
 			String sql = "select count(*) from member where id=?";
 			pstmt = conn.prepareStatement(sql);
-			// ?에 값을 대입
+			// ?�뿉 媛믪쓣 ���엯
 			pstmt.setString(1, id);
-			// 4결과
+			// 4寃곌낵
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				count = rs.getInt(1);
@@ -227,5 +270,7 @@ public class TheaterDao {
 		}
 		return count;
 	}
+	
+	
 
 }

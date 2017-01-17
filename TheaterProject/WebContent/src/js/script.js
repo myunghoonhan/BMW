@@ -8,6 +8,43 @@ function idCheck(id){
 	}
 }
 
+//폼의 입력 데이터 입력 유무 체크하는 함수
+function inputCheck(){
+	if(document.regForm.id.value == ""){
+		alert("아이디를 입력하세요.");
+		document.regForm.id.focus();
+		return;
+	}
+	if(document.regForm.pw.value == ""){
+		alert("비밀번호를 입력하세요.");
+		document.regForm.pw.focus();
+		return;
+	}
+	if(document.regForm.pwcheck.value == ""){
+		alert("비밀번호 확인란을 입력하세요.");
+		document.regForm.pwcheck.focus();
+		return;
+	}
+	if(document.regForm.name.value == ""){
+		alert("이름을 입력하세요.");
+		document.regForm.name.focus();
+		return;
+	}
+	if(document.regForm.phone.value == ""){
+		alert("핸드폰 번호를 입력하세요.");
+		document.regForm.phone.focus();
+		return;
+	}
+	if(document.regForm.email.value == ""){
+		alert("이메일을 입력하세요.");
+		document.regForm.email.focus();
+		return;
+	}
+	
+	//submit()함수의 역할=> Form 객체의 함수로 서버로 데이터를 전송 (submit 객체를 누른 효과)
+	document.regForm.submit();
+}
+
 //주민번호 체크 함수
 function juminCheck(jumin1, jumin2){
 	var sum=0;
@@ -38,35 +75,4 @@ function zipCheck(){
 	window.open(url, "post", "width=500, height=500, scrollbars=yes");
 }
 
-//폼의 입력 데이터 입력 유무 체크하는 함수
-function inputCheck(){
-	if(document.regForm.mem_id.value == ""){
-		alert("아이디를 입력하세요.");
-		document.regForm.mem_id.focus();
-		return;
-	}
-	if(document.regForm.mem_passwd.value == ""){
-		alert("비밀번호를 입력하세요.");
-		document.regForm.mem_passwd.focus();
-		return;
-	}
-	if(document.regForm.mem_name.value == ""){
-		alert("이름을 입력하세요.");
-		document.regForm.mem_name.focus();
-		return;
-	}
-	if(document.regForm.mem_num1.value == ""){
-		alert("주민등록 앞 번호를 입력하세요.");
-		document.regForm.mem_num1.focus();
-		return;
-	}
-
-	if(document.regForm.mem_num2.value == "0"){
-		alert("주민등록 뒷 번호를 입력하세요.");
-		document.regForm.mem_num2.focus();
-		return;
-	}
-	//submit()함수의 역할=> Form 객체의 함수로 서버로 데이터를 전송 (submit 객체를 누른 효과)
-	document.regForm.submit();
-}
 
