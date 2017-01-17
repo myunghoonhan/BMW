@@ -112,10 +112,10 @@ $(function() {
             <div class="modal-body">
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="text" name="mem_id" class="form-control" placeholder="아이디" style="height: 50px">
+                  <input type="text" name="id" class="form-control" placeholder="아이디" style="height: 50px">
                 </div>
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="password" name="mem_passwd" class="form-control" placeholder="비밀번호" style="height: 50px">
+                  <input type="password" name="pw" class="form-control" placeholder="비밀번호" style="height: 50px">
                 </div>
                 <div class="col-sm-12">
                   <button type="submit" class="btn btn-primary" style="height: 50px; width: 100%">로그인</button>

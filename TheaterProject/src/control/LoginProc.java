@@ -29,12 +29,12 @@ public class LoginProc extends HttpServlet {
 
 		response.setCharacterEncoding("UTF-8"); //한글깨짐 방징
 
-		String mem_id = request.getParameter("mem_id");
-		String mem_passwd = request.getParameter("mem_passwd");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
 		String url = request.getParameter("url");
 
-		TheaterDao manager = TheaterDao.getInstance();
-		int check = manager.userCheck(mem_id, mem_passwd); //디비접속, userCheck메소드 실행
+		TheaterDao tdao = TheaterDao.getInstance();
+		int check = tdao.userCheck(id, pw); //디비접속, userCheck메소드 실행
 
 		PrintWriter out = response.getWriter(); //JS쓰기 위해 선언
 		String str = "";
@@ -42,7 +42,7 @@ public class LoginProc extends HttpServlet {
 		if (check == 1) { // ID가 맞으면
 
 			HttpSession session = request.getSession(); //session객체 만들기
-			session.setAttribute("idKey", mem_id);
+			session.setAttribute("idKey", id);
 			response.sendRedirect(url); //받아온 url 위치로 다시 넘기기
 
 		} else if (check == 0) { //비번오류 check=0

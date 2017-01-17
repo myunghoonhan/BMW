@@ -65,6 +65,4 @@ public class MemberInsert extends HttpServlet {
 			out.print(str);
 		}	
 	}
-
-
 }

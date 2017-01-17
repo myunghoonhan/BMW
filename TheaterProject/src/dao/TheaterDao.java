@@ -51,20 +51,20 @@ public class TheaterDao {
 		}
 	}
 
-	public int userCheck(String mem_id, String mem_passwd) { //아이디 비번 체크
+	public int userCheck(String id, String pw) { //아이디 비번 체크 (완료)
 		connect();
 		String dbpasswd = null;
 		int x = -1;
 
 		try {
-			String sql = "select passwd from member where id=?";
+			String sql = "select pw from tmember where id=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mem_id);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				dbpasswd = rs.getString("passwd");
-				if (dbpasswd.equals(mem_passwd)) {
+				dbpasswd = rs.getString("pw");
+				if (dbpasswd.equals(pw)) {
 					x = 1;
 				} else {
 					x = 0;
@@ -103,7 +103,7 @@ public class TheaterDao {
 		return x;
 	}
 	
-	public boolean insertMember(TmemberBean bean) {
+	public boolean insertMember(TmemberBean bean) { //회원가입  (완료)
 		connect();
 
 		try {
@@ -126,28 +126,6 @@ public class TheaterDao {
 		}
 		return true;
 	}
-	
-	/*public void insertmember(teatermembean bean) {
-	      getCon();
-
-	      try {
-
-	         String sql = "insert into tmember(id,pw,name,phone,email) values(?,?,?,?,?)";
-	         pstmt = con.prepareStatement(sql);
-	         pstmt.setString(1, bean.getId());
-	         pstmt.setString(2, bean.getPw());
-	         pstmt.setString(3, bean.getName());
-	         pstmt.setString(4, bean.getPhone());
-	         pstmt.setString(5, bean.getEmail());
-	         
-
-	         pstmt.executeUpdate();
-	         con.close();
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	      }
-
-	   }*/
 
 	  /* public int checkid(String id) {
 	   getCon();
