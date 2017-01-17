@@ -50,7 +50,6 @@
 			readURL(this);
 		});
 		
-		/* $('#settingBtn').click(); */
 	});
 	
 	function readURL(input) {

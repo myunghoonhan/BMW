@@ -220,43 +220,28 @@
             </div>
           </div>
           
-          <div class="row">
-          	
-              <hr>
-				<div class="col-xs-2">
-					<img src="../image/profile_img/profile_default.png" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 100px; height: 100px; max-width: none;">
-				</div>
-				<div class="col-xs-10">
-					<table>
-						<tr>
-							<td><font size="3px"><b>한명훈님</b>(theh1001)</font>&nbsp;&nbsp;<small>작성일: 2017.01.12 13:50</small></td>
-						</tr>
-						<tr>
-							<td><small>후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺</small></td>
-						</tr>
-					</table>
-				</div>
-			  <div class="clearfix"></div>
-			  
-			  <hr>
-				<div class="col-xs-2">
-					<img src="../image/profile_img/profile_default.png" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 100px; height: 100px; max-width: none;">
-				</div>
-				<div class="col-xs-10">
-					<table>
-						<tr>
-							<td><font size="3px"><b>한명훈님</b>(theh1001)</font>&nbsp;&nbsp;<small>작성일: 2017.01.12 13:50</small></td>
-						</tr>
-						<tr>
-							<td><small>후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺후기가 정말 주아재ㅣ해저헺</small></td>
-						</tr>
-					</table>
-				</div>
-			  <div class="clearfix"></div>
-			  
-			  
-			  <hr>
-          </div>
+		<div class="row">
+		<div class="col-xs-12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+					  <th width="100"></th>
+					  <th></th>
+					</tr>
+				</thead>
+		       <tbody>
+					<tr>
+						<td><img src="../image/profile_img/profile_default.png" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 100px; height: 100px; max-width: none;"></td>
+						<td style="vertical-align:middle;"><div style="padding-left: 20px;">한명훈님(theh1001)&nbsp;&nbsp;작성일: 2017.01.12 13:50<br>저는 이러한 후기를 남깁니다.</div></td>
+					</tr>
+					<tr>
+						<td><img src="../image/profile_img/profile_default.png" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 100px; height: 100px; max-width: none;"></td>
+						<td style="vertical-align:middle;"><div style="padding-left: 20px;">한명훈님(theh1001)&nbsp;&nbsp;작성일: 2017.01.12 13:50<br>저는 이러한 후기를 남깁니다.</div></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
           
           <nav style="text-align: center;">
 			  <ul class="pagination">
