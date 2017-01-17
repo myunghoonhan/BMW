@@ -29,7 +29,6 @@ public class MemberInsert extends HttpServlet {
 
 		response.setCharacterEncoding("UTF-8"); //한글깨짐 방징
 
-
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
@@ -65,7 +64,6 @@ public class MemberInsert extends HttpServlet {
 			str += "</script>";
 			out.print(str);
 		}	
-
 	}
 
 
