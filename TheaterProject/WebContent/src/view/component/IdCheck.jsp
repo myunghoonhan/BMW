@@ -14,14 +14,14 @@
          <td align = "center">
          <c:if test="${count==1}">
 		   <br>
-           ${id}는 이미 존재하는11 ID입니다. &nbsp;<br><br>
+           ${id}는 이미 존재하는 ID입니다. &nbsp;<br><br>
          <input type="button" value="닫기" onClick="javascript:self.close();
                opener.document.regForm.mem_id.focus();">
 		 </c:if>
 		 
 		 <c:if test="${count!=1}">
 		   <br>
-         	${id}는 사용가능한11 ID입니다. &nbsp;<br><br>
+         	${id}는 사용가능한 ID입니다. &nbsp;<br><br>
          <input type="button" value="닫기" onClick="javascript:self.close();
                  opener.document.regForm.mem_passwd.focus();">
 		 </c:if>

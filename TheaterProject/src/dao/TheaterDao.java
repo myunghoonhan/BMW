@@ -80,8 +80,28 @@ public class TheaterDao {
 		}
 		return x;
 	}
+	
+	public int getCheckId(String id) { //아이디 중복체크 (완료)
+		connect();
+		int count = 0; 
+		try {
+			String sql = "select count(*) from tmember where id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+			conn.close();
 
-	public int confirmId(String mem_id) { //아아디 중복확인
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	/*public int confirmId(String mem_id) { //아아디 중복확인
 		connect();
 		int x = 0;
 		try {
@@ -101,7 +121,27 @@ public class TheaterDao {
 			disconnect();
 		}
 		return x;
-	}
+	}*/
+	
+	  /* public int checkid(String id) {
+	   getCon();
+	   int count=0;
+	   try{
+	      String sql = "select count(*) from tmember where id=?";
+	      pstmt = con.prepareStatement(sql);
+	      pstmt.setString(1, id);
+	      rs = pstmt.executeQuery();
+	      while (rs.next()) {
+	         count = rs.getInt(1);
+	      }
+	      con.close();
+	   }catch(Exception e){
+	      e.printStackTrace();
+	   }
+	   return count;
+	   }
+	
+	*/
 	
 	public boolean insertMember(TmemberBean bean) { //회원가입  (완료)
 		connect();
@@ -126,26 +166,6 @@ public class TheaterDao {
 		}
 		return true;
 	}
-
-	  /* public int checkid(String id) {
-	   getCon();
-	   int count=0;
-	   try{
-	      String sql = "select count(*) from tmember where id=?";
-	      pstmt = con.prepareStatement(sql);
-	      pstmt.setString(1, id);
-	      rs = pstmt.executeQuery();
-	      while (rs.next()) {
-	         count = rs.getInt(1);
-	      }
-	      con.close();
-	   }catch(Exception e){
-	      e.printStackTrace();
-	   }
-	   return count;
-	   }
-	
-	*/
 
 	public Vector zipCheck(String area3) throws Exception {
 		connect();
@@ -227,28 +247,5 @@ public class TheaterDao {
 		}
 		return true;
 	}
-
-	public int getCheckId(String id) {
-		connect();
-		int count = 0; // �쉶�썝�씠 �엳�뒗吏��뿉 ���븳 �닽�옄瑜� ���옣�븯�뒗 蹂��닔 �엳�쑝硫� 1 �뾾�쑝硫� 0
-		try {
-			String sql = "select count(*) from member where id=?";
-			pstmt = conn.prepareStatement(sql);
-			// ?�뿉 媛믪쓣 ���엯
-			pstmt.setString(1, id);
-			// 4寃곌낵
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				count = rs.getInt(1);
-			}
-			conn.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return count;
-	}
-	
-	
 
 }
