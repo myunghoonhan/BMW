@@ -1,15 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-    <% request.setCharacterEncoding("UTF-8"); %>
+<%@page import="com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/style.css">
-<script language="javascript" src="../js/script.js"></script>
+<link rel="stylesheet" href="src/css/style.css">
+<script language="javascript" src="src/js/script.js"></script>
 <script type="text/javascript"	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
 $(function() {
@@ -24,7 +23,36 @@ $(function() {
 <%
 	String mem_id = (String) session.getAttribute("idKey");
 	String navbar_style = request.getParameter("navbar_style");
-	StringBuffer url = request.getRequestURL();
+	StringBuffer url_stringbuffer = request.getRequestURL();
+	
+	String url= url_stringbuffer.toString();
+	
+	
+	if(url.equals("http://localhost:8181/TheaterProject/src/view/index.jsp")){
+		
+		url = "http://localhost:8181/TheaterProject/Main.do";
+		
+	}else if(url.equals("http://localhost:8181/TheaterProject/src/view/concert.jsp")){
+		
+		int gubun = Integer.parseInt(request.getParameter("gubun"));
+		
+		switch(gubun){
+		case 1:
+			url = "http://localhost:8181/TheaterProject/SearchTab.do?gubun=1";
+			break;
+		case 2:
+			url = "http://localhost:8181/TheaterProject/SearchTab.do?gubun=2";
+			break;
+		case 3:
+			url = "http://localhost:8181/TheaterProject/SearchTab.do?gubun=3";
+			break;
+		case 4:
+			url = "http://localhost:8181/TheaterProject/SearchTab.do?gubun=4";
+			break;
+		default:
+			url = "http://localhost:8181/TheaterProject/Main.do";
+		}
+	}
 %>
 </head>
 <body>
@@ -42,7 +70,7 @@ $(function() {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.jsp">
+          <a class="navbar-brand" href="Main.do">
             <img class="img_index" alt="Brand" src="src/image/theater_logo.gif">
           </a>
         </div>
@@ -77,7 +105,7 @@ $(function() {
                 </ul>
               </li>
          	</li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="../../LoginOut.do?url=<%=url%>">로그아웃</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="LoginOut.do?url=<%=url%>">로그아웃</a></li>
           <%
           	}else{
           %>
@@ -87,7 +115,7 @@ $(function() {
           	}
           %>
             <li>
-              <li><a href="qna.jsp" class="head_link_default">Q&A</a></li>
+              <li><a href="src/view/qna.jsp" class="head_link_default">Q&A</a></li>
             </li>
           </ul>
           
@@ -101,7 +129,7 @@ $(function() {
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
 
-      <form name="login" method="POST" action="../../LoginProc.do">
+      <form name="login" method="POST" action="LoginProc.do">
       	<input type="hidden" name="url" value="<%=url%>">
         <div class="form-group">
           <div class="modal-content">
@@ -138,7 +166,7 @@ $(function() {
     <div class="modal-dialog">
 
       <!-- <form name="regForm" method="POST" action="../controller/MemberInsert.jsp"> -->
-      <form name="regForm" method="POST" action="../../MemberInsert.do">
+      <form name="regForm" method="POST" action="MemberInsert.do">
         <div class="form-group">
           <div class="modal-content">
             <div class="modal-header">

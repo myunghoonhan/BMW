@@ -32,7 +32,7 @@ public class LoginProc extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String url = request.getParameter("url");
-
+	
 		TheaterDao tdao = TheaterDao.getInstance();
 		int check = tdao.userCheck(id, pw); //디비접속, userCheck메소드 실행
 

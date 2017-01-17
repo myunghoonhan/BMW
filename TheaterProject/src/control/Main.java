@@ -43,7 +43,6 @@ public class Main extends HttpServlet {
 		//request객체에 부착
 		request.setAttribute("top4", top4);
 		request.setAttribute("newTicket", newTicket);
-		//request.setAttribute("center", "Center.jsp");
 		
 		RequestDispatcher dis = request.getRequestDispatcher("src/view/index.jsp");
 		dis.forward(request, response);

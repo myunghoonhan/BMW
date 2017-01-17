@@ -3,7 +3,7 @@ function idCheck(id){
 	if(id == ""){
 		alert("아이디를 입력하세요");
 	}else{
-		url="../../IdCheck.do?id="+id;
+		url="IdCheck.do?id="+id;
 		window.open(url, "post", "width=300, height=150");
 	}
 }

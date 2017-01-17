@@ -28,9 +28,9 @@ public class IdCheck extends HttpServlet {
 		String id = request.getParameter("id");
 
 		// 데이터베이스에 접근
-		TheaterDao manager = TheaterDao.getInstance();
+		TheaterDao tdao = TheaterDao.getInstance();
 		// 아이디 체크 메소드
-		int count = manager.getCheckId(id);
+		int count = tdao.getCheckId(id);
 
 		request.setAttribute("count", count);
 		request.setAttribute("id", id);

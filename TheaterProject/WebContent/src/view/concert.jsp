@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% request.setCharacterEncoding("UTF-8"); %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TheaterProject</title>
 
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="src/css/style.css">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
 	<figure>
 		<div class="container-fluid center-block" style="background-color: red">
 			<div class="row">
-				<img src="../image/car_banner.jpg" class="img-responsive center-block" alt="Responsive image">
+				<img src="src/image/111.jpg" class="img-responsive center-block" alt="Responsive image">
 			</div>
 		</div>
 	</figure>
@@ -41,10 +41,11 @@
     <div class="container">
       
       <ul id="index_nav_tabs" class="nav nav-tabs nav-justified" style="margin: 45px 0px 55px 0px;">
-      	  <li role="presentation" ><a href="index.jsp">전체</a></li>
-		  <li role="presentation" class="active"><a href="concert.jsp">콘서트</a></li>
-		  <li role="presentation"><a href="#">연극</a></li>
-		  <li role="presentation"><a href="#">The-Ticket</a></li>
+      	  <li role="presentation" ><a href="Main.do">최신</a></li>
+		  <li role="presentation" class="${active_1}"><a href="SearchTab.do?gubun=1">콘서트</a></li>
+		  <li role="presentation" class="${active_2}"><a href="SearchTab.do?gubun=2">연극</a></li>
+		  <li role="presentation" class="${active_3}"><a href="SearchTab.do?gubun=3">전시회</a></li>
+		  <li role="presentation" class="${active_4}"><a href="SearchTab.do?gubun=4">The-Ticket</a></li>
 		  <li role="presentation" class="dropdown">
 		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
 		      지역별 <span class="caret"></span>
@@ -60,63 +61,50 @@
 	  </ul>
 
       <div id="Top4_thumblist">
-        <h3>인기콘서트 TOP4 <span class="label label-danger">Hot</span></h3>
+        <h3>${gubun} TOP4 <span class="label label-danger">Hot</span></h3>
 
         <div class="row">
         
-          <div class="col-xs-12 col-sm-3">
-              <div class="thumbnail" style="padding: 0px">
-              <a href="detail.jsp?pid=0001"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
-                <div class="caption">
-                  <h4>[대학로] 1월40일</h4>
-            	  <img src="../image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;">
-            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">8,800원</span>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-xs-12 col-sm-3">
-            <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
-              <div class="caption">
-                <h4>[홍대] 나는 너다</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">65<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">12,500원</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xs-12 col-sm-3">
-           <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
-              <div class="caption">
-                 <h4>[홍대] 리타 EDUCATION RITA</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">80<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">8,000원</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-xs-12 col-sm-3">
-           <div class="thumbnail" style="padding: 0px">
-              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
-              <div class="caption">
-                <h4>[신촌] 리타 옥탑방고양이</h4>
-            	<span style="font-size: 30px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-              </div>
-            </div>
-          </div>
+          <c:forEach var="bean" items="${searchTab_top4}">
+	          <div class="col-xs-12 col-sm-3">
+	              <div class="thumbnail" style="padding: 0px">
+	              <a href="detail.jsp?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
+	                <div class="caption">
+	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
+	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
+	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">${bean.sprice}원&nbsp;&nbsp;♥${bean.slike}</span>
+	                </div>
+	              </div>
+	          </div>
+		 </c:forEach>
           
         </div>
       </div>
     
       <div id="New_thumblist">
-        <h3>전체 콘서트 <span class="badge">30</span></h3>
+        <h3>전체 ${gubun} <span class="badge">${searchTab_count}</span></h3>
 
-        <div class="row">
-        
-          <div class="col-xs-12 col-md-2">
+		<div class="row">
+			<c:set var="count" value="${0 }" />
+			<c:forEach var="bean" items="${searchTab_new}">
+				<c:if test="${count%6==0 }">
+					<div class="clearfix"></div>
+				</c:if>
+	
+				<div class="col-xs-12 col-sm-2">
+	              <div class="thumbnail" style="padding: 0px">
+	              <a href="detail.jsp?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
+	                <div class="caption">
+	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
+	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
+	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">${bean.sprice}원&nbsp;&nbsp;♥${bean.slike}</span>
+	                </div>
+	              </div>
+	            </div>
+				
+				<c:set var="count" value="${count+1 }" />
+			</c:forEach>
+          <!-- <div class="col-xs-12 col-md-2">
            <div class="thumbnail" style="padding: 0px">
               <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
               <div class="caption">
@@ -367,7 +355,7 @@
             </div>
           </div>
           
-          <div class="clearfix"></div>
+          <div class="clearfix"></div> -->
         
         </div>  <!-- end div id="row" -->
           
