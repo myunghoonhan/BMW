@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dto.MemberDto;
+import dto.ShowBean;
 import dto.TmemberBean;
 import dto.ZipcodeDto;
 
@@ -167,7 +168,7 @@ public class TheaterDao {
 		return true;
 	}
 
-	public Vector zipCheck(String area3) throws Exception {
+	public Vector zipCheck(String area3) throws Exception { //삭제 예정
 		connect();
 		Vector<ZipcodeDto> list = new Vector<ZipcodeDto>();
 
@@ -195,46 +196,48 @@ public class TheaterDao {
 		return list;
 	}
 
-	public MemberDto selectMember(String mem_id) {
+	public TmemberBean selectMember(String id) {
 		connect();
-		MemberDto memberDto = new MemberDto();
+		TmemberBean bean = new TmemberBean();
 
 		try {
-			pstmt = conn.prepareStatement("select * from member where id=?");
-			pstmt.setString(1, mem_id);
+			pstmt = conn.prepareStatement("select * from tmember where id=?");
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				memberDto.setMem_name(rs.getString("name"));
-				memberDto.setMem_email(rs.getString("email"));
-				memberDto.setMem_phone(rs.getString("phone"));
-				memberDto.setMem_images(rs.getString("image"));
+				bean.setId(rs.getString("id"));
+				bean.setPw(rs.getString("pw"));
+				bean.setName(rs.getString("name"));
+				bean.setPhone(rs.getString("phone"));
+				bean.setEmail(rs.getString("email"));
+				bean.setProfile(rs.getString("profile"));
 			}
 		} catch (Exception e) {
 			System.out.println("selectMember() : " + e);
 		} finally {
 			disconnect();
 		}
-		return memberDto;
+		return bean;
 	}
 
-	public boolean updateProfile(MemberDto member) {
+	public boolean updateProfile(TmemberBean bean) { //수정중
 		connect();
 
 		try {
-			if (member.getMem_image() == null) {
-				String sql = "update member set email=?, phone=? where id=?";
+			if (bean.getProfile() == null) {
+				String sql = "update tmember set name=?, phone=? where id=?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, member.getMem_email());
-				pstmt.setString(2, member.getMem_phone());
-				pstmt.setString(3, member.getMem_id());
+				pstmt.setString(1, bean.getName());
+				pstmt.setString(2, bean.getPhone());
+				pstmt.setString(3, bean.getId());
 			} else {
-				String sql = "update member set email=?, phone=?, image=? where id=?";
+				String sql = "update member set name=?, phone=?, image=? where id=?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, member.getMem_email());
-				pstmt.setString(2, member.getMem_phone());
-				pstmt.setString(3, member.getMem_image());
-				pstmt.setString(4, member.getMem_id());
+				pstmt.setString(1, bean.getName());
+				pstmt.setString(2, bean.getPhone());
+				pstmt.setString(3, bean.getProfile());
+				pstmt.setString(4, bean.getId());
 			}
 
 			pstmt.executeUpdate();
@@ -246,6 +249,100 @@ public class TheaterDao {
 			disconnect();
 		}
 		return true;
+	}
+
+	public Vector<ShowBean> getTop4() {
+		connect();
+		
+		// 리턴할 객체 생성(즉 박스로 리턴)
+		Vector<ShowBean> top4 = new Vector<>();
+		
+		// 컬럼의 데이터를 빈클래스에 맵핑해야하기에 객체를 선언(즉, 가방)
+		ShowBean bean = null;
+		try {
+			// 3.
+			String sql = "select * from (select A.* , Rownum rnum from"
+					+ " (select * from show order by slike desc)A) where rnum <=4";
+			pstmt = conn.prepareStatement(sql);
+			// 4.쿼리실행후 결과를 리턴
+			rs = pstmt.executeQuery();
+			// 반복문을 통하여 데이터를 가방(빈에 저장)에 추출
+			while (rs.next()) {
+				// 빈클래스 (가방) 객체 생성
+				bean = new ShowBean();
+				bean.setSno(rs.getString(1));
+				bean.setSname(rs.getString(2));
+				bean.setSaddress(rs.getString(3));
+				bean.setSperiod(rs.getString(4));
+				bean.setSactor(rs.getString(5));
+				bean.setSprice(rs.getInt(6));
+				bean.setStime(rs.getString(7));
+				bean.setStab(rs.getString(8));
+				bean.setSlocation(rs.getString(9));
+				bean.setSmainimg(rs.getString(10));
+				bean.setSwido(rs.getString(11));
+				bean.setSkyungdo(rs.getString(12));
+				bean.setSlike(rs.getInt(13));
+				bean.setSupdate(rs.getDate(14));
+				bean.setStemp(rs.getString(15));
+				bean.setSinttemp(rs.getInt(16));
+				
+				top4.add(bean);
+			}
+			// 5
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return top4;// 박스 객체를 리턴
+	}
+
+	public Vector<ShowBean> getNewTicket() {
+		connect();
+		
+		// 리턴할 객체 생성(즉 박스로 리턴)
+		Vector<ShowBean> newTicket = new Vector<>();
+		
+		// 컬럼의 데이터를 빈클래스에 맵핑해야하기에 객체를 선언(즉, 가방)
+		ShowBean bean = null;
+		try {
+			// 3.
+			String sql = "select * from (select A.* , Rownum rnum from"
+					+ " (select * from show order by supdate desc)A) where rnum <=12";
+			pstmt = conn.prepareStatement(sql);
+			// 4.쿼리실행후 결과를 리턴
+			rs = pstmt.executeQuery();
+			// 반복문을 통하여 데이터를 가방(빈에 저장)에 추출
+			while (rs.next()) {
+				// 빈클래스 (가방) 객체 생성
+				bean = new ShowBean();
+				bean.setSno(rs.getString(1));
+				bean.setSname(rs.getString(2));
+				bean.setSaddress(rs.getString(3));
+				bean.setSperiod(rs.getString(4));
+				bean.setSactor(rs.getString(5));
+				bean.setSprice(rs.getInt(6));
+				bean.setStime(rs.getString(7));
+				bean.setStab(rs.getString(8));
+				bean.setSlocation(rs.getString(9));
+				bean.setSmainimg(rs.getString(10));
+				bean.setSwido(rs.getString(11));
+				bean.setSkyungdo(rs.getString(12));
+				bean.setSlike(rs.getInt(13));
+				bean.setSupdate(rs.getDate(14));
+				bean.setStemp(rs.getString(15));
+				bean.setSinttemp(rs.getInt(16));
+				
+				newTicket.add(bean);
+			}
+			// 5
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return newTicket;// 박스 객체를 리턴
 	}
 
 }

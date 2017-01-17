@@ -43,7 +43,7 @@ $(function() {
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.jsp">
-            <img class="img_index" alt="Brand" src="../image/theater_logo.gif">
+            <img class="img_index" alt="Brand" src="src/image/theater_logo.gif">
           </a>
         </div>
 		
