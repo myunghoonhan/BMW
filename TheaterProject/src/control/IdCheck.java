@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.TheaterDao;
 
-@WebServlet("/IdCheck.do")
+@WebServlet("/IdCheck.do") //완료
 public class IdCheck extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		reqpro(request, response);

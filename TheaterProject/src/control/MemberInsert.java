@@ -15,7 +15,7 @@ import dto.TmemberBean;
 /**
  * Servlet implementation class MemberInsert
  */
-@WebServlet("/MemberInsert.do")
+@WebServlet("/MemberInsert.do") //완료
 public class MemberInsert extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		reqpro(request, response);

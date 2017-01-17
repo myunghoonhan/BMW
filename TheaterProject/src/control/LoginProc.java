@@ -15,7 +15,7 @@ import dao.TheaterDao;
 /**
  * Servlet implementation class LoginProc
  */
-@WebServlet("/LoginProc.do")
+@WebServlet("/LoginProc.do") //완료
 public class LoginProc extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		reqpro(request, response);
