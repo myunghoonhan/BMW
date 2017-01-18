@@ -6,7 +6,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%
-	String id = (String) session.getAttribute("idKey");
+	String id = (String) session.getAttribute("id");
 
 	if (id == null) {
 		response.sendRedirect("index.jsp");

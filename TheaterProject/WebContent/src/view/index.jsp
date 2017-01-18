@@ -29,7 +29,7 @@
   	<jsp:param value="navbar-fixed-top" name="navbar_style"/>
   </jsp:include>
 
-  <main id="index_main">
+  <main>
     <figure>
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="background-color: #e5e5e5">
         <!-- Indicators -->
@@ -43,19 +43,19 @@
         <div class="carousel-inner" role="listbox">
 
           <div class="item active">
-            <img src="src/image/111.jpg" class="carousel_img" alt="...">
+            <img src="src/image/main1.jpg" class="carousel_img" alt="..." style="margin: 0 auto;">
             <div class="carousel-caption">
             </div>
           </div>
 
           <div class="item">
-            <img src="src/image/111.jpg" class="carousel_img" alt="...">
+            <img src="src/image/main2.jpg" class="carousel_img" alt="..." style="margin: 0 auto;">
             <div class="carousel-caption">
             </div>
           </div>
 
           <div class="item">
-            <img src="src/image/111.jpg" class="carousel_img" alt="...">
+            <img src="src/image/main3.jpg" class="carousel_img" alt="..." style="margin: 0 auto;">
             <div class="carousel-caption">
             </div>
           </div>
@@ -102,7 +102,7 @@
 			<c:forEach var="bean" items="${top4}">
 	          <div class="col-xs-12 col-sm-3">
 	              <div class="thumbnail" style="padding: 0px">
-	              <a href="detail.jsp?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
+	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
 	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
@@ -128,7 +128,7 @@
 	
 				<div class="col-xs-12 col-sm-3">
 	              <div class="thumbnail" style="padding: 0px">
-	              <a href="detail.jsp?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
+	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
 	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->

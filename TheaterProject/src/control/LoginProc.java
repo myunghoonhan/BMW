@@ -42,7 +42,7 @@ public class LoginProc extends HttpServlet {
 		if (check == 1) { // ID가 맞으면
 
 			HttpSession session = request.getSession(); //session객체 만들기
-			session.setAttribute("idKey", id);
+			session.setAttribute("id", id);
 			response.sendRedirect(url); //받아온 url 위치로 다시 넘기기
 
 		} else if (check == 0) { //비번오류 check=0

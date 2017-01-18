@@ -1,18 +1,19 @@
 package dao;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import dto.MemberDto;
+import dto.ReviewBean;
 import dto.ShowBean;
+import dto.ShowImgBean;
+import dto.ShowSeatBean;
 import dto.TmemberBean;
 import dto.ZipcodeDto;
 
@@ -546,5 +547,273 @@ public class TheaterDao {
 		}
 		return count;
 	}
+
+	public Vector<ShowBean> getSearchTitle(String sql) { //완료
+		connect();
+		
+		// 리턴할 객체 생성(즉 박스로 리턴)
+		Vector<ShowBean> searchTitle = new Vector<>();
+		
+		// 컬럼의 데이터를 빈클래스에 맵핑해야하기에 객체를 선언(즉, 가방)
+		ShowBean bean = null;
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			// 4.쿼리실행후 결과를 리턴
+			rs = pstmt.executeQuery();
+			
+			// 반복문을 통하여 데이터를 가방(빈에 저장)에 추출
+			while (rs.next()) {
+				// 빈클래스 (가방) 객체 생성
+				bean = new ShowBean();
+				bean.setSno(rs.getString(1));
+				bean.setSname(rs.getString(2));
+				bean.setSaddress(rs.getString(3));
+				bean.setSperiod(rs.getString(4));
+				bean.setSactor(rs.getString(5));
+				bean.setSprice(rs.getInt(6));
+				bean.setStime(rs.getString(7));
+				bean.setStab(rs.getString(8));
+				bean.setSlocation(rs.getString(9));
+				bean.setSmainimg(rs.getString(10));
+				bean.setSwido(rs.getString(11));
+				bean.setSkyungdo(rs.getString(12));
+				bean.setSlike(rs.getInt(13));
+				bean.setSupdate(rs.getDate(14));
+				bean.setStemp(rs.getString(15));
+				bean.setSinttemp(rs.getInt(16));
+				
+				searchTitle.add(bean);
+			}
+			// 5
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return searchTitle;// 박스 객체를 리턴
+	}
+
+	public ShowBean getTicketInfo(String sno) { //완료
+		connect();
+		
+		ShowBean bean = null;
+		try {
+			String sql = "select * from show where sno=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				bean = new ShowBean();
+				
+				bean.setSno(rs.getString(1));
+				bean.setSname(rs.getString(2));
+				bean.setSaddress(rs.getString(3));
+				bean.setSperiod(rs.getString(4));
+				bean.setSactor(rs.getString(5));
+				bean.setSprice(rs.getInt(6));
+				bean.setStime(rs.getString(7));
+				bean.setStab(rs.getString(8));
+				bean.setSlocation(rs.getString(9));
+				bean.setSmainimg(rs.getString(10));
+				bean.setSwido(rs.getString(11));
+				bean.setSkyungdo(rs.getString(12));
+				bean.setSlike(rs.getInt(13));
+				bean.setSupdate(rs.getDate(14));
+				bean.setStemp(rs.getString(15));
+				bean.setSinttemp(rs.getInt(16));
+			}
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
+	}
+
+	public int getLike(String sno, String id) {
+		connect();
+		
+		int result = 0;
+		try{
+			String sql = "select count(*) from favorite where fsno=? and fid=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			pstmt.setString(2, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				result = rs.getInt(1);
+			}
+			
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public Vector<ShowImgBean> getTicketDetail(String sno) { //완료
+		connect();
+		
+		Vector<ShowImgBean> v = new Vector<>();
+		ShowImgBean imgbean = null;
+		
+		try{
+			String sql = "select * from showimg where sno=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				imgbean = new ShowImgBean();
+				
+				imgbean.setSno(rs.getString(1));
+				imgbean.setSsubimg(rs.getString(2));
+				
+				v.add(imgbean);
+			}
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return v;
+	}
+
+	public Vector<ReviewBean> getReviewAll(String sno, String id) { //완료
+		connect();
+		
+		Vector<ReviewBean> reviewAll = new Vector<>();
+		ReviewBean bean = null;
+		
+		try{
+			
+			String sql = "select review.*, tmember.name, tmember.profile "
+					+ "from review left join tmember "
+					+ "on review.rid = tmember.id where review.rsno =?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				bean = new ReviewBean();
+				bean.setRid(rs.getString(1));
+				bean.setRsno(rs.getString(2));
+				bean.setRcontents(rs.getString(3));
+				bean.setRdate(rs.getDate(4));
+				bean.setName(rs.getString(5));
+				bean.setProfile(rs.getString(6));
+				
+				reviewAll.add(bean);
+			}
+			
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return reviewAll;
+	}
+
+	public Vector<ShowSeatBean> getBookInfo(String sno) { //완료,오류
+		connect();
+		
+		Vector<ShowSeatBean> v = new Vector<>();
+		ShowSeatBean bean = null;
+		
+		try{
+			String sql = "select * from showseat where sssno=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				bean = new ShowSeatBean();
+				bean.setSssno(rs.getString(1));
+				bean.setSsdate(rs.getDate(2));
+				bean.setSsseat(rs.getInt(3));
+				
+				v.add(bean);
+			}
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return v;
+	}
+
+	public String getBookInfo_time(String sno) { //완료
+		connect();
+		
+		String time = null;
+		try{
+			String sql = "select stime from show where sno = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				time = rs.getString(1);
+			}
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return time;
+	}
+
+	public void insertLike(String id, String sno) { //완료
+		connect();
+		
+		try{
+			String sql = "insert into favorite values(?,?,sysdate)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, sno);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void deleteLike(String id, String sno) { //완료
+		connect();
+		
+		try{
+			String sql = "delete from favorite where fid=? and fsno=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, sno);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 
 }

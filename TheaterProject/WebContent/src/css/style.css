@@ -86,9 +86,9 @@ main{
 	background-color: white;
 }
 
-#index_main .carousel_img{
+/* #index_main .carousel_img{
 	margin: 0 auto;
-}
+} */
 
 /* 인덱스 탭 */
 #index_nav_tabs li{

@@ -68,7 +68,7 @@
           <c:forEach var="bean" items="${searchTab_top4_loc}">
 	          <div class="col-xs-12 col-sm-3">
 	              <div class="thumbnail" style="padding: 0px">
-	              <a href="detail.jsp?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
+	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
 	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
@@ -94,7 +94,7 @@
 	
 				<div class="col-xs-12 col-sm-2">
 	              <div class="thumbnail" style="padding: 0px">
-	              <a href="detail.jsp?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
+	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
 	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->

@@ -21,56 +21,36 @@ $(function() {
 </script>
 
 <%
-	String mem_id = (String) session.getAttribute("idKey");
+	String id = (String) session.getAttribute("id");
 	String navbar_style = request.getParameter("navbar_style");
 	StringBuffer url_stringbuffer = request.getRequestURL();
 	
+	int port_int = request.getServerPort();
+	String port = String.valueOf(port_int);
+	
 	String url= url_stringbuffer.toString();
 	
-	if(url.equals("http://localhost:8080/TheaterProject/src/view/index.jsp")){
+	if(url.equals("http://localhost:"+port+"/TheaterProject/src/view/index.jsp")){ //메인
 		
-		url = "http://localhost:8080/TheaterProject/Main.do";
+		url = "http://localhost:"+port+"/TheaterProject/Main.do";
 		
-	}else if(url.equals("http://localhost:8080/TheaterProject/src/view/searchtab.jsp")){
+	}else if(url.equals("http://localhost:"+port+"/TheaterProject/src/view/searchtab.jsp")){ //탭 클릭시
 		
-		int gubun = Integer.parseInt(request.getParameter("gubun"));
+		String gubun = request.getParameter("gubun");
+		url ="http://localhost:"+port+"/TheaterProject/SearchTab.do?gubun="+gubun;
 		
-		switch(gubun){
-		case 1:
-			url = "http://localhost:8080/TheaterProject/SearchTab.do?gubun=1";
-			break;
-		case 2:
-			url = "http://localhost:8080/TheaterProject/SearchTab.do?gubun=2";
-			break;
-		case 3:
-			url = "http://localhost:8080/TheaterProject/SearchTab.do?gubun=3";
-			break;
-		case 4:
-			url = "http://localhost:8080/TheaterProject/SearchTab.do?gubun=4";
-			break;
-		default:
-			url = "http://localhost:8080/TheaterProject/Main.do";
-		}
-	}else if(url.equals("http://localhost:8080/TheaterProject/src/view/searchtabloc.jsp")){
+	}else if(url.equals("http://localhost:"+port+"/TheaterProject/src/view/searchtabloc.jsp")){ //지역별 클릭시
 		
-		int gubunLocation = Integer.parseInt(request.getParameter("gubunLocation"));
+		String gubunLocation = request.getParameter("gubunLocation");
+		url = "http://localhost:"+port+"/TheaterProject/SearchTabLoc.do?gubunLocation="+gubunLocation;
 		
-		switch(gubunLocation){
-		case 0:
-			url = "http://localhost:8080/TheaterProject/SearchTabLoc.do?gubunLocation=0";
-			break;
-		case 1:
-			url = "http://localhost:8080/TheaterProject/SearchTabLoc.do?gubunLocation=1";
-			break;
-		case 2:
-			url = "http://localhost:8080/TheaterProject/SearchTabLoc.do?gubunLocation=2";
-			break;
-		case 3:
-			url = "http://localhost:8080/TheaterProject/SearchTabLoc.do?gubunLocation=3";
-			break;
-		default:
-			url = "http://localhost:8080/TheaterProject/Main.do";
-		}
+	}else if(url.equals("http://localhost:"+port+"/TheaterProject/src/view/ticketinfo.jsp")){ //상세페이지 클릭시
+		
+		String sno = request.getParameter("sno");
+		url = "http://localhost:"+port+"/TheaterProject/TicketInfo.do?sno="+sno;
+		
+	}else{ //기본
+		url = "http://localhost:"+port+"/TheaterProject/Main.do";
 	}
 %>
 </head>
@@ -90,7 +70,7 @@ $(function() {
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="Main.do">
-            <img class="img_index" alt="Brand" src="src/image/theater_logo.gif">
+            <img class="img_index" alt="Brand" src="src/image/theaterlogo.jpg">
           </a>
         </div>
 		
@@ -99,9 +79,9 @@ $(function() {
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-left">
             <li>
-              <form class="navbar-form navbar-right" role="search">
+              <form class="navbar-form navbar-right" role="search" method="post" action="SearchTitle.do">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="The-Ticket을 입력하세요." size="40">
+                  <input type="text" name="search" class="form-control" placeholder="The-Ticket을 입력하세요." size="40">
                 </div>
                 <button type="submit" class="btn btn-default">찾기</button>
               </form>
@@ -111,12 +91,12 @@ $(function() {
           <ul class="nav navbar-nav navbar-right">
          
           	<%
-				if (mem_id != null) {
+				if (id != null) {
 			%>
          	 <li>
          		<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                  <%=mem_id%> 님
+                  <%=id%> 님
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">

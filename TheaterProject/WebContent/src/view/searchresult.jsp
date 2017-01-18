@@ -30,13 +30,12 @@
   </jsp:include>
 
   <main>
-	<figure>
-		<div class="container-fluid center-block">
-			<div class="row">
-				<img src="src/image/111.jpg" class="img-responsive center-block" alt="Responsive image">
-			</div>
-		</div>
-	</figure>
+  	<c:if test="${searchTitle.isEmpty()}">
+		<script type="text/javascript">
+			alert("검색한 공연을 찾을 수 없습니다.");
+			location.href="Main.do"
+		</script>
+	</c:if>
 
     <div class="container">
       
@@ -60,38 +59,18 @@
   		 </li>
 	  </ul>
 
-      <div id="Top4_thumblist">
-        <h3>${gubun} TOP4 <span class="label label-danger">Hot</span></h3>
-
-        <div class="row">
-        
-          <c:forEach var="bean" items="${searchTab_top4}">
-	          <div class="col-xs-12 col-sm-3">
-	              <div class="thumbnail" style="padding: 0px">
-	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
-	                <div class="caption">
-	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
-	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
-	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">${bean.sprice}원&nbsp;&nbsp;♥${bean.slike}</span>
-	                </div>
-	              </div>
-	          </div>
-		 </c:forEach>
-          
-        </div>
-      </div>
-    
       <div id="New_thumblist">
-        <h3>전체 ${gubun} <span class="badge">${searchTab_count}</span></h3>
+        <h3>"${search}" 검색결과<%-- <span class="badge">${searchTab_count_loc}</span> --%></h3>
 
 		<div class="row">
-			<c:set var="count" value="${0 }" />
-			<c:forEach var="bean" items="${searchTab_new}">
-				<c:if test="${count%6==0 }">
+		
+			<c:set var="count" value="${0}" />
+			<c:forEach var="bean" items="${searchTitle}">
+				<c:if test="${count%4==0}">
 					<div class="clearfix"></div>
 				</c:if>
 	
-				<div class="col-xs-12 col-sm-2">
+				<div class="col-xs-12 col-sm-3">
 	              <div class="thumbnail" style="padding: 0px">
 	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
@@ -101,12 +80,11 @@
 	                </div>
 	              </div>
 	            </div>
-				
+				S
 				<c:set var="count" value="${count+1 }" />
 			</c:forEach>
-        
+			
         </div>  <!-- end div id="row" -->
-          
       </div> <!-- end index_thumbnail -->
       
 
