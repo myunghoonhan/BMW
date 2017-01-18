@@ -100,7 +100,7 @@ $(function() {
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="mypage.jsp">마이페이지</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="MyPage.do">마이페이지</a></li>
                 </ul>
               </li>
          	</li>

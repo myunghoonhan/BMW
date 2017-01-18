@@ -61,7 +61,7 @@
 	  </ul>
 
       <div id="Top4_thumblist">
-        <h3>${gubun} TOP4 <span class="label label-danger">Hot</span></h3>
+        <h3>${gubun} TOP4<img src="src/image/hot2.gif"></h3>
 
         <div class="row">
         

@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import dto.BookBean;
 import dto.ReviewBean;
 import dto.ShowBean;
 import dto.ShowImgBean;
@@ -812,6 +813,211 @@ public class TheaterDao {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public void insertReview(String id, String sno, String contents) {//완료
+		connect();
+		
+		try{
+			String sql = "insert into review values(?,?,?,sysdate)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, sno);
+			pstmt.setString(3, contents);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public int getSprice(String sno) { //완료
+		connect();
+		
+		int sprice = 0;
+		try{
+			String sql = "select sprice from show where sno=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				sprice = rs.getInt(1);
+			}
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return sprice;
+	}
+
+	public void insertBook(String id, String sno, String bookDate, int people, int sprice) {//완료
+		connect();
+		
+		try{
+			
+			String bssdate = bookDate.substring(0, 10);
+			int totalprice = sprice * people;
+			
+			String sql = "insert into book values(book_seq.nextval,?,?,?,?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, sno);
+			pstmt.setString(3, bssdate);
+			pstmt.setInt(4, people);			
+			pstmt.setInt(5, totalprice);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}		
+		
+	}
+
+	public void deleteSeat(String sno, String bssdate, int people) { //완료
+		connect();
+		int result = 0;
+		
+		try{
+			String sql = "select ssseat from showseat where sssno=? and ssdate=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			pstmt.setString(2, bssdate);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				result = rs.getInt(1);
+				
+				String sql_update = "update showseat set ssseat=? where sssno=? and ssdate=?";
+				pstmt = conn.prepareStatement(sql_update);
+
+				int ssseat = result - people;
+				
+				pstmt.setInt(1, ssseat);
+				pstmt.setString(2, sno);
+				pstmt.setString(3, bssdate);
+				
+				pstmt.executeUpdate();
+				
+				conn.close();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}		
+		
+	}
+
+	public TmemberBean getTmember(String id) {
+		connect();
+		
+		TmemberBean bean = null;
+		
+		try{
+			String sql = "select * from tmember where id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				bean = new TmemberBean();
+				
+				bean.setId(rs.getString(1));
+				bean.setPw(rs.getString(2));
+				bean.setName(rs.getString(3));
+				bean.setPhone(rs.getString(4));
+				bean.setEmail(rs.getString(5));
+				bean.setProfile(rs.getString(6));
+				bean.setTemp(rs.getString(7));
+			}
+			
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
+	}
+
+	public Vector<ShowBean> getInterest(String id) { //완료
+		connect();
+		
+		Vector<ShowBean> v = new Vector<>();
+		ShowBean bean = null;
+		try{
+			String sql = "select * from (select A.*, Rownum rnum from "
+					+ "(select favorite.*, show.smainimg from favorite left join show "
+					+ "on favorite.fsno = show.sno "
+					+ "where favorite.fid = ? order by favorite.clicktime desc) A) where rnum <=6";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				bean = new ShowBean();
+				
+				bean.setSno(rs.getString(2));
+				bean.setSmainimg(rs.getString(4));
+				
+				v.add(bean);
+			}
+			
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return v;
+	}
+
+	public Vector<BookBean> getBook(String id) { //완료
+		connect();
+		Vector<BookBean> v = new Vector<>();
+		BookBean bean = null;
+		
+		try{
+			String sql = "select book.*, show.smainimg, show.slocation, show.sname, show.stime "
+					+ "from book left join show "
+					+ "on book.bsno = show.sno "
+					+ "where book.bid = ? order by book.bno desc";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				bean = new BookBean();
+				bean.setBno(rs.getInt(1));
+				bean.setBid(rs.getString(2));
+				bean.setBsno(rs.getString(3));
+				bean.setBssdate(rs.getString(4));
+				bean.setBpeople(rs.getInt(5));
+				bean.setBtotalprice(rs.getInt(6));
+				bean.setSmainimg(rs.getString(7));
+				bean.setSlocation(rs.getString(8));
+				bean.setSname(rs.getString(9));
+				bean.setStime(rs.getString(10));
+				
+				v.add(bean);
+			}
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return v;
 	}
 	
 	

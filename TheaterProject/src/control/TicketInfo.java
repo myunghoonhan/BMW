@@ -15,6 +15,7 @@ import dao.TheaterDao;
 import dto.ReviewBean;
 import dto.ShowBean;
 import dto.ShowImgBean;
+import dto.ShowSeatBean;
 
 /**
  * Servlet implementation class TicketInfo
@@ -68,8 +69,8 @@ public class TicketInfo extends HttpServlet {
 		Vector<ReviewBean> reviewAll = tdao.getReviewAll(sno, id);
 
 		// 해당 공연의 예매정보를 불러오는 메소드 호출 getBookInfo(sno)
-		//Vector<ShowSeatBean> bookinfo = tdao.getBookInfo(sno);
-		//String bookinfo_time = tdao.getBookInfo_time(sno);
+		Vector<ShowSeatBean> bookinfo = tdao.getBookInfo(sno);
+		String bookinfo_time = tdao.getBookInfo_time(sno);
 
 		// request객체에 부착
 		request.setAttribute("bean", bean);
@@ -78,8 +79,8 @@ public class TicketInfo extends HttpServlet {
 		request.setAttribute("id", id);
 		request.setAttribute("imgbean", imgbean);
 		request.setAttribute("reviewAll", reviewAll);
-		//request.setAttribute("bookinfo", bookinfo);
-		//request.setAttribute("bookinfo_time", bookinfo_time);
+		request.setAttribute("bookinfo", bookinfo);
+		request.setAttribute("bookinfo_time", bookinfo_time);
 
 		RequestDispatcher dis = request.getRequestDispatcher("src/view/ticketinfo.jsp");
 		dis.forward(request, response);

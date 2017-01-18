@@ -95,7 +95,7 @@
 	  </ul>
 	<!-- 메인 탑4  -->
       <div id="index_thumbnail">
-        <h3>The-Ticket TOP4 <span class="label label-danger">Hot</span></h3>
+        <h3>The-Ticket TOP4<img src="src/image/hot2.gif"></h3>
 
         <div class="row"><!-- table  -->
           

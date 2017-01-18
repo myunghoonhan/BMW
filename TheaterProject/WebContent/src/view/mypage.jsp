@@ -1,34 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="dto.MemberDto"%>
-<%@ page import="dto.TmemberBean"%>
-<%@ page import="dao.TheaterDao"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%
-	String id = (String) session.getAttribute("id");
+	 String id = (String) session.getAttribute("id");
 
-	if (id == null) {
-		response.sendRedirect("index.jsp");
+	/* if (id == null) {
+		response.sendRedirect("Main.do");
 	} else {
 
 		TheaterDao tdao = TheaterDao.getInstance();
 		TmemberBean bean = tdao.selectMember(id);
-		//MemberDto myinfo = manager.selectMember(mem_id);
 		
 		String name = bean.getName();
 		String email = bean.getEmail();
 		String phone = bean.getPhone();
 		String profile = bean.getProfile();
 		
-		/* String mem_name = bean.getMem_name();
-		String mem_email = bean.getMem_email();
-		String mem_phone = myinfo.getMem_phone();
-		String mem_image = myinfo.getMem_image(); */
-		
 		if(profile == null){
 			profile="../image/profile_img/profile_default.png";   //이미지값이 null이면 기본 이미지 값 할당
-		}
+		}  */
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -71,7 +66,7 @@
 			}else{													//jpg 나 png 파일이 아니면 input file의 value를 null로
 				alert(".jpg 혹은 .png 파일이 아닙니다."); //알림창
 				document.getElementById('imgInp').value=""; 		//input file의 value를 null로
-				$('#blah').attr('src', "<%=profile%>");  			//회원수정 사진을 다시 getMem_image의 값으로
+				$('#blah').attr('src', "src/image/profile_img/"+${TmemberBean.profile});  			//회원수정 사진을 다시 getMem_image의 값으로
 			}
 		}
 	}
@@ -89,26 +84,31 @@
 		
 			<div class="jumbotron" style="margin-bottom: 50px">
 				<div style="float: right; margin: 0 10px 0 0;">
-					<a href=# ><img id="settingBtn" src="../image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
+					<a href=# ><img id="settingBtn" src="src/image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-4" style="margin-bottom: 10px">
-						<img src=<%=profile%> class="img-responsive img-circle" alt="Responsive image" style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
+						<c:if test="${TmemberBean.profile == null }">
+							<img src="src/image/profile_img/profile_default.png" class="img-responsive img-circle" alt="Responsive image"  style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
+						</c:if>
+						<c:if test="${TmemberBean.profile != null }">
+							<img src="src/image/profile_img/${TmemberBean.profile}" class="img-responsive img-circle" alt="Responsive image"  style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
+						</c:if>
 					</div>
 	
 					<div class="col-xs-12 col-sm-8">
 						<table style="margin: 0 auto;">
 							<tr>
 								<td class="list_title">이름</td>
-								<td style="font-size: 30px"><b><%=name%></b></td>
+								<td style="font-size: 30px"><b>${TmemberBean.name}</b></td>
 							</tr>
 							<tr>
 								<td class="list_title">핸드폰번호</td>
-								<td style="font-size: 20px"><%=phone%></td>
+								<td style="font-size: 20px">${TmemberBean.phone}</td>
 							</tr>
 							<tr>
 								<td class="list_title">이메일</td>
-								<td style="font-size: 20px"><%=email%></td>
+								<td style="font-size: 20px">${TmemberBean.email}</td>
 							</tr>
 						</table>
 					</div>
@@ -257,7 +257,7 @@
 	<div class="modal fade" id="mypageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 
-			<form name="update_profile" method="POST" enctype="multipart/form-data" action="../controller/UpdateProfile.jsp">
+			<form name="update_profile" method="POST" enctype="multipart/form-data" action="src/controller/UpdateProfile.jsp">
 				<div class="form-group">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -271,7 +271,7 @@
 							<div class="row">
 								<!-- file -->
 								<label for="imgInp" style="cursor: pointer;"> <!--label클릭시 for속성에 의해 id=imgInp인 input file이 실행된다-->
-									<img for="imgInp" src="../image/camera.png"	class="img-responsive" alt="Responsive image" style="z-index: 1; position: absolute; left: 50%; top: 50%; margin: -185px 0 0 -35px; width: 70px; height: 70px">
+									<img for="imgInp" src="src/image/camera.png"	class="img-responsive" alt="Responsive image" style="z-index: 1; position: absolute; left: 50%; top: 50%; margin: -185px 0 0 -35px; width: 70px; height: 70px">
 									<input type="file" name="mem_image" id="imgInp"	style="position: absolute; left: 50%; top: 50%; margin: -65px 0 0 -35px; width: 0px;">
 								</label>
 							</div>
@@ -279,7 +279,7 @@
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px;">
 									<!-- 회원수정 프로필 사진 -->
-									<img id="blah" src=<%=profile%> class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 300px; height: 300px;">
+									<img id="blah" src="src/image/profile_img/${TmemberBean.profile}" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 300px; height: 300px;">
 								</div>
 							</div>
 							
@@ -300,21 +300,21 @@
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>이름</small>
-									<input type="text" name="name" class="form-control" placeholder="이름 입력" value="">
+									<input type="text" name="name" class="form-control" placeholder="이름 입력" value="${TmemberBean.name}">
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>핸드폰번호</small>
-									<input type="text" name="phone" class="form-control" placeholder="핸드폰번호 입력" value=<%=phone%>>
+									<input type="text" name="phone" class="form-control" placeholder="핸드폰번호 입력" value=${TmemberBean.phone}>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>이메일</small>
-									<input type="text" name="email" class="form-control" placeholder="이메일 입력" value=<%=email%>>
+									<input type="text" name="email" class="form-control" placeholder="이메일 입력" value=${TmemberBean.email}>
 								</div>
 							</div>
 							
@@ -343,5 +343,5 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
-<% } %>
+<%-- <% } %> --%>
 </html>

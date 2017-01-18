@@ -49,7 +49,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
             
-              <form class="form-horizontal" action="book.do" method="POST"> 
+              <form class="form-horizontal" action="Book.do" method="POST"> 
               
               	<h4><strong>예매일자</strong></h4>
 				<div class="form-group" style="margin-bottom: 30px;">
@@ -58,8 +58,8 @@
 				
                   <div class="col-xs-12">
                     <select class="form-control" name="bookDate">
-                      <!-- <option value="option_default">예매일자를 선택하세요.</option>
-                      <option value="option1">2016/01/27 (잔여:15)</option>
+                      <option value="option_default">예매일자를 선택하세요.</option>
+                      <!-- <option value="option1">2016/01/27 (잔여:15)</option>
                       <option value="option2">2016/01/28 (잔여:25)</option>
                       <option value="option3">2016/01/29 (잔여:15)</option>
                       <option value="option4">2016/01/30 (잔여:15)</option> -->
@@ -117,7 +117,7 @@
                 </li>
 				<li style="list-style: none; margin-bottom: 30px; font-size: 35px; font-weight: 900; color: #d9534f;">
                		<c:set var="price" value="${bean.sprice}" />
-					<fmt:formatNumber type="currency" currencySymbol="￦" value="${price}" />
+					<fmt:formatNumber type="currency" currencySymbol="" value="${price}" />원
              	</li>
              	
              	<li style="list-style: none; margin-bottom: 30px;">
@@ -152,7 +152,7 @@
           </div>
           
           <div class="row">
-          	<form name="reviewForm" method="post" action="review.do?sno=${bean.sno}">
+          	<form name="reviewForm" method="post" action="Review.do?sno=${bean.sno}">
           		<div class="form-group">
 		            <div class="col-xs-10" style="padding-right: 0px">
 		              <textarea class="form-control" name="contents" rows="3" style="resize: none" onfocus="clean(this)">후기를 남겨주세요.</textarea>
