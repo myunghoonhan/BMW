@@ -426,4 +426,125 @@ public class TheaterDao {
 		return count;
 	}
 
+	public Vector<ShowBean> getSearchTab_top4_loc(String gubunLocation) { //완료
+		connect();
+		
+		// 리턴할 객체 생성(즉 박스로 리턴)
+		Vector<ShowBean> top4 = new Vector<>();
+		
+		// 컬럼의 데이터를 빈클래스에 맵핑해야하기에 객체를 선언(즉, 가방)
+		ShowBean bean = null;
+		try {
+			// 3.
+			String sql = "select * from (select A.* , Rownum rnum from"
+					+ " (select * from show where slocation=? order by slike desc)A) where rnum <=4";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gubunLocation);
+			
+			// 4.쿼리실행후 결과를 리턴
+			rs = pstmt.executeQuery();
+			// 반복문을 통하여 데이터를 가방(빈에 저장)에 추출
+			while (rs.next()) {
+				// 빈클래스 (가방) 객체 생성
+				bean = new ShowBean();
+				bean.setSno(rs.getString(1));
+				bean.setSname(rs.getString(2));
+				bean.setSaddress(rs.getString(3));
+				bean.setSperiod(rs.getString(4));
+				bean.setSactor(rs.getString(5));
+				bean.setSprice(rs.getInt(6));
+				bean.setStime(rs.getString(7));
+				bean.setStab(rs.getString(8));
+				bean.setSlocation(rs.getString(9));
+				bean.setSmainimg(rs.getString(10));
+				bean.setSwido(rs.getString(11));
+				bean.setSkyungdo(rs.getString(12));
+				bean.setSlike(rs.getInt(13));
+				bean.setSupdate(rs.getDate(14));
+				bean.setStemp(rs.getString(15));
+				bean.setSinttemp(rs.getInt(16));
+				
+				top4.add(bean);
+			}
+			// 5
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return top4;// 박스 객체를 리턴
+	}
+
+	public Vector<ShowBean> getSearchTab_new_loc(String gubunLocation) { //완료
+		connect();
+		
+		// 리턴할 객체 생성(즉 박스로 리턴)
+		Vector<ShowBean> newTicket = new Vector<>();
+		
+		// 컬럼의 데이터를 빈클래스에 맵핑해야하기에 객체를 선언(즉, 가방)
+		ShowBean bean = null;
+		try {
+			// 3.
+			String sql = "select * from (select A.* , Rownum rnum from"
+					+ " (select * from show where slocation=? order by supdate desc)A) where rnum <=30";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gubunLocation);
+			
+			// 4.쿼리실행후 결과를 리턴
+			rs = pstmt.executeQuery();
+			// 반복문을 통하여 데이터를 가방(빈에 저장)에 추출
+			while (rs.next()) {
+				// 빈클래스 (가방) 객체 생성
+				bean = new ShowBean();
+				bean.setSno(rs.getString(1));
+				bean.setSname(rs.getString(2));
+				bean.setSaddress(rs.getString(3));
+				bean.setSperiod(rs.getString(4));
+				bean.setSactor(rs.getString(5));
+				bean.setSprice(rs.getInt(6));
+				bean.setStime(rs.getString(7));
+				bean.setStab(rs.getString(8));
+				bean.setSlocation(rs.getString(9));
+				bean.setSmainimg(rs.getString(10));
+				bean.setSwido(rs.getString(11));
+				bean.setSkyungdo(rs.getString(12));
+				bean.setSlike(rs.getInt(13));
+				bean.setSupdate(rs.getDate(14));
+				bean.setStemp(rs.getString(15));
+				bean.setSinttemp(rs.getInt(16));
+				
+				newTicket.add(bean);
+			}
+			// 5
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return newTicket;// 박스 객체를 리턴
+	}
+
+	public int getSearchTab_count_loc(String gubunLocation) { //완료
+		connect();
+		
+		int count = 0;	
+		try {
+			String sql = "select count(*) from show where slocation=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gubunLocation);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {// 검색 결과가 있다면
+				count = rs.getInt(1);
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
 }

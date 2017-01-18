@@ -27,30 +27,49 @@ $(function() {
 	
 	String url= url_stringbuffer.toString();
 	
-	
-	if(url.equals("http://localhost:8181/TheaterProject/src/view/index.jsp")){
+	if(url.equals("http://localhost:8080/TheaterProject/src/view/index.jsp")){
 		
-		url = "http://localhost:8181/TheaterProject/Main.do";
+		url = "http://localhost:8080/TheaterProject/Main.do";
 		
-	}else if(url.equals("http://localhost:8181/TheaterProject/src/view/concert.jsp")){
+	}else if(url.equals("http://localhost:8080/TheaterProject/src/view/searchtab.jsp")){
 		
 		int gubun = Integer.parseInt(request.getParameter("gubun"));
 		
 		switch(gubun){
 		case 1:
-			url = "http://localhost:8181/TheaterProject/SearchTab.do?gubun=1";
+			url = "http://localhost:8080/TheaterProject/SearchTab.do?gubun=1";
 			break;
 		case 2:
-			url = "http://localhost:8181/TheaterProject/SearchTab.do?gubun=2";
+			url = "http://localhost:8080/TheaterProject/SearchTab.do?gubun=2";
 			break;
 		case 3:
-			url = "http://localhost:8181/TheaterProject/SearchTab.do?gubun=3";
+			url = "http://localhost:8080/TheaterProject/SearchTab.do?gubun=3";
 			break;
 		case 4:
-			url = "http://localhost:8181/TheaterProject/SearchTab.do?gubun=4";
+			url = "http://localhost:8080/TheaterProject/SearchTab.do?gubun=4";
 			break;
 		default:
-			url = "http://localhost:8181/TheaterProject/Main.do";
+			url = "http://localhost:8080/TheaterProject/Main.do";
+		}
+	}else if(url.equals("http://localhost:8080/TheaterProject/src/view/searchtabloc.jsp")){
+		
+		int gubunLocation = Integer.parseInt(request.getParameter("gubunLocation"));
+		
+		switch(gubunLocation){
+		case 0:
+			url = "http://localhost:8080/TheaterProject/SearchTabLoc.do?gubunLocation=0";
+			break;
+		case 1:
+			url = "http://localhost:8080/TheaterProject/SearchTabLoc.do?gubunLocation=1";
+			break;
+		case 2:
+			url = "http://localhost:8080/TheaterProject/SearchTabLoc.do?gubunLocation=2";
+			break;
+		case 3:
+			url = "http://localhost:8080/TheaterProject/SearchTabLoc.do?gubunLocation=3";
+			break;
+		default:
+			url = "http://localhost:8080/TheaterProject/Main.do";
 		}
 	}
 %>

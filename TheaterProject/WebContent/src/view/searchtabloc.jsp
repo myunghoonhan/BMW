@@ -29,61 +29,27 @@
   	<jsp:param value="navbar-fixed-top" name="navbar_style"/>
   </jsp:include>
 
-  <main id="index_main">
-    <figure>
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="background-color: #e5e5e5">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-
-          <div class="item active">
-            <img src="src/image/111.jpg" class="carousel_img" alt="...">
-            <div class="carousel-caption">
-            </div>
-          </div>
-
-          <div class="item">
-            <img src="src/image/111.jpg" class="carousel_img" alt="...">
-            <div class="carousel-caption">
-            </div>
-          </div>
-
-          <div class="item">
-            <img src="src/image/111.jpg" class="carousel_img" alt="...">
-            <div class="carousel-caption">
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </figure>
+  <main>
+	<figure>
+		<div class="container-fluid center-block" style="background-color: red">
+			<div class="row">
+				<img src="src/image/111.jpg" class="img-responsive center-block" alt="Responsive image">
+			</div>
+		</div>
+	</figure>
 
     <div class="container">
-    
+      
       <ul id="index_nav_tabs" class="nav nav-tabs nav-justified" style="margin: 45px 0px 55px 0px;">
-      	  <li role="presentation" class="active"><a href="Main.do">최신</a></li>
-		  <li role="presentation" ><a href="SearchTab.do?gubun=1">콘서트</a></li>
-		  <li role="presentation"><a href="SearchTab.do?gubun=2">연극</a></li>
-		  <li role="presentation"><a href="SearchTab.do?gubun=3">전시회</a></li>
-		  <li role="presentation"><a href="SearchTab.do?gubun=4">The-Ticket</a></li>
-		  <li role="presentation" class="dropdown">
-		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">지역별 <span class="caret"></span></a>
+      	  <li role="presentation" ><a href="Main.do">최신</a></li>
+		  <li role="presentation" class="${active_1}"><a href="SearchTab.do?gubun=1">콘서트</a></li>
+		  <li role="presentation" class="${active_2}"><a href="SearchTab.do?gubun=2">연극</a></li>
+		  <li role="presentation" class="${active_3}"><a href="SearchTab.do?gubun=3">전시회</a></li>
+		  <li role="presentation" class="${active_4}"><a href="SearchTab.do?gubun=4">The-Ticket</a></li>
+		  <li role="presentation" class="dropdown ${active_5}">
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+		      지역별 <span class="caret"></span>
+   		    </a>
 	    	<ul id="nav_tabs_dropdown_menu" class="dropdown-menu" role="menu" style="width: 100%;">
 		    	<li><a href="SearchTabLoc.do?gubunLocation=0">대학로</a></li>
 			    <li><a href="SearchTabLoc.do?gubunLocation=1">홍대</a></li>
@@ -93,13 +59,13 @@
 		    </ul>
   		 </li>
 	  </ul>
-	<!-- 메인 탑4  -->
-      <div id="index_thumbnail">
-        <h3>The-Ticket TOP4 <span class="label label-danger">Hot</span></h3>
 
-        <div class="row"><!-- table  -->
-          
-			<c:forEach var="bean" items="${top4}">
+      <div id="Top4_thumblist">
+        <h3>${gubunLocation} 인기 TOP4 <span class="label label-danger">Hot</span></h3>
+
+        <div class="row">
+        
+          <c:forEach var="bean" items="${searchTab_top4_loc}">
 	          <div class="col-xs-12 col-sm-3">
 	              <div class="thumbnail" style="padding: 0px">
 	              <a href="detail.jsp?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
@@ -110,23 +76,23 @@
 	                </div>
 	              </div>
 	          </div>
-			</c:forEach>
+		 </c:forEach>
           
-        </div><!-- end div row table  -->
-      </div> <!-- div id="index_thumbnail" -->
-      
-	<!-- 메인 최신 더티켓  -->
-      <div id="index_thumbnail">
-        <h3>최신 The-Ticket</h3>
+        </div>
+      </div>
+    
+      <div id="New_thumblist">
+        <h3>${gubunLocation} 전체 The-Ticket <span class="badge">${searchTab_count_loc}</span></h3>
 
-        <div class="row">
-			<c:set var="count" value="${0 }" />
-			<c:forEach var="bean" items="${newTicket}">
-				<c:if test="${count%4==0 }">
+		<div class="row">
+		
+			<c:set var="count" value="${0}" />
+			<c:forEach var="bean" items="${searchTab_new_loc}">
+				<c:if test="${count%6==0}">
 					<div class="clearfix"></div>
 				</c:if>
 	
-				<div class="col-xs-12 col-sm-3">
+				<div class="col-xs-12 col-sm-2">
 	              <div class="thumbnail" style="padding: 0px">
 	              <a href="detail.jsp?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
@@ -139,11 +105,32 @@
 				
 				<c:set var="count" value="${count+1 }" />
 			</c:forEach>
-          
-        </div>  <!-- 최신더티켓 "row" -->
-      </div> <!-- 최신더티켓 index_thumbnail -->
+			
+        </div>  <!-- end div id="row" -->
+      </div> <!-- end index_thumbnail -->
+      
 
-    </div> <!-- end class="container" -->
+      <nav style="text-align: center; margin-top: 10px;">
+		  <ul class="pagination pagination-lg">
+		    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    		
+    		<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li><a href="#">6</a></li>
+		    <li><a href="#">7</a></li>
+		    <li><a href="#">8</a></li>
+		    <li><a href="#">9</a></li>
+		    <li><a href="#">10</a></li>
+		    
+		    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+		  </ul>
+	  </nav>
+	 
+
+    </div> <!-- end container -->
   </main>
 
   <jsp:include page="./component/footer.jsp"></jsp:include>
