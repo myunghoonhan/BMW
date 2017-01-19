@@ -1,7 +1,6 @@
 <%@page import="com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,11 +11,9 @@
 <script type="text/javascript"	src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	
 	$(".modal").on("hidden.bs.modal", function(){
 	    $(this).find('form')[0].reset();
 	});
-	
 });
 
 function idCheck(id){
@@ -33,7 +30,6 @@ function idCheck(id){
 	String id = (String) session.getAttribute("id");
 	String navbar_style = request.getParameter("navbar_style");
 	String port = String.valueOf(request.getServerPort());
-	
 	String url= request.getRequestURL().toString();
 	
 	if(url.equals("http://localhost:"+port+"/TheaterProject/src/view/index.jsp")){ //메인
@@ -64,7 +60,6 @@ function idCheck(id){
 
    <header>
    
-    <%-- <nav id="header_navbar_default" class="navbar navbar-default <%=navbar_style%>" role="navigation"> --%>
     <nav id="header_navbar_default" class="navbar navbar-default <%=navbar_style%>" role="navigation">
 
       <div class="container-fluid">

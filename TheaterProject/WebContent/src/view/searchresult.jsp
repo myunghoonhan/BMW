@@ -71,7 +71,7 @@
 					<div class="clearfix"></div>
 				</c:if>
 	
-				<div class="col-xs-12 col-sm-3">
+				<div class="col-xs-6 col-sm-3">
 	              <div class="thumbnail" style="padding: 0px">
 	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">

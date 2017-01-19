@@ -99,7 +99,12 @@ public class TicketInfo extends HttpServlet {
 		// 해당 공연의 예매정보를 불러오는 메소드 호출 getBookInfo(sno)
 		Vector<ShowSeatBean> bookinfo = tdao.getBookInfo(sno);
 		String bookinfo_time = tdao.getBookInfo_time(sno);
-
+		
+		if(request.getParameter("movedown") != null){
+			int movedown = Integer.parseInt(request.getParameter("movedown"));
+			request.setAttribute("movedown", movedown);
+		}
+		
 		// request객체에 부착
 		request.setAttribute("bean", bean);
 		request.setAttribute("like_no", like_no);

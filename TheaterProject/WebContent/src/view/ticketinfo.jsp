@@ -183,6 +183,15 @@
             </div>
           </div>
           
+          <c:if test="${movedown == 1}">
+			<script type="text/javascript">
+				$(function() {
+					$('html,body').animate({scrollTop:'10000'},1100);
+					document.reviewForm.contents.focus();
+				});
+			</script>
+		  </c:if> 
+          
           <div class="row"> <!-- 후기 작성폼  -->
           	<div class="col-xs-12">
           		<h3><strong>후기</strong></h3>

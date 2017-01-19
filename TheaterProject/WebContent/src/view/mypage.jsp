@@ -35,6 +35,11 @@
 			readURL(this);
 		});
 		
+		$(function () {
+			  $('[data-toggle="tooltip"]').tooltip()
+		});
+		
+		$('#tooltip').tooltip(options);
 	});
 	
 	function readURL(input) {
@@ -87,7 +92,7 @@
 		
 			<div class="jumbotron" style="margin-bottom: 50px">
 				<div style="float: right; margin: 0 10px 0 0;">
-					<a href=# ><img id="settingBtn" src="src/image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
+					<a href=# id="tooltip" data-toggle="tooltip" data-placement="top" title="회원정보수정"><img id="settingBtn" src="src/image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-4" style="margin-bottom: 10px">
@@ -167,7 +172,7 @@
 			              </td>
 			              <td style="text-align: center; vertical-align:middle;">
 			              	<button type="button" class="btn btn-danger" style="margin-bottom: 5px;" onclick="location.href='BookDelete.do?sno=${bookbean.bsno}&bno=${bookbean.bno}&bookDate=${bookbean.bssdate}&people=${bookbean.bpeople}'">예매취소</button>
-			              	<button type="button" class="btn btn-success" onclick="location.href='TicketInfo.do?sno=${bookbean.bsno}'">관람후기</button>
+			              	<button type="button" class="btn btn-success" onclick="location.href='TicketInfo.do?sno=${bookbean.bsno}&movedown=1'">관람후기</button>
 			              </td>
 			            </tr>
 		            </c:forEach>

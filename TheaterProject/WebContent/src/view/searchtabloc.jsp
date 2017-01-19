@@ -103,7 +103,7 @@
         <div class="row">
         
           <c:forEach var="bean" items="${searchTab_top4_loc}">
-	          <div class="col-xs-12 col-sm-3">
+	          <div class="col-xs-6 col-sm-3">
 	              <div class="thumbnail" style="padding: 0px">
 	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
@@ -139,11 +139,11 @@
 	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
-	            	  <span class="label label-danger" style="font-size: 15px; vertical-align:middle">♥ ${bean.slike}</span>
-	            	  <span style="font-size: 25px; font-weight: 900; color: #d9534f; vertical-align:middle;">
+	            	  <span class="label label-danger" style="font-size: 12px; vertical-align:middle">♥ ${bean.slike}</span>
+	            	  <span style="font-size: 20px; font-weight: 900; color: #d9534f; vertical-align:middle;">
 	            	  <c:set var="price" value="${bean.sprice }" />
 					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" /></span>
-					  <span style="font-size: 20px; font-weight: 900; color: #d9534f; vertical-align:middle;">
+					  <span style="font-size: 15px; font-weight: 900; color: #d9534f; vertical-align:middle;">
 					  원
 					  </span>
 	                </div>
