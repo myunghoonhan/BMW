@@ -29,6 +29,9 @@ public class QnAInfo extends HttpServlet {
 
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		String qno = request.getParameter("qno");
 		
 		HttpSession session = request.getSession();

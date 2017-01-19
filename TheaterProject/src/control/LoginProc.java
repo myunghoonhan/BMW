@@ -26,8 +26,9 @@ public class LoginProc extends HttpServlet {
 	}
 
 	protected void reqpro(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-
-		response.setCharacterEncoding("UTF-8"); //한글깨짐 방징
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");

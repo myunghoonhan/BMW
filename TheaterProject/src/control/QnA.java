@@ -28,6 +28,10 @@ public class QnA extends HttpServlet {
 	}
 
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		String pageNum = request.getParameter("pageNum");  //  [1][2][3],,,,���° �������� �ľ�
 		if(pageNum== null){
 			pageNum = "1"; //�ʱⰪ���� 1�� �ο�. ��, �ֽű��� �������� ����

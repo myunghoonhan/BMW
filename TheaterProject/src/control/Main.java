@@ -30,6 +30,7 @@ public class Main extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		//데이터 베이스 객체 생성
 		TheaterDao tdao = TheaterDao.getInstance();

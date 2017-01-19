@@ -18,17 +18,23 @@ $(function() {
 	});
 	
 });
+
+function idCheck(id){
+	if(id == ""){
+		alert("아이디를 입력하세요.");
+	}else{
+		url="IdCheck.do?id="+id;
+		window.open(url, "post", "width=300, height=150, left=600 top=200");
+	}
+}
 </script>
 
 <%
 	String id = (String) session.getAttribute("id");
 	String navbar_style = request.getParameter("navbar_style");
-	StringBuffer url_stringbuffer = request.getRequestURL();
+	String port = String.valueOf(request.getServerPort());
 	
-	int port_int = request.getServerPort();
-	String port = String.valueOf(port_int);
-	
-	String url= url_stringbuffer.toString();
+	String url= request.getRequestURL().toString();
 	
 	if(url.equals("http://localhost:"+port+"/TheaterProject/src/view/index.jsp")){ //메인
 		
@@ -58,6 +64,7 @@ $(function() {
 
    <header>
    
+    <%-- <nav id="header_navbar_default" class="navbar navbar-default <%=navbar_style%>" role="navigation"> --%>
     <nav id="header_navbar_default" class="navbar navbar-default <%=navbar_style%>" role="navigation">
 
       <div class="container-fluid">
@@ -81,7 +88,7 @@ $(function() {
             <li>
               <form class="navbar-form navbar-right" role="search" method="post" action="SearchTitle.do">
                 <div class="form-group">
-                  <input type="text" name="search" class="form-control" placeholder="The-Ticket을 입력하세요." size="40">
+                  <input type="text" name="search" class="form-control" placeholder="The-Ticket을 입력하세요." size="40" required>
                 </div>
                 <button type="submit" class="btn btn-default">찾기</button>
               </form>
@@ -139,13 +146,13 @@ $(function() {
             <div class="modal-body">
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="text" name="id" class="form-control" placeholder="아이디" style="height: 50px">
+                  <input type="text" name="id" class="form-control" placeholder="아이디" style="height: 50px" required>
                 </div>
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="password" name="pw" class="form-control" placeholder="비밀번호" style="height: 50px">
+                  <input type="password" name="pw" class="form-control" placeholder="비밀번호" style="height: 50px" required>
                 </div>
                 <div class="col-sm-12">
-                  <button type="submit" class="btn btn-primary" style="height: 50px; width: 100%">로그인</button>
+                  <button type="submit" class="btn btn-danger" style="height: 50px; width: 100%">로그인</button>
                 </div>
               </div>
             </div>
@@ -183,10 +190,10 @@ $(function() {
 
               <div class="row">
                 <div class="col-xs-9" style="margin-bottom: 10px; padding-right: 3px;">
-                  <input type="text" name="id" class="form-control" placeholder="">
+                  <input type="text" name="id" class="form-control" placeholder="" required>
                 </div>
                 <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
-                  <button type="button" class="btn btn-primary" onclick="idCheck(this.form.id.value)">중복확인</button>
+                  <button type="button" class="btn btn-success" onclick="idCheck(this.form.id.value)">중복확인</button>
                 </div>
               </div>
 
@@ -198,7 +205,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="password" name="pw" class="form-control" placeholder="">
+                  <input type="password" name="pw" class="form-control" placeholder="" required>
                 </div>
               </div>
 
@@ -210,7 +217,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 25px">
-                  <input type="password" name="pwcheck" class="form-control" placeholder="">
+                  <input type="password" name="pwcheck" class="form-control" placeholder="" required>
                 </div>
               </div>
 
@@ -222,7 +229,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="text" name="name" class="form-control" placeholder="">
+                  <input type="text" name="name" class="form-control" placeholder="" required>
                 </div>
               </div>
 
@@ -234,7 +241,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-sm-12" style="margin-bottom: 10px">
-                  <input type="text" name="phone" class="form-control" placeholder="000-000-0000">
+                  <input type="text" name="phone" class="form-control" placeholder="'-'를 제외하고 입력하세요." required>
                 </div>
               </div>
 
@@ -246,16 +253,16 @@ $(function() {
 
               <div class="row">
                 <div class="col-xs-9" style="margin-bottom: 35px; padding-right: 3px;">
-                  <input type="email" name="email" class="form-control" placeholder="example@example.com">
+                  <input type="email" name="email" class="form-control" placeholder="example@example.com" required>
                 </div>
                 <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
-                  <button type="button" class="btn btn-primary" onclick="">인증</button>
+                  <button type="button" class="btn btn-success" onclick="">인증</button>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-sm-12">
-                  <button type="button" class="btn btn-success" onclick="inputCheck()" style="height: 50px; width: 100%">회원가입</button>
+                  <button type="submit" class="btn btn-danger" onclick="" style="height: 50px; width: 100%">회원가입</button>
                 </div>
               </div>
 

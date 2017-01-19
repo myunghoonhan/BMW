@@ -28,6 +28,7 @@ public class QnAInsert extends HttpServlet {
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		QnABean bean = new QnABean();
 		HttpSession session = request.getSession();

@@ -29,8 +29,8 @@ public class SearchTab extends HttpServlet {
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		// 한글처리
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		//선택한 Tab 읽어오기
 		String gubun = request.getParameter("gubun");
@@ -42,15 +42,19 @@ public class SearchTab extends HttpServlet {
 		}else if(gubun.equals("1")){
 			gubun = "콘서트";
 			request.setAttribute("active_1", "active");
+			request.setAttribute("image", "concert.jpg");
 		}else if(gubun.equals("2")){
 			gubun = "연극";
 			request.setAttribute("active_2", "active");
+			request.setAttribute("image", "play.jpg");
 		}else if(gubun.equals("3")){
 			gubun = "전시회";
 			request.setAttribute("active_3", "active");
+			request.setAttribute("image", "exhibition.jpg");
 		}else if(gubun.equals("4")){
 			gubun = "The-Ticket";
 			request.setAttribute("active_4", "active");
+			request.setAttribute("image", "theticket.jpg");
 		}
 		
 		//데이터 베이스 객체 생성후

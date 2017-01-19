@@ -2,15 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <c:if test="${TmemberBean.profile == null }">
-		<c:set var="profileImg" value="profile_default.png" />
-	</c:if>
-	<c:if test="${TmemberBean.profile != null }">
-		<c:set var="profileImg" value="${TmemberBean.profile}" />
-	</c:if>
+	<c:set var="profileImg" value="profile_default.png" />
+</c:if>
+<c:if test="${TmemberBean.profile != null }">
+	<c:set var="profileImg" value="${TmemberBean.profile}" />
+</c:if>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta charset="utf-8">
@@ -61,10 +60,13 @@
 			alert("새 비밀번호를 입력하십시오.");
 		}else if(form.newpass.value != form.newpasscheck.value){
 			alert("비밀번호가 일치하지 않습니다.");
+			form.newpasscheck.focus();
 		}else if(form.name.value==""){
 			alert("수정 할 이름을 입력하십시오.");
+			form.name.focus();
 		}else if(form.phone.value==""){
 			alert("수정 할 핸드폰번호를 입력하십시오.");
+			form.name.focus();
 		}else{
 			form.submit();
 		}
@@ -231,28 +233,28 @@
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>새 비밀번호</small>
-									<input type="password" name="newpass" class="form-control" placeholder="새 비밀번호 입력" value="">
+									<input type="password" name="newpass" class="form-control" placeholder="새 비밀번호 입력" value="" required>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>새 비밀번호 확인</small>
-									<input type="password" name="newpasscheck" class="form-control" placeholder="새 비밀번호 입력" value="">
+									<input type="password" name="newpasscheck" class="form-control" placeholder="새 비밀번호 입력" value="" required>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>이름</small>
-									<input type="text" name="name" class="form-control" placeholder="이름 입력" value="${TmemberBean.name}">
+									<input type="text" name="name" class="form-control" placeholder="이름 입력" value="${TmemberBean.name}" required>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>핸드폰번호</small>
-									<input type="text" name="phone" class="form-control" placeholder="핸드폰번호 입력" value=${TmemberBean.phone}>
+									<input type="text" name="phone" class="form-control" placeholder="핸드폰번호 입력" value=${TmemberBean.phone} required>
 								</div>
 							</div>
 							
@@ -267,24 +269,19 @@
 						
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary" onclick="checkModalNull(this.form)">수정</button>
+							<button type="button" class="btn btn-danger" onclick="checkModalNull(this.form)">수정</button>
 						</div>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div> <!-- end Modal mypage  -->
-	
-	
 
 	<jsp:include page="./component/footer.jsp"></jsp:include>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
-<%-- <% } %> --%>
 </html>

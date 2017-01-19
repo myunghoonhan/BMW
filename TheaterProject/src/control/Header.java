@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LogOut
+ * Servlet implementation class Header
  */
-@WebServlet("/LoginOut.do")
-public class LogOut extends HttpServlet {
+@WebServlet("/Header.do")
+public class Header extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		reqpro(request, response);
 	}
@@ -27,12 +28,14 @@ public class LogOut extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String url = request.getParameter("url");
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		String url= request.getRequestURL().toString();
+		String port = String.valueOf(request.getServerPort());
+		String navbar_style = request.getParameter("navbar_style");
 		
-		HttpSession session = request.getSession(); //session객체 만들기
-		session.invalidate();
-		
-		response.sendRedirect(url);
+		RequestDispatcher dis = request.getRequestDispatcher("src/view/component/header.jsp");
+		dis.forward(request, response);
 	}
 
 }

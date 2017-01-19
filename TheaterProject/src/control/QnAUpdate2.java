@@ -28,7 +28,10 @@ public class QnAUpdate2 extends HttpServlet {
 	}
 
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		String title = request.getParameter("title"); 
 		String qno = request.getParameter("qno");
 		String contents = request.getParameter("contents");

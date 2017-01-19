@@ -24,6 +24,9 @@ public class Pre_QnAReInsert extends HttpServlet {
 
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		request.setAttribute("qgroup", request.getParameter("qgroup"));
 		request.setAttribute("qstep", request.getParameter("qstep"));
 		request.setAttribute("qlevel", request.getParameter("qlevel"));

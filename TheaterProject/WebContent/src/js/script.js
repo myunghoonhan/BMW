@@ -1,15 +1,15 @@
 //ID 중복체크 검사 함수
-function idCheck(id){
+/*function idCheck(id){
 	if(id == ""){
 		alert("아이디를 입력하세요");
 	}else{
 		url="IdCheck.do?id="+id;
-		window.open(url, "post", "width=300, height=150");
+		window.open(url, "post", "width=300, height=150, left=50%, top=50%");
 	}
 }
-
+*/
 //폼의 입력 데이터 입력 유무 체크하는 함수
-function inputCheck(){
+/*function inputCheck(){
 	if(document.regForm.id.value == ""){
 		alert("아이디를 입력하세요.");
 		document.regForm.id.focus();
@@ -43,10 +43,10 @@ function inputCheck(){
 	
 	//submit()함수의 역할=> Form 객체의 함수로 서버로 데이터를 전송 (submit 객체를 누른 효과)
 	document.regForm.submit();
-}
+}*/
 
 //주민번호 체크 함수
-function juminCheck(jumin1, jumin2){
+/*function juminCheck(jumin1, jumin2){
 	var sum=0;
 	var temp=0;
 	var result=0;
@@ -73,6 +73,6 @@ function juminCheck(jumin1, jumin2){
 function zipCheck(){
 	url = "../controller/ZipCheck.jsp?check=y";
 	window.open(url, "post", "width=500, height=500, scrollbars=yes");
-}
+}*/
 
 

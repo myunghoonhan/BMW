@@ -29,6 +29,7 @@ public class Book extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		String sno = request.getParameter("sno");
 		String bookDate = request.getParameter("bookDate");

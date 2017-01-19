@@ -196,7 +196,7 @@
 		              <textarea class="form-control" name="contents" rows="3" style="resize: none" onfocus="clean(this)">후기를 남겨주세요.</textarea>
 		            </div>
 		            <div class="col-xs-2">
-		              <button type="button" class="btn btn-lg btn-danger " style="width: 100%; height: 70px;" onclick="idCheck_review(this.form)">작성하기</button>
+		              <button type="button" class="btn btn-lg btn-success " style="width: 100%; height: 70px;" onclick="idCheck_review(this.form)">작성하기</button>
 		            </div>
 		        </div>
             </form>
@@ -239,7 +239,7 @@
 			    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 	    		
 	    		<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-			    <li><a href="#">2</a></li>
+			  <!--   <li><a href="#">2</a></li>
 			    <li><a href="#">3</a></li>
 			    <li><a href="#">4</a></li>
 			    <li><a href="#">5</a></li>
@@ -247,9 +247,9 @@
 			    <li><a href="#">7</a></li>
 			    <li><a href="#">8</a></li>
 			    <li><a href="#">9</a></li>
-			    <li><a href="#">10</a></li>
+			    <li><a href="#">10</a></li> -->
 			    
-			    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+			    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 			  </ul>
 	  	  </nav>
 		  

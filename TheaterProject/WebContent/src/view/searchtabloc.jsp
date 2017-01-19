@@ -32,11 +32,47 @@
 
   <main>
 	<figure>
-		<div class="container-fluid center-block" style="background-color: red">
-			<div class="row">
-				<img src="src/image/111.jpg" class="img-responsive center-block" alt="Responsive image">
-			</div>
-		</div>
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="background-color: #e5e5e5">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+          <div class="item active">
+            <img src="src/image/main1.jpg" class="carousel_img" alt="..." style="margin: 0 auto;">
+            <div class="carousel-caption">
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="src/image/main2.jpg" class="carousel_img" alt="..." style="margin: 0 auto;">
+            <div class="carousel-caption">
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="src/image/main3.jpg" class="carousel_img" alt="..." style="margin: 0 auto;">
+            <div class="carousel-caption">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
 	</figure>
 
     <div class="container">
@@ -72,11 +108,13 @@
 	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
-	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
-	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">
+	            	  <span class="label label-danger" style="font-size: 15px; vertical-align:middle">♥ ${bean.slike}</span>
+	            	  <span style="font-size: 25px; font-weight: 900; color: #d9534f; vertical-align:middle;">
 	            	  <c:set var="price" value="${bean.sprice }" />
-					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" />원
-	            	  &nbsp;&nbsp;♥${bean.slike}</span>
+					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" /></span>
+					  <span style="font-size: 20px; font-weight: 900; color: #d9534f; vertical-align:middle;">
+					  원
+					  </span>
 	                </div>
 	              </div>
 	          </div>
@@ -101,11 +139,13 @@
 	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
-	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
-	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">
+	            	  <span class="label label-danger" style="font-size: 15px; vertical-align:middle">♥ ${bean.slike}</span>
+	            	  <span style="font-size: 25px; font-weight: 900; color: #d9534f; vertical-align:middle;">
 	            	  <c:set var="price" value="${bean.sprice }" />
-					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" />원
-	            	  &nbsp;&nbsp;♥${bean.slike}</span>
+					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" /></span>
+					  <span style="font-size: 20px; font-weight: 900; color: #d9534f; vertical-align:middle;">
+					  원
+					  </span>
 	                </div>
 	              </div>
 	            </div>

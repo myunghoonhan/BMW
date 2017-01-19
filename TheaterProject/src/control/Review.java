@@ -29,6 +29,7 @@ public class Review extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");

@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -32,10 +33,13 @@ public class UpdateProfile extends HttpServlet {
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
-		String savePath =  "C:/MHHan/JSP_workspace/git/TheaterProject/WebContent/src/image/profile_img";
+		//String savePath =  request.getRealPath("src/image/profile_img").replaceAll("\\\\", "/");
+		String savePath2 =  "C:/MHHan/JSP_workspace/git/TheaterProject/WebContent/src/image/profile_img";
 		int maxSize = 10 * 1024 * 1024;
-		MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request, savePath2, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		
 		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -51,10 +55,6 @@ public class UpdateProfile extends HttpServlet {
 			String name = (String) params.nextElement();
 			String value = multi.getParameter(name);
 			
-			System.out.println(value);
-			/*if (name.equals("id")) { //새 비밀번호가 여기 들어가야될것으로 예상
-				bean.setId(value);
-			}*/
 			if (name.equals("newpass")) {
 				bean.setPw(value);
 			}
@@ -67,6 +67,7 @@ public class UpdateProfile extends HttpServlet {
 		}
 
 		Enumeration files = multi.getFileNames(); //파일 정보 받기
+		
 		if (files.hasMoreElements()) { // 이미지 파일이 있으면
 			String name = (String) files.nextElement();
 			String filename = multi.getFilesystemName(name);
@@ -82,8 +83,13 @@ public class UpdateProfile extends HttpServlet {
 			if (tdao.updateProfile(bean)) {
 				response.sendRedirect("MyPage.do");
 			} else {
-				response.sendRedirect("MyPage.do");
-				/*out.println("<script>alert('프로필 수정 중 오류가 발생했습니다. 다시 시도해주세요.'); history.back();</script>");*/
+				PrintWriter out = response.getWriter(); //JS쓰기 위해 선언
+				String str = "";
+				str = "<script language='javascript'>";
+				str += "alert('프로필 수정 중 오류가 발생했습니다. 다시 시도해주세요.');";
+				str += "history.back();"; 
+				str += "</script>";
+				out.print(str);
 			}
 		}
 	}

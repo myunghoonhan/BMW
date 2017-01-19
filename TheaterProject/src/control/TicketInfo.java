@@ -32,8 +32,8 @@ public class TicketInfo extends HttpServlet {
 
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 한글처리
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 
 		// 공연번호 읽어오기
 		String sno = request.getParameter("sno");

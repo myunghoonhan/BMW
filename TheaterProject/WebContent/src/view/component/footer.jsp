@@ -8,7 +8,7 @@
 </head>
 <body>
 	<footer id="index_footer">
-    <p>Copyright @</p>
+    <p>ⓒ 한명훈,박수영,이소라,심수민 ㈜The-Ticket Corp</p>
 </footer>
 </body>
 </html>

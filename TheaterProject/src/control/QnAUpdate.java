@@ -31,7 +31,9 @@ public class QnAUpdate extends HttpServlet {
 	}
 
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 	
 		String pass = request.getParameter("pass"); // 수정할때폼에 입력된 비밀번호	
 		String qno = request.getParameter("qno"); // qnainfo에서 넘어온  qno

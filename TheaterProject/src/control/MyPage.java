@@ -33,21 +33,18 @@ public class MyPage extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
 		TheaterDao tdao = new TheaterDao();
 		
-		//���� ������ ������ �޼ҵ� ȣ��
 		TmemberBean bean = tdao.getTmember(id);
 		
-		//���� ������ ������ �޼ҵ� ȣ��
 		Vector<ShowBean> interestBean = tdao.getInterest(id);
 		
-		//���ų����� �ҷ����� �޼ҵ� ȣ��
 		Vector<BookBean> bookbean = tdao.getBook(id);
-				
 		request.setAttribute("TmemberBean", bean);
 		request.setAttribute("interestBean", interestBean);
 		request.setAttribute("bookbean", bookbean);

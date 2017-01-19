@@ -28,8 +28,8 @@ public class SearchTabLoc extends HttpServlet {
 
 	private void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 한글처리
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 
 		// 선택한 지역 Tab 읽어오기
 		String gubunLocation = request.getParameter("gubunLocation");

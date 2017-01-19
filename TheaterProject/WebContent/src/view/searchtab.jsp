@@ -34,7 +34,7 @@
 	<figure>
 		<div class="container-fluid center-block">
 			<div class="row">
-				<img src="src/image/111.jpg" class="img-responsive center-block" alt="Responsive image">
+				<img src="src/image/${image}" class="img-responsive center-block" alt="Responsive image">
 			</div>
 		</div>
 	</figure>
@@ -67,16 +67,18 @@
         <div class="row">
         
           <c:forEach var="bean" items="${searchTab_top4}">
-	          <div class="col-xs-12 col-sm-3">
+	          <div class="col-xs-6 col-sm-3">
 	              <div class="thumbnail" style="padding: 0px">
 	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
-	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
-	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">
+	            	  <span class="label label-danger" style="font-size: 15px; vertical-align:middle">♥ ${bean.slike}</span>
+	            	  <span style="font-size: 25px; font-weight: 900; color: #d9534f; vertical-align:middle;">
 	            	  <c:set var="price" value="${bean.sprice }" />
-					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" />원
-	            	  &nbsp;&nbsp;♥${bean.slike}</span>
+					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" /></span>
+					  <span style="font-size: 20px; font-weight: 900; color: #d9534f; vertical-align:middle;">
+					  원
+					  </span>
 	                </div>
 	              </div>
 	          </div>
@@ -95,16 +97,18 @@
 					<div class="clearfix"></div>
 				</c:if>
 	
-				<div class="col-xs-12 col-sm-2">
+				<div class="col-xs-6 col-sm-2">
 	              <div class="thumbnail" style="padding: 0px">
 	              <a href="TicketInfo.do?sno=${bean.sno}"><img src="src/image/poster/${bean.smainimg }" alt="..."></a>
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
-	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
-	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">
+	            	  <span class="label label-danger" style="font-size: 12px; vertical-align:middle">♥ ${bean.slike}</span>
+	            	  <span style="font-size: 20px; font-weight: 900; color: #d9534f; vertical-align:middle;">
 	            	  <c:set var="price" value="${bean.sprice }" />
-					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" />원
-	            	  &nbsp;&nbsp;♥${bean.slike}</span>
+					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" /></span>
+					  <span style="font-size: 15px; font-weight: 900; color: #d9534f; vertical-align:middle;">
+					  원
+					  </span>
 	                </div>
 	              </div>
 	            </div>
