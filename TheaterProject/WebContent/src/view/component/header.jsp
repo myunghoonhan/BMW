@@ -70,7 +70,7 @@ $(function() {
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="Main.do">
-            <img class="img_index" alt="Brand" src="src/image/theaterlogo.jpg">
+            <img class="img_index" alt="Brand" src="src/image/theaterlogo.png">
           </a>
         </div>
 		
@@ -114,7 +114,7 @@ $(function() {
           	}
           %>
             <li>
-              <li><a href="src/view/qna.jsp" class="head_link_default">Q&A</a></li>
+              <li><a href="QnA.do" class="head_link_default">Q&A</a></li>
             </li>
           </ul>
           
@@ -246,7 +246,7 @@ $(function() {
 
               <div class="row">
                 <div class="col-xs-9" style="margin-bottom: 35px; padding-right: 3px;">
-                  <input type="text" name="email" class="form-control" placeholder="example@example.com">
+                  <input type="email" name="email" class="form-control" placeholder="example@example.com">
                 </div>
                 <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
                   <button type="button" class="btn btn-primary" onclick="">인증</button>

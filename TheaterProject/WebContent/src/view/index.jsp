@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% request.setCharacterEncoding("UTF-8"); %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -77,7 +78,7 @@
     <div class="container">
     
       <ul id="index_nav_tabs" class="nav nav-tabs nav-justified" style="margin: 45px 0px 55px 0px;">
-      	  <li role="presentation" class="active"><a href="Main.do">최신</a></li>
+      	  <li role="presentation" class="active"><a href="Main.do">전체</a></li>
 		  <li role="presentation" ><a href="SearchTab.do?gubun=1">콘서트</a></li>
 		  <li role="presentation"><a href="SearchTab.do?gubun=2">연극</a></li>
 		  <li role="presentation"><a href="SearchTab.do?gubun=3">전시회</a></li>
@@ -95,7 +96,7 @@
 	  </ul>
 	<!-- 메인 탑4  -->
       <div id="index_thumbnail">
-        <h3>The-Ticket TOP4<img src="src/image/hot2.gif"></h3>
+        <h3>TOP4<img src="src/image/hot2.gif"></h3>
 
         <div class="row"><!-- table  -->
           
@@ -106,7 +107,10 @@
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
 	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
-	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">${bean.sprice}원&nbsp;&nbsp;♥${bean.slike}</span>
+	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">
+	            	  <c:set var="price" value="${bean.sprice }" />
+					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" />원
+	            	  &nbsp;&nbsp;♥${bean.slike}</span>
 	                </div>
 	              </div>
 	          </div>
@@ -132,7 +136,10 @@
 	                <div class="caption">
 	                  <h4>[${bean.slocation}] ${bean.sname}</h4>
 	            	  <!-- <img src="src/image/heart_gold.png" style="width: 40px; height: auto; margin-right: 10px;"> -->
-	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">${bean.sprice}원&nbsp;&nbsp;♥${bean.slike}</span>
+	            	  <span style="font-size: 18px; font-weight: bold; vertical-align: bottom;">
+	            	  <c:set var="price" value="${bean.sprice }" />
+					  <fmt:formatNumber type="currency" currencySymbol="" value="${price}" />원
+	            	  &nbsp;&nbsp;♥${bean.slike}</span>
 	                </div>
 	              </div>
 	            </div>

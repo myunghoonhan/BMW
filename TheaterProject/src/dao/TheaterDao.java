@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dto.BookBean;
+import dto.QnABean;
 import dto.ReviewBean;
 import dto.ShowBean;
 import dto.ShowImgBean;
@@ -187,22 +188,25 @@ public class TheaterDao {
 
 		try {
 			if (bean.getProfile() == null) {
-				String sql = "update tmember set name=?, phone=? where id=?";
+				String sql = "update tmember set pw=?, name=?, phone=? where id=?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, bean.getName());
-				pstmt.setString(2, bean.getPhone());
-				pstmt.setString(3, bean.getId());
-			} else {
-				String sql = "update member set name=?, phone=?, image=? where id=?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, bean.getName());
-				pstmt.setString(2, bean.getPhone());
-				pstmt.setString(3, bean.getProfile());
+				
+				pstmt.setString(1, bean.getPw());
+				pstmt.setString(2, bean.getName());
+				pstmt.setString(3, bean.getPhone());
 				pstmt.setString(4, bean.getId());
+			} else {
+				String sql = "update tmember set pw=?, name=?, phone=?, profile=? where id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, bean.getPw());
+				pstmt.setString(2, bean.getName());
+				pstmt.setString(3, bean.getPhone());
+				pstmt.setString(4, bean.getProfile());
+				pstmt.setString(5, bean.getId());
 			}
 
 			pstmt.executeUpdate();
-
+			
 		} catch (Exception e) {
 			System.out.println("DB:updateProfile(): " + e);
 			return false;
@@ -778,7 +782,7 @@ public class TheaterDao {
 		return time;
 	}
 
-	public void insertLike(String id, String sno) { //완료
+	public void insertLike(String id, String sno) { //완료(수정완료)
 		connect();
 		
 		try{
@@ -788,7 +792,16 @@ public class TheaterDao {
 			pstmt.setString(1, id);
 			pstmt.setString(2, sno);
 			
-			pstmt.executeUpdate();
+			int result = pstmt.executeUpdate();
+	         
+	         if(result != 0){
+	            String sql2 = "update show set slike = slike + 1 where sno= ?";
+	            
+	            pstmt = conn.prepareStatement(sql2);
+	            pstmt.setString(1, sno);
+	            
+	            pstmt.executeUpdate();
+	         }
 			
 			conn.close();
 		}catch (Exception e) {
@@ -796,7 +809,7 @@ public class TheaterDao {
 		}
 	}
 
-	public void deleteLike(String id, String sno) { //완료
+	public void deleteLike(String id, String sno) { //완료(수정완료)
 		connect();
 		
 		try{
@@ -806,7 +819,16 @@ public class TheaterDao {
 			pstmt.setString(1, id);
 			pstmt.setString(2, sno);
 			
-			pstmt.executeUpdate();
+			int result = pstmt.executeUpdate();
+	         
+	         if(result != 0){
+	            String sql2 = "update show set slike = slike - 1 where sno= ?";
+	            
+	            pstmt = conn.prepareStatement(sql2);
+	            pstmt.setString(1, sno);
+	            
+	            pstmt.executeUpdate();
+	         }
 			
 			conn.close();
 		}catch (Exception e) {
@@ -909,8 +931,8 @@ public class TheaterDao {
 				
 				pstmt.executeUpdate();
 				
-				conn.close();
 			}
+			conn.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}		
@@ -1020,6 +1042,295 @@ public class TheaterDao {
 		return v;
 	}
 	
-	
+	//후기 중복 쓰기를 방지하기 위해 기존에 후기를 쓴 이력이 있는지 확인하는 메소드
+   public int getWriteReview(String id, String sno) {  //완료
 
+      connect();
+      int a = 0;
+      
+      try{
+         String sql = "select count(*) from review where rid=? and rsno=?";
+         pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, id);
+         pstmt.setString(2, sno);
+         rs = pstmt.executeQuery();
+         
+         if(rs.next()){
+            a = rs.getInt(1);
+         }
+         
+         conn.close();
+      }catch (Exception e) {
+         e.printStackTrace();
+      }
+      return a;
+   }
+
+	public int deleteBook(String sno, int bno, String bssdate, int people) { //완료
+		connect();
+		
+		int result = 0;
+		int ssseat = 0;
+		
+		try{
+			String sql = "select ssseat from showseat where sssno=? and ssdate=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sno);
+			pstmt.setString(2, bssdate);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				result = rs.getInt(1);
+				
+				String sql_delete = "delete from book where bno=?";
+				pstmt = conn.prepareStatement(sql_delete);
+
+				ssseat = result + people;
+				
+				pstmt.setInt(1, bno);
+				
+				pstmt.executeUpdate();
+				
+			}
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}		
+		return ssseat;
+	}
+
+	public void updateBook(int ssseat, String sno, String bssdate) { //완료
+		connect();
+		
+		try{
+			String sql = "update showseat set ssseat=? where sssno=? and ssdate=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ssseat);
+			pstmt.setString(2, sno);
+			pstmt.setString(3, bssdate);
+			
+			pstmt.executeUpdate();
+			
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	public int getAllcount() { //완료
+		connect();
+		int count = 0;
+		try {
+			String sql = "select count(*) from qna"; // �������Լ�
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				count = rs.getInt(1);
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	public Vector<QnABean> getAllBoard(int start, int end) { //완료
+		connect();
+		Vector<QnABean> v = new Vector<>();
+		QnABean bean = null;
+		try {
+			String sql = "select * from ( select A.* , Rownum AS Rnum from (select * from qna order by qgroup desc, qlevel  asc) A ) where Rnum >=?  and Rnum <=? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				bean = new QnABean();
+				bean.setQno(rs.getInt(1));
+				bean.setQid(rs.getString(2));
+				bean.setQpw(rs.getString(3));
+				bean.setQsubject(rs.getString(4));
+				bean.setQcontents(rs.getString(5));
+				bean.setQdate(rs.getDate(6));
+				bean.setQgroup(rs.getInt(7));
+				bean.setQstep(rs.getInt(8));
+				bean.setQlevel(rs.getInt(9));
+				bean.setQcount(rs.getInt(10));
+				v.add(bean);
+			}
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return v;
+	}
+
+	public QnABean getOneboard(String qno) { //완료
+		connect();
+		QnABean bean = null;
+		try {
+			String countsql = "update qna set qcount= qcount+1 where qno=?"; 
+			pstmt = conn.prepareStatement(countsql);							
+			pstmt.setInt(1, Integer.parseInt(qno)); 
+			pstmt.executeUpdate();
+
+			String sql = "select * from qna where qno=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(qno));
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				bean = new QnABean();
+				bean.setQno(rs.getInt(1));
+				bean.setQid(rs.getString(2));
+				bean.setQpw(rs.getString(3));
+				bean.setQsubject(rs.getString(4));
+				bean.setQcontents(rs.getString(5));
+				bean.setQdate(rs.getDate(6));
+				bean.setQgroup(rs.getInt(7));
+				bean.setQstep(rs.getInt(8));
+				bean.setQlevel(rs.getInt(9));
+				bean.setQcount(rs.getInt(10));
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
+	}
+
+	public void qnaInsert(QnABean bean) { //완료
+		
+		connect();
+		int maxref = 0;
+		
+		try {
+			
+			if( bean.getQid() !=null){
+				
+				String sql = "select max(qgroup) from qna";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if (rs.next()){
+					maxref = rs.getInt(1);
+				}
+				
+				bean.setQgroup(maxref + 1);
+				bean.setQstep(1);
+				bean.setQlevel(1);
+				bean.setQcount(0);
+		
+				String insertsql = "insert into qna values(qna_seq.nextval,?,?,?,?,sysdate,?,?,?,?)";
+	
+				pstmt = conn.prepareStatement(insertsql);
+				pstmt.setString(1, bean.getQid());
+				pstmt.setString(2, bean.getQpw());
+				pstmt.setString(3, bean.getQsubject());
+				pstmt.setString(4, bean.getQcontents());
+				pstmt.setInt(5, bean.getQgroup());
+				pstmt.setInt(6, bean.getQstep());
+				pstmt.setInt(7, bean.getQlevel());
+				pstmt.setInt(8, bean.getQcount());
+				pstmt.executeUpdate();
+			}
+			
+			conn.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void qnaReInsert(QnABean bean) { //완료
+		connect();
+		try {
+			bean.setQstep(bean.getQstep() + 1);
+
+			String levelsql = "update qna set qlevel=qlevel+1" + "where qgroup=? and qlevel>?";
+			pstmt = conn.prepareStatement(levelsql);
+
+			pstmt.setInt(1, bean.getQgroup());// �θ�� �׷�
+			pstmt.setInt(2, bean.getQlevel());// �θ� �� ����
+			pstmt.executeUpdate();
+
+			bean.setQlevel(bean.getQlevel() + 1);
+			bean.setQcount(0);// ī��Ʈ�� �ʱ�ȭ
+
+			String insertsql = "insert into qna values(qna_seq.nextval,?,?,?,?,sysdate,?,?,?,?)";
+
+			pstmt = conn.prepareStatement(insertsql);
+			pstmt.setString(1, bean.getQid());
+			pstmt.setString(2, bean.getQpw());
+			pstmt.setString(3, bean.getQsubject());
+			pstmt.setString(4, bean.getQcontents());
+			pstmt.setInt(5, bean.getQgroup());
+			pstmt.setInt(6, bean.getQstep());
+			pstmt.setInt(7, bean.getQlevel());
+			pstmt.setInt(8, bean.getQcount());
+			
+			pstmt.executeUpdate();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public int updateqna(String id, String qno) { //완료
+		connect();
+		int check=0;
+		try{
+			String updatesql="select * from qna where qno=? and qid=?";
+			pstmt = conn.prepareStatement(updatesql);
+			pstmt.setInt(1, Integer.parseInt(qno));
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				check = 1;
+			}
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return check;
+	}
+
+	public void updateqna2(QnABean bean, String title, String content) { //완료
+		connect();
+		
+		try{
+			String updatesql2="update qna set qdate=sysdate, qsubject=?,qcontents=? where qno=?";
+			pstmt = conn.prepareStatement(updatesql2);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, bean.getQno());
+			pstmt.executeUpdate();
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	public int deleteqna(String id, String qno) { //완료
+		connect();
+		int check=0;
+		try{
+			String delsql="delete from qna where qno=? and qid=?";
+			pstmt = conn.prepareStatement(delsql);
+			pstmt.setInt(1, Integer.parseInt(qno));
+			pstmt.setString(2, id);
+			check = pstmt.executeUpdate();
+			if(check != 0){
+				check = 1;
+			}
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return check;
+	}
 }

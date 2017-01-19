@@ -39,7 +39,6 @@ public class Review extends HttpServlet {
 		
 		TheaterDao tdao = new TheaterDao();
 		
-		//�ۼ��� ���並 ���̺� �־��ִ� �޼ҵ� ȣ�� insertReview(sno)
 		tdao.insertReview(id, sno, contents);
 		
 		request.setAttribute("sno", sno);

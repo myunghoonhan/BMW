@@ -3,36 +3,21 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <% request.setCharacterEncoding("UTF-8"); %>
 
-<%
-	 String id = (String) session.getAttribute("id");
-
-	/* if (id == null) {
-		response.sendRedirect("Main.do");
-	} else {
-
-		TheaterDao tdao = TheaterDao.getInstance();
-		TmemberBean bean = tdao.selectMember(id);
-		
-		String name = bean.getName();
-		String email = bean.getEmail();
-		String phone = bean.getPhone();
-		String profile = bean.getProfile();
-		
-		if(profile == null){
-			profile="../image/profile_img/profile_default.png";   //이미지값이 null이면 기본 이미지 값 할당
-		}  */
-%>
-
+<c:if test="${TmemberBean.profile == null }">
+		<c:set var="profileImg" value="profile_default.png" />
+	</c:if>
+	<c:if test="${TmemberBean.profile != null }">
+		<c:set var="profileImg" value="${TmemberBean.profile}" />
+	</c:if>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="src/css/style.css">
 <!-- Bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -66,9 +51,24 @@
 			}else{													//jpg 나 png 파일이 아니면 input file의 value를 null로
 				alert(".jpg 혹은 .png 파일이 아닙니다."); //알림창
 				document.getElementById('imgInp').value=""; 		//input file의 value를 null로
-				$('#blah').attr('src', "src/image/profile_img/"+${TmemberBean.profile});  			//회원수정 사진을 다시 getMem_image의 값으로
+				$('#blah').attr('src', "src/image/profile_img/${profileImg}");  			//회원수정 사진을 다시 getMem_image의 값으로
 			}
 		}
+	}
+	
+	function checkModalNull(form){
+		if(form.newpass.value=="" || form.newpasscheck.value==""){
+			alert("새 비밀번호를 입력하십시오.");
+		}else if(form.newpass.value != form.newpasscheck.value){
+			alert("비밀번호가 일치하지 않습니다.");
+		}else if(form.name.value==""){
+			alert("수정 할 이름을 입력하십시오.");
+		}else if(form.phone.value==""){
+			alert("수정 할 핸드폰번호를 입력하십시오.");
+		}else{
+			form.submit();
+		}
+		
 	}
 </script>
 </head>
@@ -78,8 +78,9 @@
 	<jsp:include page="./component/header.jsp">
 		<jsp:param value="navbar-static-top" name="navbar_style" />
 	</jsp:include>
-
+	
 	<main id="main_mypage">
+		
 		<div class="container">
 		
 			<div class="jumbotron" style="margin-bottom: 50px">
@@ -88,12 +89,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-4" style="margin-bottom: 10px">
-						<c:if test="${TmemberBean.profile == null }">
-							<img src="src/image/profile_img/profile_default.png" class="img-responsive img-circle" alt="Responsive image"  style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
-						</c:if>
-						<c:if test="${TmemberBean.profile != null }">
-							<img src="src/image/profile_img/${TmemberBean.profile}" class="img-responsive img-circle" alt="Responsive image"  style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
-						</c:if>
+						<img src="src/image/profile_img/${profileImg}" class="img-responsive img-circle" alt="Responsive image"  style="z-index: 1; margin: 0 auto; width: 300px; height: 300px;  max-width: none;">
 					</div>
 	
 					<div class="col-xs-12 col-sm-8">
@@ -118,76 +114,23 @@
 			<div id="New_thumblist" style="margin-bottom: 50px">
 	        	<h3>관심 The-Ticket</h3>
 		        <div class="row">
-		        
-		          <div class="col-xs-6 col-md-2">
-		           <div class="thumbnail" style="padding: 0px">
-		              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
-		              <div class="caption">
-		                <h4>[신촌] 타 옥탑방고양</h4>
-		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-xs-6 col-md-2">
-		           <div class="thumbnail" style="padding: 0px">
-		              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
-		              <div class="caption">
-		                <h4>[신촌] 리타 산다라니나3ㅣ나옥고</h4>
-		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-		              </div>
-		            </div>
-		          </div>
-		          
-		          <div class="col-xs-6 col-md-2">
-		           <div class="thumbnail" style="padding: 0px">
-		              <a href="#"><img src="../image/poster/theater_thumbnail_3.jpg" alt="..."></a>
-		              <div class="caption">
-		                <h4>[신촌] 리타 옥탑방양이</h4>
-		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-xs-6 col-md-2">
-		           <div class="thumbnail" style="padding: 0px">
-		              <a href="#"><img src="../image/poster/theater_thumbnail_4.jpg" alt="..."></a>
-		              <div class="caption">
-		                <h4>[신촌] 리타 방고이</h4>
-		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-xs-6 col-md-2">
-		           <div class="thumbnail" style="padding: 0px">
-		              <a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" alt="..."></a>
-		              <div class="caption">
-		                <h4>[신촌] 리타 탑이</h4>
-		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-xs-6 col-md-2">
-		           <div class="thumbnail" style="padding: 0px">
-		              <a href="#"><img src="../image/poster/theater_thumbnail_2.jpg" alt="..."></a>
-		              <div class="caption">
-		                <h4>[신촌] 리타 탑양이</h4>
-		            	<span style="font-size: 25px; font-weight: bold; color: #5cb85c;">75<span style="font-size: 18px;">%</span></span>
-		            	<span style="font-size: 18px; font-weight: bold; margin-left: 5px;">9,500원</span>
-		              </div>
-		            </div>
-		          </div>
-		          
-		          <div class="clearfix"></div>
-		        
+			        <c:if test="${interestBean.isEmpty()}">
+			        	<div class="container">
+							<div class="alert alert-danger" role="alert" style="text-align: center">관심 The-Ticket이 없습니다.</div>
+						</div>
+					</c:if>
+					<c:forEach var="interestBean" items="${interestBean }">
+						<div class="col-xs-6 col-md-2">
+						  <div class="thumbnail" style="padding: 0px">
+						    <a href="TicketInfo.do?sno=${interestBean.sno}"><img src="src/image/poster/${interestBean.smainimg }" alt="..."></a>
+						  </div>
+						</div>	
+					</c:forEach>
 		        </div>  <!-- end 관심 더티켓 row  -->
 	      	</div> <!-- end index_thumbnail -->		
 			
 			<div class="row">
-	          	<h3>예매 내역</h3>
+	          	<h3>예매내역</h3>
 		       	<table class="table table-hover">
 		          <thead>
 		            <tr>
@@ -195,48 +138,50 @@
 		              <th width="100" style="text-align: center; vertical-align:middle;">예매정보</th>
 		              <th></th>
 		              <th width="50" style="text-align: center; vertical-align:middle;">수량</th>
-		              <th width="80" style="text-align: center; vertical-align:middle;">총금액 </th>
+		              <th width="100" style="text-align: center; vertical-align:middle;">총금액 </th>
 		              <th width="110"></th>
 		            </tr>
 		          </thead>
+		          
 		          <tbody>
-		            
-		            <tr>
-		              <td style="text-align: center; vertical-align:middle;">1</td>
-		              <td><a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" class="img-responsive" alt="Responsive image"></a></td>
-		              <td style="vertical-align:middle;">[신촌] 나를봐라노라즈라자댜 보다가 ㅏㅎ냐냐다다공연이름<br>2016.01.12/13:50</td>
-		              <td style="text-align: center; vertical-align:middle;">2</td>
-		              <td style="text-align: center; vertical-align:middle;">12000원</td>
-		              <td style="text-align: center; vertical-align:middle;">
-		              	<button type="button" class="btn btn-danger" style="margin-bottom: 5px;">예매취소</button>
-		              	<button type="button" class="btn btn-success">관람후기</button>
-		              </td>
-		            </tr>
-		            
-		             <tr>
-		              <td style="text-align: center; vertical-align:middle;">2</td>
-		              <td><a href="#"><img src="../image/poster/theater_thumbnail_1.jpg" class="img-responsive" alt="Responsive image"></a></td>
-		              <td style="vertical-align:middle;">[신촌] 나를봐라노라즈라자댜 보다가 ㅏㅎ냐냐다다공연이름<br>2016.01.12/13:50</td>
-		              <td style="text-align: center; vertical-align:middle;">2</td>
-		              <td style="text-align: center; vertical-align:middle;">12000원</td>
-		              <td style="text-align: center; vertical-align:middle;">
-		              	<button type="button" class="btn btn-danger" style="margin-bottom: 5px;">예매취소</button>
-		              	<button type="button" class="btn btn-success">관람후기</button>
-		              </td>
-		            </tr>
-		           
+					
+					<c:forEach var="bookbean" items="${bookbean }">
+			            <tr>
+			              <td style="text-align: center; vertical-align:middle;">${bookbean.bno}</td>
+			              <td><a href="TicketInfo.do?sno=${bookbean.bsno}"><img src="src/image/poster/${bookbean.smainimg}" class="img-responsive" alt="Responsive image"></a></td>
+			              <td style="vertical-align:middle;">
+			              	<a href="TicketInfo.do?sno=${bookbean.bsno}" style="text-decoration: none">
+			              		<font size="4">[${bookbean.slocation}] ${bookbean.sname}</font>
+			              		<br>
+			              		<c:set var="abc" value="${bookbean.bssdate}"/>
+								예매날짜: ${fn:substring(abc,0,10)}&nbsp;${bookbean.stime}
+			              	</a>		
+			              </td>
+			              		
+			              <td style="text-align: center; vertical-align:middle;">${bookbean.bpeople}</td>
+			              <td style="text-align: center; vertical-align:middle;">
+			              	<c:set var="price" value="${bookbean.btotalprice }" />
+							<fmt:formatNumber type="currency" currencySymbol="" value="${price}" />원
+			              </td>
+			              <td style="text-align: center; vertical-align:middle;">
+			              	<button type="button" class="btn btn-danger" style="margin-bottom: 5px;" onclick="location.href='BookDelete.do?sno=${bookbean.bsno}&bno=${bookbean.bno}&bookDate=${bookbean.bssdate}&people=${bookbean.bpeople}'">예매취소</button>
+			              	<button type="button" class="btn btn-success" onclick="location.href='TicketInfo.do?sno=${bookbean.bsno}'">관람후기</button>
+			              </td>
+			            </tr>
+		            </c:forEach>
 		           
 		          </tbody>
+		          
 		       	</table>
 	          	
 	          </div> <!-- end 예매내역 row  -->
 	          
 	          <nav style="text-align: center;">
 				  <ul class="pagination">
-				    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 		    		
 		    		<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-				    <li><a href="#">2</a></li>
+				    <!-- <li><a href="#">2</a></li>
 				    <li><a href="#">3</a></li>
 				    <li><a href="#">4</a></li>
 				    <li><a href="#">5</a></li>
@@ -244,9 +189,9 @@
 				    <li><a href="#">7</a></li>
 				    <li><a href="#">8</a></li>
 				    <li><a href="#">9</a></li>
-				    <li><a href="#">10</a></li>
+				    <li><a href="#">10</a></li> -->
 				    
-				    <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+				    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 				  </ul>
 		  	  </nav>
 			
@@ -257,7 +202,7 @@
 	<div class="modal fade" id="mypageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 
-			<form name="update_profile" method="POST" enctype="multipart/form-data" action="src/controller/UpdateProfile.jsp">
+			<form name="update_profile" method="POST" enctype="multipart/form-data" action="UpdateProfile.do">
 				<div class="form-group">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -279,21 +224,21 @@
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px;">
 									<!-- 회원수정 프로필 사진 -->
-									<img id="blah" src="src/image/profile_img/${TmemberBean.profile}" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 300px; height: 300px;">
+									<img id="blah" src="src/image/profile_img/${profileImg}" class="img-responsive img-circle" alt="Responsive image" style="margin: 0 auto; width: 300px; height: 300px;">
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>새 비밀번호</small>
-									<input type="text" name="newpw" class="form-control" placeholder="새 비밀번호 입력" value="">
+									<input type="password" name="newpass" class="form-control" placeholder="새 비밀번호 입력" value="">
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>새 비밀번호 확인</small>
-									<input type="text" name="newpwcheck" class="form-control" placeholder="새 비밀번호 입력" value="">
+									<input type="password" name="newpasscheck" class="form-control" placeholder="새 비밀번호 입력" value="">
 								</div>
 							</div>
 							
@@ -314,17 +259,15 @@
 							<div class="row">
 								<div class="col-xs-12" style="margin-bottom: 10px">
 									<small>이메일</small>
-									<input type="text" name="email" class="form-control" placeholder="이메일 입력" value=${TmemberBean.email}>
+									<input type="text" name="email" class="form-control" placeholder="이메일 입력" value=${TmemberBean.email} disabled="disabled">
 								</div>
 							</div>
 							
 						</div>
 						
-						<input type="hidden" name="id" value=<%=id%>>
-						
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">수정</button>
+							<button type="button" class="btn btn-primary" onclick="checkModalNull(this.form)">수정</button>
 						</div>
 					</div>
 				</div>
