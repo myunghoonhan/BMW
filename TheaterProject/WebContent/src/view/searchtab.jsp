@@ -26,10 +26,6 @@
 </head>
 <body id="index_body">
 
-  <jsp:include page="./component/header.jsp">
-  	<jsp:param value="navbar-fixed-top" name="navbar_style"/>
-  </jsp:include>
-
   <main>
 	<figure>
 		<div class="container-fluid center-block">
@@ -143,8 +139,6 @@
 
     </div> <!-- end container -->
   </main>
-
-  <jsp:include page="./component/footer.jsp"></jsp:include>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

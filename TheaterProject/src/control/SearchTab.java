@@ -74,8 +74,10 @@ public class SearchTab extends HttpServlet {
 		request.setAttribute("searchTab_top4", searchTab_top4);
 		request.setAttribute("searchTab_new", searchTab_new);
 		request.setAttribute("searchTab_count", searchTab_count);
+		request.setAttribute("navbar_style", "navbar-fixed-top");
+		request.setAttribute("center", "searchtab.jsp");
 		
-		RequestDispatcher dis = request.getRequestDispatcher("src/view/searchtab.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("src/view/main.jsp");
 		dis.forward(request, response);
 	}
 }

@@ -44,8 +44,10 @@ public class Main extends HttpServlet {
 		//request객체에 부착
 		request.setAttribute("top4", top4);
 		request.setAttribute("newTicket", newTicket);
+		request.setAttribute("navbar_style", "navbar-fixed-top");
+		request.setAttribute("center", "center.jsp");
 		
-		RequestDispatcher dis = request.getRequestDispatcher("src/view/index.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("src/view/main.jsp");
 		dis.forward(request, response);
 	}
 
