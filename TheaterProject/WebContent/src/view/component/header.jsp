@@ -1,5 +1,6 @@
 <%@page import="com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,8 +28,6 @@ function idCheck(id){
 </script>
 
 <%
-	String id = (String) session.getAttribute("id");
-	String navbar_style = request.getParameter("navbar_style");
 	String port = String.valueOf(request.getServerPort());
 	String url= request.getRequestURL().toString();
 	
@@ -55,12 +54,13 @@ function idCheck(id){
 		url = "http://localhost:"+port+"/TheaterProject/Main.do";
 	}
 %>
+
 </head>
 <body>
 
    <header>
    
-    <nav id="header_navbar_default" class="navbar navbar-default <%=navbar_style%>" role="navigation">
+    <nav id="header_navbar_default" class="navbar navbar-default ${param.navbar_style}" role="navigation">
 
       <div class="container-fluid">
 
@@ -92,32 +92,24 @@ function idCheck(id){
 			
           <ul class="nav navbar-nav navbar-right">
          
-          	<%
-				if (id != null) {
-			%>
-         	 <li>
-         		<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                  <%=id%> 님
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="MyPage.do">마이페이지</a></li>
-                </ul>
-              </li>
-         	</li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="LoginOut.do?url=<%=url%>">로그아웃</a></li>
-          <%
-          	}else{
-          %>
-         	 <li><a href="#" class="head_link_default" data-toggle="modal" data-target="#loginModal">로그인</a></li>
-          	<li><a href="#" class="head_link_default" data-toggle="modal" data-target="#registerModal">회원가입</a></li>
-          <%
-          	}
-          %>
-            <li>
-              <li><a href="QnA.do" class="head_link_default">Q&A</a></li>
+          <c:if test="${sessionScope.id != null }">
+         	<li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+	                  ${id} 님
+	                  <span class="caret"></span>
+	                </a>
+	                <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+	                  <li role="presentation"><a role="menuitem" tabindex="-1" href="MyPage.do">마이페이지</a></li>
+	                </ul>
             </li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="LoginOut.do?url=<%=url%>">로그아웃</a></li>
+          </c:if>
+         
+          <c:if test="${sessionScope.id==null }">
+         	 <li><a href="#" class="head_link_default" data-toggle="modal" data-target="#loginModal">로그인</a></li>
+          	 <li><a href="#" class="head_link_default" data-toggle="modal" data-target="#registerModal">회원가입</a></li>
+          </c:if>
+              <li><a href="QnA.do" class="head_link_default">Q&A</a></li>
           </ul>
           
         </div><!-- /.navbar-collapse -->
