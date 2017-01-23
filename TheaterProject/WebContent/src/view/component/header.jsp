@@ -250,9 +250,9 @@ function idCheck(id){
                 <div class="col-xs-9" style="margin-bottom: 35px; padding-right: 3px;">
                   <input type="email" name="email" class="form-control" placeholder="example@example.com" required>
                 </div>
-                <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
+                <!-- <div class="col-xs-3" style="margin-bottom: 10px; padding-left: 0px;">
                   <button type="button" class="btn btn-success" onclick="">인증</button>
-                </div>
+                </div> -->
               </div>
 
               <div class="row">

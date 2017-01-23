@@ -92,7 +92,9 @@
 		
 			<div class="jumbotron" style="margin-bottom: 50px">
 				<div style="float: right; margin: 0 10px 0 0;">
-					<a href=# id="tooltip" data-toggle="tooltip" data-placement="top" title="회원정보수정"><img id="settingBtn" src="src/image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;"></a>
+					<a href=# id="tooltip" data-toggle="tooltip" data-placement="top" title="회원정보수정">
+						<img id="settingBtn" src="src/image/setting.png" data-toggle="modal" data-target="#mypageModal" style="width: 23px; height: 23px;">
+					</a>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-4" style="margin-bottom: 10px">
@@ -223,7 +225,7 @@
 							<div class="row">
 								<!-- file -->
 								<label for="imgInp" style="cursor: pointer;"> <!--label클릭시 for속성에 의해 id=imgInp인 input file이 실행된다-->
-									<img for="imgInp" src="src/image/camera.png"	class="img-responsive" alt="Responsive image" style="z-index: 1; position: absolute; left: 50%; top: 50%; margin: -185px 0 0 -35px; width: 70px; height: 70px">
+									<img src="src/image/camera.png"	class="img-responsive" alt="Responsive image" style="z-index: 1; position: absolute; left: 50%; top: 50%; margin: -185px 0 0 -35px; width: 70px; height: 70px">
 									<input type="file" name="mem_image" id="imgInp"	style="position: absolute; left: 50%; top: 50%; margin: -65px 0 0 -35px; width: 0px;">
 								</label>
 							</div>

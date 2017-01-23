@@ -59,7 +59,10 @@
 				alert('예매일자를 선택하십시오.');
 			}else if(form.people.value <= 0 || form.people.value == null){
 				alert('예매인원수는 1 이상이어야 합니다.');
-			}else{
+			}else if(form.people.value > form.people.max){
+				alert('예매가능 좌석 수를 초과하였습니다.');
+			}		
+			else{
 				form.submit();
 			}
 		}
