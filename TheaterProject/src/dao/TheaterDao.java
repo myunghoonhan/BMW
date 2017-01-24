@@ -17,7 +17,6 @@ import dto.ShowBean;
 import dto.ShowImgBean;
 import dto.ShowSeatBean;
 import dto.TmemberBean;
-import dto.ZipcodeDto;
 
 public class TheaterDao {
 
@@ -55,7 +54,7 @@ public class TheaterDao {
 		}
 	}
 
-	public int userCheck(String id, String pw) { //아이디 비번 체크 (완료)
+	public int userCheck(String id, String pw) { //로그인시 (LoginProc.java) 아이디 및 비번 체크 (완료)
 		connect();
 		String dbpasswd = null;
 		int x = -1;
@@ -85,7 +84,7 @@ public class TheaterDao {
 		return x;
 	}
 	
-	public int getCheckId(String id) { //아이디 중복체크 (완료)
+	public int getCheckId(String id) { //회원가입시 (IdCheck.java) 아이디 중복체크 (완료)
 		connect();
 		int count = 0; 
 		try {
@@ -106,7 +105,7 @@ public class TheaterDao {
 	}
 
 	
-	public boolean insertMember(TmemberBean bean) { //회원가입  (완료)
+	public boolean insertMember(TmemberBean bean) { //회원가입에서 insert  (완료)
 		connect();
 
 		try {
@@ -128,34 +127,6 @@ public class TheaterDao {
 			disconnect();
 		}
 		return true;
-	}
-
-	public Vector zipCheck(String area3) throws Exception { //삭제 예정
-		connect();
-		Vector<ZipcodeDto> list = new Vector<ZipcodeDto>();
-
-		try {
-			String sql = "select * from zipcode where area3 like '" + area3 + "%'";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				ZipcodeDto zip = new ZipcodeDto();
-				zip.setZipcode(rs.getString("zipcode"));
-				zip.setArea1(rs.getString("area1"));
-				zip.setArea2(rs.getString("area2"));
-				zip.setArea3(rs.getString("area3"));
-				zip.setArea4(rs.getString("area4"));
-
-				list.add(zip);
-			}
-
-		} catch (Exception e) {
-			System.out.println(e);
-		} finally {
-			disconnect();
-		}
-		return list;
 	}
 
 	public TmemberBean selectMember(String id) {	//완료
@@ -183,7 +154,7 @@ public class TheaterDao {
 		return bean;
 	}
 
-	public boolean updateProfile(TmemberBean bean) { //수정중
+	public boolean updateProfile(TmemberBean bean) { //완료
 		connect();
 
 		try {
