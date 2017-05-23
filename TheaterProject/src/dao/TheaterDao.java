@@ -858,7 +858,7 @@ public class TheaterDao {
 			String bssdate = bookDate.substring(0, 10);
 			int totalprice = sprice * people;
 			
-			String sql = "insert into book values(book_seq.nextval,?,?,?,?,?)";
+			String sql = "insert into theaterbook values(book_seq.nextval,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -981,10 +981,10 @@ public class TheaterDao {
 		BookBean bean = null;
 		
 		try{
-			String sql = "select book.*, show.smainimg, show.slocation, show.sname, show.stime "
-					+ "from book left join show "
-					+ "on book.bsno = show.sno "
-					+ "where book.bid = ? order by book.bno desc";
+			String sql = "select theaterbook.*, show.smainimg, show.slocation, show.sname, show.stime "
+					+ "from theaterbook left join show "
+					+ "on theaterbook.bsno = show.sno "
+					+ "where theaterbook.bid = ? order by theaterbook.bno desc";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -1054,7 +1054,7 @@ public class TheaterDao {
 			if(rs.next()){
 				result = rs.getInt(1);
 				
-				String sql_delete = "delete from book where bno=?";
+				String sql_delete = "delete from theaterbook where bno=?";
 				pstmt = conn.prepareStatement(sql_delete);
 
 				ssseat = result + people;
