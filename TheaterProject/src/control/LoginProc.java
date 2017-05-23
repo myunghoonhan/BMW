@@ -1,4 +1,4 @@
-package control;
+﻿package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,21 +47,18 @@ public class LoginProc extends HttpServlet {
 			response.sendRedirect(url); //받아온 url 위치로 다시 넘기기
 
 		} else if (check == 0) { //비번오류 check=0
-
 			str = "<script language='javascript'>";
-			str += "alert('비밀번호가 일치하지 않습니다.');";
+			str += "alert('비밀번호aa');";
 			str += "history.go(-1);"; 
 			str += "</script>";
 			out.print(str);
 
 		} else { //아이디 오류 check=-1
-
 			str = "<script language='javascript'>";
-			str += "alert('해당하는 ID가 없습니다.');";
+			str += "alert('해당하는!!!aa');";
 			str += "history.go(-1);";
 			str += "</script>";
 			out.print(str);
-
 		}
 	}
 
