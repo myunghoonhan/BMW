@@ -54,9 +54,9 @@ public class TicketInfo extends HttpServlet {
 		String like_no = null;
 	    String like_yes = null;      
 	      
-	      if(selectLike == null){
-	         //회원정보 내 좋아요 클릭 여부를 확인하기 위한 메소드 호출 getLike(sno, id);
-	         int like_first = tdao.getLike(sno, id);
+	      if(selectLike == null){ //로그인 안하면 실행 1
+ 	         //회원정보 내 좋아요 클릭 여부를 확인하기 위한 메소드 호출 getLike(sno, id);
+	         int like_first = tdao.getLike(sno, id);  //1이면 좋아요, 0이면 노좋아요
 	         
 	         if(like_first == 0){
 	            like_no = "";
@@ -66,12 +66,12 @@ public class TicketInfo extends HttpServlet {
 	            like_yes = "";
 	         }
 	      }else{   
-	         if(selectLike.equals("1")){
+	         if(selectLike.equals("1")){ //좋아요 누른
 	            tdao.insertLike(id, sno);
 	            like_no = "none";
 	            like_yes ="";
 	            
-	         }else if(selectLike.equals("2")){
+	         }else if(selectLike.equals("2")){ //좋아요 안누름
 	            tdao.deleteLike(id, sno);
 	            like_no = "";
 	            like_yes ="none";
