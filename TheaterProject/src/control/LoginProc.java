@@ -36,7 +36,8 @@ public class LoginProc extends HttpServlet {
 	
 		TheaterDao tdao = TheaterDao.getInstance();
 		int check = tdao.userCheck(id, pw); //디비접속, userCheck메소드 실행
-
+		
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter(); //JS쓰기 위해 선언
 		String str = "";
 
@@ -48,14 +49,14 @@ public class LoginProc extends HttpServlet {
 
 		} else if (check == 0) { //비번오류 check=0
 			str = "<script language='javascript'>";
-			str += "alert('비밀번호aa');";
+			str += "alert('비밀번호가 일치하지 않습니다.');";
 			str += "history.go(-1);"; 
 			str += "</script>";
 			out.print(str);
 
 		} else { //아이디 오류 check=-1
 			str = "<script language='javascript'>";
-			str += "alert('해당하는!!!aa');";
+			str += "alert('해당하는 아디이가 존재하지 않습니다.');";
 			str += "history.go(-1);";
 			str += "</script>";
 			out.print(str);
