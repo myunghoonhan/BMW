@@ -11,16 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.Oracle;
 import dao.TheaterDao;
+import dao.TheaterDao_ver2;
 import dto.BookBean;
 import dto.ShowBean;
 import dto.TmemberBean;
+import service.MyPageService;
 
 /**
  * Servlet implementation class MyPage
  */
 @WebServlet("/MyPage.do")
 public class MyPage extends HttpServlet {
+		
+	private MyPageService mypageservie;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		reqPro(request,response);
@@ -38,13 +44,21 @@ public class MyPage extends HttpServlet {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
-		TheaterDao tdao = new TheaterDao();
+		TheaterDao tdao = new TheaterDao(); //디비접속 객체
 		
-		TmemberBean bean = tdao.getTmember(id);
+		TmemberBean bean = tdao.getTmember(id); //디비접속 후 정보를 bean에 저장
 		
-		Vector<ShowBean> interestBean = tdao.getInterest(id);
+		Vector<ShowBean> interestBean = tdao.getInterest(id); //디비접속 후 정보를 bean에 저장
 		
 		Vector<BookBean> bookbean = tdao.getBook(id);
+		
+		
+		TheaterDao_ver2 tdao2 = new Oracle(); // 인터페이스 사용시 이 부분만 바꾸면 됌
+		TmemberBean bean2 = tdao2.getTmember(id);
+		System.out.println(bean2.getId());
+		
+		
+		
 		request.setAttribute("TmemberBean", bean);
 		request.setAttribute("interestBean", interestBean);
 		request.setAttribute("bookbean", bookbean);

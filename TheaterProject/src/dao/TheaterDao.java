@@ -33,6 +33,7 @@ public class TheaterDao {
 	DataSource ds = null;
 
 	public void connect() {
+	
 		try {
 
 			Context initContext = new InitialContext();
@@ -912,7 +913,6 @@ public class TheaterDao {
 
 	public TmemberBean getTmember(String id) {
 		connect();
-		
 		TmemberBean bean = null;
 		
 		try{
